@@ -217,6 +217,33 @@ not to an assessment, and the School → Class → Assessment depth is itself pa
 of the pitch. `/roles` already claims those three levels, so a flat demo would
 contradict the page beside it. Breadcrumbs run `School / Class X / Unit Test 2`.
 
+### School and class are thin on purpose
+
+The assessment view is the demo's payload. School and class exist to prove the
+hierarchy is real and to give the breadcrumb somewhere to go. Do not make them
+impressive.
+
+`reference/static-site/dashboard.html` is a single flat page, so these two
+levels have no copy to inherit. Write it from `reference/screen-walkthrough.pdf`,
+not from the HTML. Where the walkthrough gives an exact on-screen sentence — the
+disabled-action reasons, the non-attribution note — use it verbatim.
+
+**`/portal/school`** — school name, board, state, academic year. A count strip:
+standards, students, standards analysed, papers stored. The two
+Board-examination years, X and XII, as cards; other standards in a plain table.
+Class XII shows its real state, marks entered and nothing analysed yet, rather
+than borrowed numbers, and its "Open BoardX" action is **disabled with its
+reason stated**, never hidden. That honesty rule is the reason this level is
+worth rendering at all.
+
+**`/portal/class`** — Class X. The assessment table leads, and it is the way
+down: only the analysed assessment opens, the others say why they cannot. Then
+class attainment bands, the section table, the subject table, and the three
+findings carrying the most marks exposure, linking through to the full set in
+the assessment view.
+
+**`/portal/assessment`** — everything `dashboard.html` has today, unchanged.
+
 ---
 
 ## Component inventory
@@ -306,8 +333,37 @@ work in the product source. They are **not running**:
 4. The anomaly pattern labels
 
 **No copy anywhere may describe an unbuilt capability in the present tense.**
-Check every page against this list before calling it done. The site may show
-these shapes; it may not claim they are working today.
+Check every page against this list before calling it done.
+
+### How to render an unbuilt shape
+
+Three rules, and they apply together, anywhere on the site:
+
+1. **Show it in its designed shape.** Do not drop it and do not redraw it as
+   something vaguer. `Cause not localised` keeps its tab in the four-state panel
+   on `/how-it-works`.
+2. **Describe it in the conditional.** What Avai *will* report when it cannot
+   localise a cause, not what it does today. The three built states stay in the
+   present tense, because they run.
+3. **Label it plainly.** Carry a short present-tense caption on the shape itself:
+
+   > Designed. Not yet running in the current build.
+
+   Flat and factual. No apology, no cleverness, no nodding at how on-brand the
+   admission is. Same visual weight as any other small caption. It is a caption,
+   not a badge and not a callout, and it gets no colour, border or icon of its
+   own.
+
+### The honesty argument rests on the three built states
+
+`Trend not yet available`, `Paper under-tests this area`, `Early signal`. Audit
+finished: the static site does not yet do this. On `/`, the honesty section
+leads with `Cause not localised` and its third item, "No dominant common
+blocker", is the Potential Ladder. On `/findings`, the anatomy example is the
+Cause-not-localised card, and the intervention plan table describes the
+priority score in the present tense. The rebuild fixes all of that: write the
+three built states into the `/` honesty section and give `/findings` a built
+finding as its anatomy example.
 
 ---
 
