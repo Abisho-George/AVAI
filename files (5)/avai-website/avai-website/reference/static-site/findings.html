@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Avai finds — lost marks are lost Board potential</title><meta name="description" content="A finding is always the same unit: the competency, students affected, marks exposure, Board urgency and confidence.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>:root {
+  --ink: #06213E;
+  --ink-2: #0E3057;
+  --ink-deep: #041C34;
+  --body: #40536B;
+  --muted: #7D8DA1;
+  --line: #DCE3EC;
+  --line-soft: #E9EEF4;
+  --paper: #FDFCFA;
+  --paper-2: #F6F4EF;
+  --white: #FFFFFF;
+  --tint: #EDF3FA;
+  --blue: #1F5D8D;
+  --blue-2: #3379BE;
+  --teal: #06A9A4;
+  --teal-deep: #067F7C;
+  --teal-tint: #E2F5F4;
+  --gold: #F7A134;
+  --gold-deep: #B06F12;
+  --gold-tint: #FDF0DC;
+  --orange: #D9702E;
+  --coral: #D2483C;
+  --coral-tint: #FBEBE8;
+
+  --display: "Outfit", "Segoe UI", sans-serif;
+  --sans: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", monospace;
+
+  --w: 1140px;
+  --r: 10px;
+  --r-lg: 16px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; line-height: 1.14; letter-spacing: -.02em; margin: 0 0 .45em; }
+h1 { font-size: clamp(2.2rem, 4.4vw, 3.5rem); }
+h2 { font-size: clamp(1.65rem, 2.7vw, 2.3rem); }
+h3 { font-size: 1.2rem; letter-spacing: -.01em; }
+h4 { font-size: 1rem; font-family: var(--sans); font-weight: 600; letter-spacing: 0; }
+p { margin: 0 0 1em; color: var(--body); max-width: 64ch; }
+.lede { font-size: 1.15rem; line-height: 1.55; color: var(--body); max-width: 56ch; }
+.small { font-size: .875rem; color: var(--muted); }
+a { color: var(--blue); }
+strong { font-weight: 600; color: var(--ink); }
+
+.wrap { max-width: var(--w); margin: 0 auto; padding: 0 28px; }
+section { padding: 90px 0; }
+section.snug { padding: 56px 0; }
+.band-2 { background: var(--paper-2); }
+.band-tint { background: var(--tint); }
+.band-ink { background: var(--ink); color: var(--paper); }
+.band-ink p, .band-ink .small { color: #A9BACE; }
+.band-ink h2, .band-ink h3 { color: var(--white); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
+  padding: 13px 24px; border-radius: var(--r);
+  font-family: var(--sans); font-weight: 600; font-size: .95rem;
+  text-decoration: none; border: 1px solid transparent; cursor: pointer;
+  transition: background-color .15s, border-color .15s, color .15s;
+}
+.btn-primary { background: var(--ink); color: var(--white); }
+.btn-primary:hover { background: var(--ink-2); }
+.btn-gold { background: var(--gold); color: var(--ink); }
+.btn-gold:hover { background: #E89320; }
+.btn-line { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-line:hover { border-color: var(--ink); }
+.band-ink .btn-line { color: var(--white); border-color: #2C4970; }
+.band-ink .btn-line:hover { border-color: var(--white); }
+.btn-sm { padding: 9px 16px; font-size: .85rem; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 3px; }
+
+/* ---------- header ---------- */
+.hdr { position: sticky; top: 0; z-index: 60; background: rgba(253,252,250,.93); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line-soft); }
+.hdr-in { max-width: var(--w); margin: 0 auto; padding: 14px 28px; display: flex; align-items: center; gap: 30px; }
+.mark { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--ink); }
+.mark-txt { font-family: var(--display); font-weight: 600; font-size: 1.45rem; letter-spacing: .01em; line-height: 1; }
+.mark-txt i { font-style: normal; color: var(--teal); }
+.mark-sub { display: block; white-space: nowrap; font-size: .47rem; letter-spacing: .2em; color: var(--muted); font-family: var(--sans); font-weight: 500; margin-top: 3px; }
+.nav { display: flex; gap: 24px; margin-right: auto; }
+.nav a { white-space: nowrap; text-decoration: none; color: var(--body); font-size: .93rem; padding: 5px 0; border-bottom: 2px solid transparent; }
+.nav a:hover { color: var(--ink); }
+.nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--teal); }
+.hdr-act { display: flex; gap: 10px; }
+.burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; margin-left: auto; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 5px 0; }
+.mnav { display: none; flex-direction: column; padding: 6px 28px 20px; background: var(--paper); border-bottom: 1px solid var(--line); }
+.mnav a { padding: 13px 0; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--line-soft); }
+.mnav.on { display: flex; }
+@media (max-width: 1000px) { .nav, .hdr-act { display: none; } .burger { display: block; } }
+
+/* ---------- footer ---------- */
+.ftr { background: var(--ink); color: #A9BACE; padding: 64px 0 26px; }
+.ftr-in { max-width: var(--w); margin: 0 auto; padding: 0 28px; display: flex; gap: 56px; flex-wrap: wrap; justify-content: space-between; }
+.ftr .mark { color: var(--white); }
+.ftr .mark-sub { color: #6E85A3; }
+.ftr p { color: #A9BACE; max-width: 34ch; font-size: .9rem; margin-top: 16px; }
+.ftr-sig { font-family: var(--display); font-size: 1.05rem; color: var(--white); margin-top: 22px; max-width: 22ch; line-height: 1.3; }
+.ftr-cols { display: flex; gap: 52px; flex-wrap: wrap; }
+.ftr-col h4 { color: var(--white); font-size: .82rem; margin-bottom: 12px; }
+.ftr-col a { display: block; color: #A9BACE; text-decoration: none; font-size: .9rem; padding: 4px 0; }
+.ftr-col a:hover { color: var(--white); }
+.ftr-meta { max-width: var(--w); margin: 42px auto 0; padding: 20px 28px 0; border-top: 1px solid #16375F; font-size: .8rem; color: #6E85A3; }
+
+/* ---------- hero ---------- */
+.hero { padding: 64px 0 34px; }
+.hero-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 52px; align-items: center; }
+@media (max-width: 1000px) { .hero-grid { grid-template-columns: 1fr; gap: 36px; } }
+.hero h1 { max-width: 15ch; }
+.hero-q { color: var(--teal-deep); font-family: var(--display); font-size: 1.02rem; font-weight: 500; margin-bottom: 14px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+
+/* ---------- hero loop ---------- */
+.loop { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+.loop-bar { display: flex; align-items: center; gap: 10px; padding: 11px 16px; border-bottom: 1px solid var(--line-soft); background: var(--paper-2); }
+.loop-bar .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.loop-bar .lbl { margin-left: 6px; font-size: .76rem; color: var(--muted); font-family: var(--mono); }
+.loop-stage { position: relative; min-height: 498px; padding: 26px; }
+@media (max-width: 620px) { .loop-stage { min-height: 540px; padding: 18px; } }
+.scene { position: absolute; inset: 26px; opacity: 0; visibility: hidden; transition: opacity .5s ease; display: flex; flex-direction: column; justify-content: center; }
+.scene.on { opacity: 1; visibility: visible; }
+@media (max-width: 620px) { .scene { inset: 18px; } }
+.scene-h { font-family: var(--display); font-size: 1.02rem; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.scene-s { font-size: .82rem; color: var(--muted); margin-bottom: 18px; }
+.rise { opacity: 0; transform: translateY(8px); }
+.scene.on .rise { animation: rise .45s ease forwards; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+.loop-cap { padding: 14px 20px; border-top: 1px solid var(--line-soft); background: var(--paper-2); display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.loop-cap p { margin: 0; font-size: .88rem; color: var(--body); flex: 1; min-width: 200px; }
+.loop-dots { display: flex; gap: 6px; }
+.loop-dots button { width: 26px; height: 4px; border-radius: 3px; border: none; background: var(--line); cursor: pointer; padding: 0; }
+.loop-dots button.on { background: var(--teal); }
+.loop-pp { background: none; border: 1px solid var(--line); border-radius: 6px; width: 28px; height: 28px; cursor: pointer; color: var(--body); font-size: .7rem; line-height: 1; }
+
+/* scorecard grid */
+.sgrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+@media (max-width: 620px) { .sgrid { grid-template-columns: repeat(4, 1fr); } }
+.scell { border: 1px solid var(--line); border-radius: 6px; padding: 7px 4px; text-align: center; background: var(--white); transition: opacity .45s, border-color .45s, background-color .45s; }
+.scell span { display: block; font-family: var(--mono); font-size: .6rem; color: var(--muted); }
+.scell b { font-family: var(--mono); font-size: .85rem; font-weight: 500; color: var(--ink); }
+.scene.on .sgrid.focus .scell { opacity: .28; }
+.scene.on .sgrid.focus .scell.key { opacity: 1; border-color: var(--gold); background: var(--gold-tint); }
+
+/* ---------- display item: finding card ---------- */
+.finding { border: 1px solid var(--line); border-radius: 12px; background: var(--white); padding: 18px; }
+.finding-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+.finding-subj { font-size: .68rem; letter-spacing: .11em; color: var(--blue); font-weight: 600; text-transform: uppercase; }
+.finding h3 { margin: 3px 0 1px; font-size: 1.08rem; }
+.finding-comp { font-size: .82rem; color: var(--muted); }
+.finding-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.metric { background: var(--paper-2); border-radius: 8px; padding: 10px 12px; }
+.metric span { display: block; font-size: .66rem; letter-spacing: .09em; color: var(--muted); text-transform: uppercase; margin-bottom: 2px; }
+.metric b { font-family: var(--display); font-size: 1.35rem; font-weight: 500; }
+.metric b em { font-style: normal; font-family: var(--sans); font-size: .74rem; font-weight: 400; color: var(--muted); margin-left: 4px; }
+.finding-obs { font-size: .88rem; color: var(--body); margin: 0 0 10px; }
+.finding-act { font-size: .8rem; color: var(--muted); border-top: 1px solid var(--line-soft); padding-top: 10px; }
+
+/* ---------- display item: three signals ---------- */
+.signals { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 11px; }
+.pill { font-size: .72rem; font-weight: 600; padding: 3px 11px; border-radius: 20px; }
+.pill-track { background: var(--teal-tint); color: var(--teal-deep); }
+.pill-watch { background: var(--gold-tint); color: var(--gold-deep); }
+.pill-act { background: var(--coral-tint); color: #9B2F25; }
+.pill-inv { background: var(--tint); color: var(--blue); }
+.urg { font-size: .72rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; border: 1px solid; background: transparent; display: inline-flex; gap: 5px; align-items: center; }
+.urg::before { content: "▲"; font-size: .55rem; }
+.urg-vh { color: var(--coral); border-color: var(--coral); }
+.urg-h { color: var(--orange); border-color: var(--orange); }
+.urg-m { color: var(--gold-deep); border-color: var(--gold); }
+.urg-l { color: var(--muted); border-color: var(--line); }
+.conf { display: inline-flex; align-items: center; gap: 6px; font-size: .74rem; color: var(--body); }
+.conf i { display: flex; gap: 3px; }
+.conf i b { width: 6px; height: 6px; border-radius: 50%; background: var(--line); display: block; }
+.conf i b.on { background: var(--ink-2); }
+
+/* ---------- display item: attainment bar ---------- */
+.bars { display: flex; flex-direction: column; gap: 9px; }
+.bar-row { display: grid; grid-template-columns: 1fr 2.2fr auto; gap: 14px; align-items: center; font-size: .86rem; }
+.bar-row .bl { color: var(--body); }
+.bar-track { height: 7px; border-radius: 20px; background: var(--line-soft); overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 20px; }
+.f-teal { background: var(--teal); }
+.f-blue { background: var(--blue-2); }
+.f-gold { background: var(--gold); }
+.f-coral { background: var(--coral); }
+.bar-row .bv { font-family: var(--mono); font-size: .8rem; color: var(--ink); }
+
+/* ---------- display item: limited-evidence note ---------- */
+.note { border: 1px solid; border-radius: 10px; padding: 13px 16px; font-size: .86rem; display: flex; gap: 11px; align-items: flex-start; }
+.note b { display: block; font-weight: 600; font-size: .88rem; margin-bottom: 2px; }
+.note span { color: var(--body); }
+.note-info { background: var(--tint); border-color: #C7DCF0; }
+.note-info b { color: var(--blue); }
+.note-warn { background: var(--gold-tint); border-color: #F2D6A6; }
+.note-warn b { color: var(--gold-deep); }
+.note-neu { background: var(--paper-2); border-color: var(--line); }
+.note-neu b { color: var(--ink); }
+.note-ic { font-size: .95rem; line-height: 1.3; }
+
+/* ---------- display item: evidence panel ---------- */
+.evid { border: 1px solid var(--line); border-radius: 12px; background: var(--white); padding: 18px; }
+.evid h4 { margin-bottom: 12px; }
+.evid ul { list-style: none; margin: 0 0 14px; padding: 0; }
+.evid li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line-soft); font-size: .86rem; }
+.evid li span { color: var(--body); }
+.evid li b { font-family: var(--mono); font-size: .8rem; font-weight: 500; white-space: nowrap; }
+.evid-concl { background: var(--tint); border-radius: 8px; padding: 12px 14px; font-size: .9rem; color: var(--ink); }
+
+/* ---------- display item: student report card ---------- */
+.report { border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; background: var(--white); max-width: 420px; }
+.report-hd { background: linear-gradient(105deg, var(--teal-tint) 0%, var(--gold-tint) 100%); padding: 20px 22px; display: flex; align-items: center; gap: 16px; }
+.report-hd .r-meta { font-size: .64rem; letter-spacing: .11em; text-transform: uppercase; color: var(--blue); font-weight: 600; }
+.report-hd .r-score { font-family: var(--display); font-size: 2rem; font-weight: 500; color: var(--ink); line-height: 1.1; }
+.report-hd .r-line { font-size: .82rem; color: var(--body); }
+.report-bd { padding: 18px 22px 20px; }
+.report-bd h4 { font-size: .84rem; margin: 0 0 8px; }
+.report-bd h4 + ul { margin: 0 0 16px; }
+.report-bd ul { list-style: none; padding: 0; }
+.report-bd li { border-radius: 7px; padding: 8px 12px; font-size: .86rem; margin-bottom: 5px; }
+.li-good { background: var(--teal-tint); color: var(--teal-deep); }
+.li-next { background: var(--gold-tint); color: var(--gold-deep); }
+.report-ft { border-top: 1px solid var(--line-soft); padding: 12px 22px; font-size: .76rem; color: var(--muted); }
+
+/* ---------- generic layout helpers ---------- */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+.split-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.split-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 920px) { .split, .split-3, .split-2 { grid-template-columns: 1fr; gap: 28px; } }
+.head-2 { max-width: 62ch; margin-bottom: 40px; }
+.card { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; }
+.card h3 { font-size: 1.05rem; }
+.card p:last-child { margin-bottom: 0; }
+.band-ink .card { background: #0C2B4C; border-color: #1B416B; }
+.band-ink .card p { color: #A9BACE; }
+
+.steps { display: flex; flex-direction: column; }
+.step { display: grid; grid-template-columns: 42px 1fr; gap: 22px; padding: 26px 0; border-top: 1px solid var(--line); }
+.step:last-child { border-bottom: 1px solid var(--line); }
+.step-n { font-family: var(--mono); font-size: .95rem; color: var(--teal-deep); padding-top: 3px; }
+.step h3 { margin-bottom: 5px; font-size: 1.08rem; }
+.step p:last-child { margin-bottom: 0; }
+
+.deflist { border-top: 1px solid var(--line); }
+.defrow { display: grid; grid-template-columns: 230px 1fr; gap: 26px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.defrow h3 { margin: 0; font-size: 1.02rem; }
+.defrow p { margin: 0; font-size: .93rem; }
+@media (max-width: 760px) { .defrow { grid-template-columns: 1fr; gap: 6px; } }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+@media (max-width: 760px) { .stats { grid-template-columns: 1fr 1fr; } }
+.stat b { display: block; font-family: var(--display); font-size: 2.1rem; font-weight: 500; line-height: 1.1; }
+.stat span { font-size: .87rem; color: var(--muted); }
+.band-ink .stat b { color: var(--white); }
+
+.ticks { list-style: none; padding: 0; margin: 0; }
+.ticks li { padding: 10px 0 10px 26px; position: relative; border-bottom: 1px solid var(--line-soft); font-size: .93rem; color: var(--body); }
+.ticks li::before { content: ""; position: absolute; left: 0; top: 17px; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+.ticks.no li::before { background: var(--coral); }
+
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl th, .tbl td { text-align: left; padding: 13px 14px; border-bottom: 1px solid var(--line); font-size: .9rem; }
+.tbl th { font-size: .72rem; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.tbl td.num { font-family: var(--mono); font-size: .84rem; }
+
+.quote { border-left: 3px solid var(--gold); padding: 2px 0 2px 20px; margin: 26px 0; }
+.quote p { font-size: 1.05rem; color: var(--ink); }
+.quote cite { font-style: normal; font-size: .84rem; color: var(--muted); }
+
+.cta-band { display: flex; justify-content: space-between; align-items: center; gap: 28px; flex-wrap: wrap; }
+.cta-band h2 { margin-bottom: 6px; }
+.cta-band p { margin: 0; }
+
+.pghead { padding: 62px 0 10px; }
+.pghead .lede { max-width: 66ch; }
+
+/* ---------- switchers ---------- */
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 22px; }
+.tab { padding: 9px 16px; border: 1px solid var(--line); background: var(--white); border-radius: 20px; font-family: var(--sans); font-size: .86rem; font-weight: 600; color: var(--body); cursor: pointer; }
+.tab.on { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.pane { display: none; }
+.pane.on { display: block; }
+
+.toggles { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 20px; }
+.tgroup span { display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.tgroup div { display: flex; gap: 5px; }
+.tg { padding: 6px 12px; font-size: .8rem; border: 1px solid var(--line); background: var(--white); border-radius: 7px; cursor: pointer; font-family: var(--sans); color: var(--body); }
+.tg.on { border-color: var(--ink); color: var(--ink); font-weight: 600; }
+
+/* ---------- forms ---------- */
+.form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 700px) { .form { grid-template-columns: 1fr; } }
+.fld { display: flex; flex-direction: column; gap: 6px; }
+.fld.full { grid-column: 1 / -1; }
+.fld label { font-size: .84rem; font-weight: 600; color: var(--ink); }
+.fld input, .fld select, .fld textarea { font-family: var(--sans); font-size: .95rem; padding: 12px 13px; border: 1px solid var(--line); border-radius: var(--r); background: var(--white); color: var(--ink); }
+.fld textarea { min-height: 110px; resize: vertical; }
+.ok { display: none; margin-top: 20px; padding: 18px 20px; border-radius: 12px; background: var(--teal-tint); border: 1px solid #9FDCDA; }
+.ok.on { display: flex; gap: 16px; align-items: center; }
+.ok p { margin: 0; color: var(--teal-deep); }
+
+/* ---------- portal ---------- */
+.portal { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+@media (max-width: 900px) { .portal { grid-template-columns: 1fr; min-height: auto; } }
+.portal-l { background: var(--ink); color: var(--white); padding: 40px; display: flex; flex-direction: column; justify-content: space-between; }
+.portal-l h2 { font-size: 2rem; max-width: 14ch; }
+.portal-l p { color: #A9BACE; max-width: 40ch; }
+.portal-r { padding: 56px 40px; display: flex; align-items: center; justify-content: center; }
+.portal-box { width: 100%; max-width: 380px; }
+.demo-note { background: var(--gold-tint); border: 1px solid #F2D6A6; border-radius: 10px; padding: 11px 14px; font-size: .8rem; color: var(--gold-deep); margin-bottom: 22px; }
+.roles { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.role-btn { display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 13px 15px; border: 1px solid var(--line); background: var(--white); border-radius: var(--r); cursor: pointer; font-family: var(--sans); text-decoration: none; color: var(--ink); }
+.role-btn:hover { border-color: var(--ink); }
+.role-btn b { font-weight: 600; font-size: .9rem; }
+.role-btn span { display: block; font-size: .78rem; color: var(--muted); }
+
+.app { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
+@media (max-width: 900px) { .app { grid-template-columns: 1fr; } .side { display: none; } }
+.side { background: var(--ink); padding: 22px 16px; display: flex; flex-direction: column; }
+.side .mark { color: var(--white); padding: 0 8px 24px; }
+.side nav { display: flex; flex-direction: column; gap: 2px; }
+.side nav a { display: block; padding: 10px 12px; border-radius: 8px; color: #A9BACE; text-decoration: none; font-size: .88rem; }
+.side nav a.on { background: #0E3457; color: var(--white); }
+.side nav a:hover { color: var(--white); }
+.side-ft { margin-top: auto; padding: 14px 8px 0; border-top: 1px solid #16375F; }
+.side-ft b { display: block; color: var(--white); font-size: .85rem; font-weight: 600; }
+.side-ft span { font-size: .76rem; color: #6E85A3; }
+.main { padding: 26px 32px 60px; background: var(--paper); }
+@media (max-width: 620px) { .main { padding: 22px 18px 50px; } }
+.crumbs { font-size: .8rem; color: var(--muted); margin-bottom: 14px; }
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs b { color: var(--ink); font-weight: 600; }
+.app-hd { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; margin-bottom: 22px; }
+.app-hd h1 { font-size: 1.8rem; margin-bottom: 2px; }
+.app-hd .small { margin: 0; }
+.secn { margin-bottom: 34px; }
+.secn > h2 { font-size: 1.12rem; font-family: var(--sans); font-weight: 600; letter-spacing: 0; margin-bottom: 3px; }
+.secn > .small { margin-bottom: 16px; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; }
+@media (max-width: 760px) { .kpis { grid-template-columns: 1fr 1fr; } }
+.kpi { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.kpi span { display: block; font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.kpi b { font-family: var(--display); font-size: 1.5rem; font-weight: 500; }
+.panel { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+.panel .tbl th:first-child, .panel .tbl td:first-child { padding-left: 0; }
+.panel .tbl tr:last-child td { border-bottom: none; }
+.rowlink { cursor: pointer; }
+.rowlink:hover { background: var(--paper-2); }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 420px; max-width: 92vw; background: var(--white); border-left: 1px solid var(--line); padding: 24px; overflow-y: auto; transform: translateX(102%); transition: transform .28s ease; z-index: 80; }
+.drawer.on { transform: none; }
+.scrim { position: fixed; inset: 0; background: rgba(6,33,62,.3); opacity: 0; visibility: hidden; transition: opacity .28s; z-index: 70; }
+.scrim.on { opacity: 1; visibility: visible; }
+.drawer-x { position: absolute; top: 18px; right: 18px; background: none; border: none; font-size: 1.1rem; cursor: pointer; color: var(--muted); }
+
+/* ---------- mascot ---------- */
+.avai { display: block; }
+.avai-wait { animation: bob 1.9s ease-in-out infinite; }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+@media (max-width: 700px) {
+  section { padding: 56px 0; }
+  section.snug { padding: 40px 0; }
+  .hero { padding: 30px 0 24px; }
+  .pghead { padding: 38px 0 6px; }
+  .wrap { padding: 0 20px; }
+  h1 { font-size: clamp(1.95rem, 8vw, 2.4rem); }
+  .cta-row .btn { width: 100%; justify-content: center; }
+  .loop-stage { min-height: 560px; }
+  .split, .split-2, .split-3 { gap: 22px; }
+  .stats { gap: 20px; }
+  .tbl th, .tbl td { padding: 10px 8px; font-size: .84rem; }
+  .secn .panel, .panel { overflow-x: auto; }
+}
+</style></head><body>
+<header class="hdr"><div class="hdr-in"><a class="mark" href="index.html"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><rect width="30" height="30" rx="8" fill="#06213E"/><path d="M8 21 C12 15 17 10 23 7 C19 13 15 18 11 22 Z" fill="#F7A134"/><path d="M7 22 C11 16 16 11 22 8 C17 14 12 19 9 23 Z" fill="#06A9A4"/></svg><span><span class="mark-txt">AV<i>A</i>I</span><span class="mark-sub">LEARN GROW ACHIEVE</span></span></a>
+<nav class="nav" aria-label="Primary"><a href="index.html">Home</a><a href="findings.html" aria-current="page">Findings</a><a href="how.html">How it works</a><a href="roles.html">Roles</a><a href="pilot.html">Pilot</a><a href="trust.html">Trust</a><a href="pricing.html">Pricing</a></nav>
+<div class="hdr-act"><a class="btn btn-line btn-sm" href="portal.html">School portal</a>
+<a class="btn btn-primary btn-sm" href="contact.html">Request a pilot</a></div>
+<button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div><div class="mnav"><a href="index.html">Home</a><a href="findings.html">Findings</a><a href="how.html">How it works</a><a href="roles.html">Roles</a><a href="pilot.html">Pilot</a><a href="trust.html">Trust</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="portal.html">School portal</a><a href="contact.html">Request a pilot</a></div></header>
+<section class="pghead"><div class="wrap">
+<p class="hero-q">What Avai finds</p>
+<h1>Lost marks are lost Board potential</h1>
+<p class="lede">Avai&rsquo;s output is not a score and not a dashboard. It is a set of findings. A finding is always the same unit &mdash; never a bare statistic &mdash; and it always carries what it costs, how urgent it is, and how sure we are.</p>
+</div></section>
+
+<section class="snug"><div class="wrap"><div class="split">
+<div class="finding">
+<div class="finding-top"><div>
+<div class="finding-subj">Mathematics</div>
+<h3>Quadratic Equations</h3>
+<div class="finding-comp">Application problems</div>
+</div><span class="urg urg-vh">Very high &middot; 4/4 years</span></div>
+<div class="finding-metrics">
+<div class="metric"><span>Students affected</span><b>146<em>of 240</em></b></div>
+<div class="metric"><span>Avg marks lost</span><b>4.2<em>per student</em></b></div>
+</div>
+<div class="signals"><span class="pill pill-act">Immediate</span>
+<span class="conf"><i><b class="on"></b><b class="on"></b><b class="on"></b></i>High confidence</span></div>
+<p class="finding-obs">61% of analysed students demonstrate the underlying concept but lose marks when the same concept appears in application-style questions.</p>
+<div class="finding-act">Suggested: application-focused revision, Board-style question practice</div>
+</div>
+<div>
+<h2>Anatomy of a finding</h2>
+<ul class="ticks">
+<li><strong>The competency</strong> &mdash; subject, chapter, and the specific skill, not just the chapter name</li>
+<li><strong>Students affected</strong> &mdash; how many, out of how many were analysed</li>
+<li><strong>Marks exposure</strong> &mdash; the average marks each affected student is losing</li>
+<li><strong>Board urgency</strong> &mdash; how often this competency has recurred in recent Board papers</li>
+<li><strong>Confidence</strong> &mdash; how strong the evidence is that the pattern is real</li>
+<li><strong>Attention</strong> &mdash; what the school should actually do about it</li>
+<li><strong>The observation</strong> &mdash; one plain sentence describing what was seen</li>
+</ul>
+<p class="small" style="margin-top:16px">Every figure opens. Click any finding in the product and you get the questions it read, the per-section spread, and the recommended action.</p>
+</div>
+</div></div></section>
+
+<section class="band-2"><div class="wrap">
+<div class="head-2"><h2>Marks loss intelligence</h2>
+<p>The first screen a principal sees after opening an assessment. Findings are ranked by what they are costing, not by how bad the average looks.</p></div>
+<div class="split-2">
+<div class="finding">
+<div class="finding-top"><div><div class="finding-subj">Physics</div><h3>Electricity</h3><div class="finding-comp">Numericals</div></div><span class="urg urg-h">High &middot; 3/4 years</span></div>
+<div class="finding-metrics">
+<div class="metric"><span>Students affected</span><b>122<em>of 240</em></b></div>
+<div class="metric"><span>Avg marks lost</span><b>3.8<em>per student</em></b></div></div>
+<div class="signals"><span class="pill pill-act">Immediate</span><span class="conf"><i><b class="on"></b><b class="on"></b><b class="on"></b></i>High confidence</span></div>
+<p class="finding-obs">Students consistently lose marks converting the concept into a numerical answer, though the underlying law is generally understood.</p>
+<div class="finding-act">Suggested: numerical-practice drill sets</div></div>
+
+<div class="finding">
+<div class="finding-top"><div><div class="finding-subj">Physics</div><h3>Light</h3><div class="finding-comp">Whole chapter &mdash; no single sub-skill</div></div><span class="urg urg-h">High &middot; 3/4 years</span></div>
+<div class="finding-metrics">
+<div class="metric"><span>Students affected</span><b>84<em>of 240</em></b></div>
+<div class="metric"><span>Avg marks lost</span><b>2.7<em>per student</em></b></div></div>
+<div class="signals"><span class="pill pill-inv">Investigation required</span><span class="conf"><i><b class="on"></b><b class="on"></b><b class="on"></b></i>High confidence</span></div>
+<p class="finding-obs">Students are consistently losing marks across this chapter, but no single subtopic, competency or question pattern explains enough of the loss to identify a reliable cause.</p>
+<div class="note note-neu" style="margin-top:4px"><span class="note-ic">&#9906;</span><div><b>Cause not localised</b><span>Problem confirmed. Manual answer-script review recommended before prescribing an intervention.</span></div></div></div>
+</div>
+<p class="small" style="margin-top:20px">Note the second card. The problem is real and high-confidence, but Avai declines to name a cause it cannot support. It is routed to investigation, not to an intervention.</p>
+</div></section>
+
+<section><div class="wrap">
+<div class="head-2"><h2>Two groups, named carefully</h2>
+<p>Avai splits students who need attention into two groups that need completely different responses. Neither is ever called &ldquo;weak students&rdquo;, and each carries its own confidence value.</p></div>
+<div class="split-2">
+<div class="card"><div class="signals"><span class="conf"><i><b class="on"></b><b class="on"></b><b class="on"></b></i>High confidence</span></div>
+<h3>High potential gap &mdash; 34 students</h3>
+<p>Close to the next attainment band. They know the concept but lose application marks. The smallest intervention here produces the largest movement in Board marks.</p>
+<p class="small">Top blockers: Mathematics application, Physics numericals</p></div>
+<div class="card"><div class="signals"><span class="conf"><i><b class="on"></b><b class="on"></b><b></b></i>Medium confidence</span></div>
+<h3>High academic risk &mdash; 28 students</h3>
+<p>Repeated loss across several tested areas rather than one identifiable blocker. Needs sustained support, not a targeted drill.</p>
+<div class="note note-warn" style="margin-top:14px"><span class="note-ic">&#10022;</span><div><b>Early signal</b><span>A possible pattern is visible, but there is not yet enough evidence for a strong conclusion.</span></div></div></div>
+</div>
+</div></section>
+
+<section class="band-2"><div class="wrap">
+<div class="head-2"><h2>What should the school act on now?</h2>
+<p>Priority combines student impact, marks exposure, Board recurrence and confidence. A confirmed problem without a localised cause is routed to investigation rather than given an intervention it hasn&rsquo;t earned.</p></div>
+<div class="panel"><table class="tbl">
+<thead><tr><th>Priority</th><th>Finding</th><th>Why it ranks here</th><th>Urgency</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td><strong>Maths &middot; Quadratic Equations</strong><br><span class="small">Application problems</span></td><td class="small">Large number affected, meaningful marks exposure, strong Board recurrence, high-confidence evidence</td><td><span class="urg urg-vh">Very high</span></td></tr>
+<tr><td class="num">2</td><td><strong>Physics &middot; Electricity</strong><br><span class="small">Numericals</span></td><td class="small">High student impact and strong, consistent Board recurrence</td><td><span class="urg urg-h">High</span></td></tr>
+<tr><td><span class="pill pill-inv">Investigate</span></td><td><strong>Physics &middot; Light</strong><br><span class="small">Whole chapter</span></td><td class="small">Problem confirmed, cause not localised &mdash; manual review recommended first</td><td><span class="urg urg-h">High</span></td></tr>
+</tbody></table></div>
+</div></section>
+
+<section><div class="wrap"><div class="cta-band">
+<div><h2>See it on your own students</h2><p>One question paper, one mark register. We return the findings.</p></div>
+<a class="btn btn-gold" href="contact.html">Request a pilot</a></div>
+</div></section>
+
+<footer class="ftr"><div class="ftr-in">
+<div><a class="mark" href="index.html"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><rect width="30" height="30" rx="8" fill="#06213E"/><path d="M8 21 C12 15 17 10 23 7 C19 13 15 18 11 22 Z" fill="#F7A134"/><path d="M7 22 C11 16 16 11 22 8 C17 14 12 19 9 23 Z" fill="#06A9A4"/></svg><span><span class="mark-txt">AV<i>A</i>I</span><span class="mark-sub">LEARN GROW ACHIEVE</span></span></a>
+<p class="ftr-sig">A brighter tomorrow for every student.</p>
+<p>Avai is built and owned by INAT Venture Pvt Ltd. The same research, separately consented and anonymised, is published openly as Yaadhum.</p></div>
+<div class="ftr-cols">
+<div class="ftr-col"><h4>Product</h4><a href="findings.html">What Avai finds</a><a href="how.html">How Avai reasons</a><a href="roles.html">Who sees what</a><a href="portal.html">School portal</a></div>
+<div class="ftr-col"><h4>School</h4><a href="pilot.html">Pilot programme</a><a href="pricing.html">Pricing</a><a href="trust.html">Trust &amp; data</a><a href="contact.html">Request a pilot</a></div>
+<div class="ftr-col"><h4>Company</h4><a href="about.html">About</a><a href="about.html#yaadhum">Yaadhum research</a><a href="contact.html">Contact</a></div>
+</div></div>
+<p class="ftr-meta">&copy; 2026 INAT Venture Pvt Ltd, Krishnagiri, Tamil Nadu. Avai does not set exams, does not grade answers, and does not evaluate teachers.</p></footer>
+<script>(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function () {
+    var burger = document.querySelector('.burger');
+    var mnav = document.querySelector('.mnav');
+    if (burger && mnav) {
+      burger.addEventListener('click', function () {
+        var open = mnav.classList.toggle('on');
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    // ---- hero loop ----
+    var loop = document.querySelector('.loop');
+    if (loop) {
+      var scenes = loop.querySelectorAll('.scene');
+      var dots = loop.querySelectorAll('.loop-dots button');
+      var cap = loop.querySelector('.loop-cap p');
+      var pp = loop.querySelector('.loop-pp');
+      var times = [5000, 7200, 6200, 6200];
+      var caps = [
+        'Unit Test 2, Class X. The marks your teachers already entered.',
+        'Not a subject total \u2014 a named gap, with what it costs.',
+        'Every number opens. Avai shows the questions it read.',
+        'The same diagnosis, in plain language. No rank, no percentile.'
+      ];
+      var i = 0, timer = null, playing = !reduce;
+
+      function show(n) {
+        i = n;
+        scenes.forEach(function (s, k) { s.classList.toggle('on', k === n); });
+        dots.forEach(function (d, k) {
+          d.classList.toggle('on', k === n);
+          d.setAttribute('aria-selected', k === n ? 'true' : 'false');
+        });
+        if (cap) cap.textContent = caps[n];
+      }
+      function schedule() {
+        clearTimeout(timer);
+        if (!playing) return;
+        timer = setTimeout(function () { show((i + 1) % scenes.length); schedule(); }, times[i]);
+      }
+      dots.forEach(function (d, k) {
+        d.addEventListener('click', function () { show(k); schedule(); });
+      });
+      if (pp) {
+        pp.addEventListener('click', function () {
+          playing = !playing;
+          pp.textContent = playing ? '\u2016' : '\u25B6';
+          pp.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+          schedule();
+        });
+        pp.textContent = playing ? '\u2016' : '\u25B6';
+      }
+      show(0);
+      schedule();
+    }
+
+    // ---- tab groups ----
+    document.querySelectorAll('[data-tabs]').forEach(function (group) {
+      group.querySelectorAll('.tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          group.querySelectorAll('.tab').forEach(function (t) { t.classList.remove('on'); });
+          group.querySelectorAll('.pane').forEach(function (p) { p.classList.remove('on'); });
+          tab.classList.add('on');
+          var pane = group.querySelector('#' + tab.getAttribute('data-target'));
+          if (pane) pane.classList.add('on');
+        });
+      });
+    });
+
+    // ---- three-signal demo ----
+    var sig = document.getElementById('signal-demo');
+    if (sig) {
+      var state = { urg: 'vh', conf: 3, att: 'act' };
+      var urgTxt = { vh: 'Very high \u00b7 4/4 years', h: 'High \u00b7 3/4 years', m: 'Medium \u00b7 2/4 years', l: 'Low \u00b7 1/4 years' };
+      var confTxt = { 3: 'High confidence', 2: 'Medium confidence', 1: 'Emerging signal' };
+      var attTxt = { act: 'Immediate', watch: 'Watch', track: 'On track', inv: 'Investigation required' };
+      var attCls = { act: 'pill-act', watch: 'pill-watch', track: 'pill-track', inv: 'pill-inv' };
+      function paint() {
+        var u = sig.querySelector('.urg');
+        u.className = 'urg urg-' + state.urg;
+        u.textContent = urgTxt[state.urg];
+        var c = sig.querySelector('.conf');
+        c.innerHTML = '<i>' + [1, 2, 3].map(function (n) {
+          return '<b class="' + (n <= state.conf ? 'on' : '') + '"></b>';
+        }).join('') + '</i>' + confTxt[state.conf];
+        var p = sig.querySelector('.pill');
+        p.className = 'pill ' + attCls[state.att];
+        p.textContent = attTxt[state.att];
+      }
+      sig.querySelectorAll('.tg').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var k = b.getAttribute('data-k'), v = b.getAttribute('data-v');
+          state[k] = (k === 'conf') ? parseInt(v, 10) : v;
+          b.parentNode.querySelectorAll('.tg').forEach(function (s) { s.classList.remove('on'); });
+          b.classList.add('on');
+          paint();
+        });
+      });
+      paint();
+    }
+
+    // ---- forms ----
+    document.querySelectorAll('form[data-demo]').forEach(function (f) {
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var ok = f.parentNode.querySelector('.ok');
+        if (ok) { ok.classList.add('on'); ok.scrollIntoView({ block: 'center' }); }
+        f.reset();
+      });
+    });
+
+    // ---- portal drawer ----
+    var scrim = document.querySelector('.scrim');
+    function closeDrawer() {
+      document.querySelectorAll('.drawer').forEach(function (d) { d.classList.remove('on'); });
+      if (scrim) scrim.classList.remove('on');
+    }
+    document.querySelectorAll('[data-drawer]').forEach(function (t) {
+      t.addEventListener('click', function () {
+        var d = document.getElementById(t.getAttribute('data-drawer'));
+        if (!d) return;
+        closeDrawer();
+        d.classList.add('on');
+        if (scrim) scrim.classList.add('on');
+      });
+    });
+    document.querySelectorAll('.drawer-x').forEach(function (b) { b.addEventListener('click', closeDrawer); });
+    if (scrim) scrim.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+  });
+})();
+</script></body></html>
