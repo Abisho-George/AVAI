@@ -26,7 +26,11 @@ it is wrong. Delete it.
 - Never sets or grades an exam
 - Never reads answer content (it reads numbers only)
 - Never evaluates or ranks a teacher
-- Never shows a student a classmate, a rank, a percentile, or a class average
+- Never shows a **student** a classmate, a rank, a percentile, or a class average.
+  This rule is scoped to the student surface. A principal does see rank, in
+  Student Intelligence, where it is present but never the headline: the row's
+  payload is what is stopping that student. `/roles` must show that difference
+  rather than implying a blanket ban.
 - Never bills a parent (the school pays, against a verified headcount)
 - Never lets research data and commercial data mix
 
@@ -46,12 +50,20 @@ it is wrong. Delete it.
 `A brighter tomorrow for every student.` is the **brand signature**. It belongs
 in the footer and the portal welcome panel. It is not the hero headline.
 
+It is the **only** tagline in this build. The brand sheet also carries
+`Curiosity today. Opportunities tomorrow.` and
+`More than a platform, a partner for every possibility.` Both are retired.
+The second one breaks the voice rules below in any case.
+
 ---
 
 ## Voice
 
 - Plain declarative sentences. Short. A principal in a district office is the reader.
-- Indian English spellings: "localised", "analysed", "programme".
+- Indian English spellings: "localised", "analysed", "programme". Sentence case,
+  never title case. The product app currently ships the US, title-cased string
+  "Cause Not Localized". That is a product bug to fix there, not a website
+  decision: the site says "Cause not localised". See `NOTES.md`.
 - Say the number. "146 of 240 students", "4.2 marks per student", not "many students".
 - Never use: "revolutionise", "empower", "unlock", "supercharge", "game-changing",
   "AI-powered", "cutting-edge", "seamless", "leverage".
@@ -69,12 +81,24 @@ red-amber-green scale:
 
 | Dimension | Treatment | Meaning |
 |---|---|---|
-| **Attention** | Solid pill | What the school should do about it. `Immediate` / `Watch` / `On track` / `Investigation required` |
+| **Attention** | Solid pill | What the school should do about it. `Immediate` / `Watch` / `On track` / `Investigation required` / `Insufficient evidence` |
 | **Board urgency** | Outlined chip with a flame/triangle glyph | How often this competency recurs in recent Board papers. `Very high · 4/4 years` down to `Low · 1/4 years` |
 | **Confidence** | Three-dot meter | Strength of evidence that the pattern exists at all. `High` / `Medium` / `Emerging` |
 
 A finding can be very-high urgency with only an emerging signal. The UI must be
 able to show that disagreement.
+
+### Attention has five values. Two of them are easy to confuse.
+
+- `Investigation required` - the problem is confirmed. The cause is not known.
+- `Insufficient evidence` - we cannot confirm there is a problem at all.
+
+These are different findings and they read differently. Do not collapse them.
+
+`Insufficient evidence` is also not a restatement of the confidence meter.
+Confidence says how sure we are the pattern is real. Attention says what the
+school should do about it. The two correlate. They are not the same axis, and a
+component must be able to render them independently.
 
 ---
 
@@ -96,12 +120,37 @@ teaching quality, and Avai does not attribute it to any teacher."*
 Risk groups are named **High Potential Gap** and **High Academic Risk**.
 Never "weak students", never "low performers".
 
+### Which honesty states lead
+
+The honesty argument on `/` and `/findings` leads with the three states that are
+built and running: **Trend not yet available**, **Paper under-tests this area**,
+**Early signal**. `Cause not localised` stays in the four-state tab panel on
+`/how-it-works`, but it is no longer the hero example anywhere. See `## Unbuilt`.
+
 ---
 
 ## Avai the mascot
 
 Avai is the bird from the brand sheet: cream body, navy-to-teal-to-gold wing,
-orange tail. Poses: Hello, Learn, Practice, Improve, Explore, Achieve.
+orange tail.
+
+### Pose vocabulary for this site: exactly five
+
+`hello` · `improve` · `achieve` · `wait` · `neutral`
+
+`neutral` is not on the brand sheet and is not Hello reused. Build it. It is how
+Avai avoids celebrating an unearned result: on a flat outcome the pose drops to
+neutral and the trend arrow goes sideways.
+
+**Practice, Learn and Explore are not used on this site.** The brand sheet was
+made before the product narrowed, and it depicts an aspirational student
+companion that does not exist. Also out of scope, and not to be rendered or
+gestured at in copy: the In-app Assistant chat bubble, the Student Guidance
+COLLEGE / CAREER / OPPORTUNITIES signpost, and anything implying coaching,
+tutoring or careers advice.
+
+The Exam Feedback card survives as the **layout** for `StudentReportCard` and
+not as its tone. No exclamation marks. No "Great progress!".
 
 ### Placement rules — enforce these
 - **Never on a data-dense surface.** Not beside a finding card. Not in a
@@ -159,7 +208,14 @@ tutor, and no copy should suggest it does.
 | `/about` | INAT Venture, Yaadhum, the government-school programme |
 | `/contact` | Pilot request form |
 | `/portal` | School portal sign-in — two tabs (staff / student) plus demo role switcher |
-| `/portal/dashboard` | Sample dashboard with the finding detail drawer |
+| `/portal/school` | School overview. Board years lead as cards, the rest in a table |
+| `/portal/class` | Class level, kept light. Attainment, sections, the assessment table |
+| `/portal/assessment` | The weight of the demo: findings, the three signals, the detail drawer |
+
+The portal demo mirrors the real hierarchy. A principal signs in to a school,
+not to an assessment, and the School → Class → Assessment depth is itself part
+of the pitch. `/roles` already claims those three levels, so a flat demo would
+contradict the page beside it. Breadcrumbs run `School / Class X / Unit Test 2`.
 
 ---
 
@@ -196,6 +252,16 @@ Plus `HeroLoop`, `Mascot`, `Header`, `Footer`, `PageHeader`, `CtaBand`.
 
 If you need a number that is not in this list, ask. Do not fill it in.
 
+**When `reference/static-site/` and this list disagree, this list wins.** The
+static site is the source of truth for *copy*, not for *facts*. Its "worth
+roughly sixty Board marks" was unsourced and has been cut: the structural claim
+stays, the number goes.
+
+Say "Classes X and XII", not "Classes 10 and 12".
+
+"Avg marks lost" is per student. "Marks exposure" is the cohort aggregate. Both
+are correct in their own context. They are not alternative names for one number.
+
 ---
 
 ## Reference material in this repo
@@ -209,7 +275,8 @@ If you need a number that is not in this list, ask. Do not fill it in.
 - `reference/tokens.css` — brand tokens sampled from the brand sheet. Import
   these; do not invent approximations.
 - `reference/product-overview.md` — what Avai is, commercially and technically
-- `reference/screen-walkthrough.pdf` — 24 screens of the real product app.
+- `reference/screen-walkthrough.pdf` — 24 screens of the real product app
+  (24 captures; the PDF runs to 27 pages including covers and one blank).
   Use it for UI vocabulary and to keep the website's components visually
   consistent with the product.
 - `reference/tagged-paper-sample.csv` — a real tagged CBSE Science paper from
@@ -220,6 +287,27 @@ If you need a number that is not in this list, ask. Do not fill it in.
   writing any copy about how tagging works. The `notes` column shows real
   two-pass resolution in action — useful, concrete material for
   `/how-it-works`. Do not reproduce question text on the public site.
+
+  **All `/how-it-works` tagging copy comes off this CSV, not off
+  `product-overview.md`.** The overview describes a Layer 2 of "competency tier,
+  complexity, dependency level" that the pipeline does not ship. Use the real
+  column names. Describe the two-pass mechanism; quote no question text.
+
+---
+
+## Unbuilt
+
+These four are drawn in the shapes the spec describes and are marked as backend
+work in the product source. They are **not running**:
+
+1. Cause not localised
+2. The Potential Ladder
+3. The intervention priority score
+4. The anomaly pattern labels
+
+**No copy anywhere may describe an unbuilt capability in the present tense.**
+Check every page against this list before calling it done. The site may show
+these shapes; it may not claim they are working today.
 
 ---
 
