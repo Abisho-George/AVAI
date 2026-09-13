@@ -1,0 +1,93 @@
+/* ============================================================
+   Avai design tokens
+   Colours sampled directly from the brand sheet (logo wordmark,
+   mascot wing gradient, book stack, app icon). Do not substitute
+   approximations — these are the brand.
+   ============================================================ */
+
+:root {
+  /* --- Core ink, from the AVAI wordmark --- */
+  --ink:        #06213E;  /* wordmark navy — primary text, dark surfaces */
+  --ink-2:      #0E3057;  /* hover state on dark surfaces */
+  --ink-deep:   #041C34;  /* app-icon background */
+  --body:       #40536B;  /* body copy */
+  --muted:      #7D8DA1;  /* hints, captions, table headers */
+
+  /* --- Surfaces --- */
+  --paper:      #FDFCFA;  /* sheet background */
+  --paper-2:    #F6F4EF;  /* alternating band */
+  --white:      #FFFFFF;
+  --tint:       #EDF3FA;  /* in-app assistant panel blue */
+  --line:       #DCE3EC;
+  --line-soft:  #E9EEF4;
+
+  /* --- The wing gradient. This is also the severity scale. --- */
+  --teal:       #06A9A4;  /* dot on the "i", script underline — STRONG */
+  --teal-deep:  #067F7C;
+  --teal-tint:  #E2F5F4;
+  --blue:       #1F5D8D;  /* wing mid-tone — GOOD */
+  --blue-2:     #3379BE;  /* wing highlight */
+  --gold:       #F7A134;  /* wing leading edge — WATCH */
+  --gold-deep:  #B06F12;
+  --gold-tint:  #FDF0DC;
+  --orange:     #D9702E;  /* tail feather — HIGH */
+  --coral:      #D2483C;  /* AT RISK */
+  --coral-tint: #FBEBE8;
+
+  /* Use teal as the "strong / on track" state, never a generic green.
+     Keeps every data surface inside the brand. */
+
+  /* --- Type --- */
+  --display: var(--font-outfit), "Segoe UI", sans-serif;
+  --sans:    var(--font-plex-sans), "Segoe UI", sans-serif;
+  --mono:    var(--font-plex-mono), monospace;
+
+  /* --- Layout --- */
+  --w:      1140px;
+  --r:      10px;
+  --r-lg:   16px;
+}
+
+/* --- Semantic aliases --- */
+/* Use these in components, not the raw colours, so the severity scale can be
+   retuned in one place. */
+:root {
+  --state-strong:  var(--teal);
+  --state-good:    var(--blue-2);
+  --state-watch:   var(--gold);
+  --state-high:    var(--orange);
+  --state-risk:    var(--coral);
+
+  --attention-track-bg:  var(--teal-tint);
+  --attention-track-fg:  var(--teal-deep);
+  --attention-watch-bg:  var(--gold-tint);
+  --attention-watch-fg:  var(--gold-deep);
+  --attention-act-bg:    var(--coral-tint);
+  --attention-act-fg:    #9B2F25;
+  --attention-inv-bg:    var(--tint);
+  --attention-inv-fg:    var(--blue);
+}
+
+/* --- Base element styles --- */
+
+body {
+  font-family: var(--sans);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.14;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

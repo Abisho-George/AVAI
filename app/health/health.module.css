@@ -1,0 +1,146 @@
+.page {
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+
+.head h1 {
+  font-size: 2rem;
+  margin: 0 0 10px;
+}
+
+.head code,
+.lede code {
+  overflow-wrap: anywhere;
+}
+
+.head p,
+.lede {
+  color: var(--body);
+  max-width: 62ch;
+  margin: 0 0 8px;
+  line-height: 1.6;
+}
+
+.group {
+  margin-top: 44px;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 24px;
+}
+
+.group h2 {
+  font-size: 1.05rem;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+
+.swatches,
+.pills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.swatch {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  background: var(--white);
+}
+
+.chip {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+
+.chipAlias {
+  border-style: dashed;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+/* Flex items default to min-width:auto, which lets a long token value such as
+   var(--font-plex-sans), "Segoe UI", sans-serif push the page wider than the
+   viewport. Every text child opts out. */
+.meta > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.name {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--ink);
+  word-break: break-all;
+}
+
+.value {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.note {
+  font-size: 0.78rem;
+  color: var(--body);
+  line-height: 1.4;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.display {
+  font-family: var(--display);
+  font-size: 1.9rem;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+.sans {
+  font-family: var(--sans);
+  color: var(--body);
+  margin: 0 0 10px;
+}
+
+.mono {
+  font-family: var(--mono);
+  color: var(--body);
+  margin: 0 0 10px;
+}
+
+@media (max-width: 700px) {
+  .page {
+    padding: 32px 16px 64px;
+  }
+  .display {
+    font-size: 1.45rem;
+  }
+}
