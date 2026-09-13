@@ -8,6 +8,8 @@ Drop-in repo skeleton for building the Avai marketing site with Claude Code.
 CLAUDE.md                          Persistent project context. Claude Code
                                    re-reads this every session. Keep it at root.
 PROMPTS.md                         The ten sequenced prompts to run, in order.
+NOTES.md                           Decisions settled outside the code, so they
+                                   are not re-litigated.
 reference/
   brand-sheet.jpeg                 Logo, wordmark, mascot poses, app icon
   screen-walkthrough.pdf           24 screens of the real product app
