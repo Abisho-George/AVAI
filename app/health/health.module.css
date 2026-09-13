@@ -113,8 +113,16 @@
 .pill {
   padding: 6px 14px;
   border-radius: 999px;
+  border: 1px solid transparent;
   font-size: 0.85rem;
   font-weight: 500;
+}
+
+.onBand {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: var(--r);
+  background: var(--paper-2);
 }
 
 .display {

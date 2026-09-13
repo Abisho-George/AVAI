@@ -1,0 +1,144 @@
+.page {
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+
+.page h1 {
+  font-size: 2rem;
+  margin: 0 0 10px;
+}
+
+.lede {
+  color: var(--body);
+  max-width: 62ch;
+  line-height: 1.6;
+  margin: 0 0 6px;
+}
+
+.block {
+  margin-top: 44px;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 24px;
+}
+
+.block h2 {
+  font-size: 1.05rem;
+  margin: 0 0 12px;
+}
+
+.pair {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 18px;
+}
+
+.figure {
+  margin: 0;
+  padding: 18px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: var(--white);
+  flex: 1 1 240px;
+}
+
+.figure figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+  font-size: 0.86rem;
+  color: var(--body);
+}
+
+.figure strong {
+  font-family: var(--mono);
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* The 160px column cannot shrink, so the table scrolls rather than the page. */
+.scroller {
+  overflow-x: auto;
+}
+
+.grid {
+  width: 100%;
+  min-width: 460px;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.grid th,
+.grid td {
+  border-bottom: 1px solid var(--line-soft);
+  padding: 14px 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.grid thead th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.grid tbody th {
+  font-weight: 400;
+  width: 30%;
+  min-width: 0;
+}
+
+.grid tbody th code {
+  font-family: var(--mono);
+  color: var(--ink);
+  display: block;
+}
+
+.note {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.icon {
+  margin: 0;
+  text-align: center;
+}
+
+.iconTile {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--ink-deep);
+}
+
+.icon figcaption {
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--body);
+}
+
+@media (max-width: 700px) {
+  .page {
+    padding: 32px 16px 64px;
+  }
+  .grid th,
+  .grid td {
+    padding: 10px 6px;
+  }
+}

@@ -66,6 +66,14 @@
   --attention-act-fg:    #9B2F25;
   --attention-inv-bg:    var(--tint);
   --attention-inv-fg:    var(--blue);
+
+  /* Insufficient evidence is the absence of a signal, not a severity, so it is
+     the quietest of the five. Derived from existing tokens, not sampled: the
+     brand sheet has no neutral pill. See NOTES.md. The border keeps it legible
+     on --paper-2 bands, where the fill would otherwise disappear. */
+  --attention-insuf-bg:     var(--paper-2);
+  --attention-insuf-fg:     var(--body);
+  --attention-insuf-border: var(--line);
 }
 
 /* --- Base element styles --- */

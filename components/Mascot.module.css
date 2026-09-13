@@ -1,0 +1,25 @@
+.root {
+  display: block;
+  flex: 0 0 auto;
+}
+
+/*
+ * Motion only in a genuine wait state, and only when the viewer has not asked
+ * for less of it.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .bob {
+    animation: bob 1.9s ease-in-out infinite;
+    transform-origin: 50% 60%;
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4%);
+  }
+}

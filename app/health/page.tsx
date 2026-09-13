@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+/**
+ * All five carry a 1px border so their metrics are identical. Only
+ * Insufficient evidence draws one; the other four are transparent.
+ */
 const ATTENTION = [
   { label: 'Immediate', bg: '--attention-act-bg', fg: '--attention-act-fg' },
   { label: 'Watch', bg: '--attention-watch-bg', fg: '--attention-watch-fg' },
@@ -15,6 +19,12 @@ const ATTENTION = [
     label: 'Investigation required',
     bg: '--attention-inv-bg',
     fg: '--attention-inv-fg',
+  },
+  {
+    label: 'Insufficient evidence',
+    bg: '--attention-insuf-bg',
+    fg: '--attention-insuf-fg',
+    border: '--attention-insuf-border',
   },
 ];
 
@@ -62,9 +72,10 @@ export default async function Health() {
       <section className={styles.group}>
         <h2>Attention pills, as they will be painted</h2>
         <p className={styles.lede}>
-          Five values. <code>Insufficient evidence</code> has no token pair of
-          its own yet, so it is drawn on the neutral line colour until one is
-          sampled.
+          Five values. <code>Insufficient evidence</code> is derived from
+          existing tokens rather than sampled, because the brand sheet has no
+          neutral pill. It is the quietest of the five, and its border keeps it
+          legible on a <code>--paper-2</code> band.
         </p>
         <ul className={styles.pills}>
           {ATTENTION.map((state) => (
@@ -74,17 +85,31 @@ export default async function Health() {
               style={{
                 background: `var(${state.bg})`,
                 color: `var(${state.fg})`,
+                borderColor: state.border ? `var(${state.border})` : 'transparent',
               }}
             >
               {state.label}
             </li>
           ))}
-          <li
-            className={styles.pill}
-            style={{ background: 'var(--paper-2)', color: 'var(--body)' }}
-          >
-            Insufficient evidence
-          </li>
+        </ul>
+        <p className={styles.lede}>
+          The same five on a <code>--paper-2</code> band, which is where an
+          unbordered neutral pill would disappear.
+        </p>
+        <ul className={`${styles.pills} ${styles.onBand}`}>
+          {ATTENTION.map((state) => (
+            <li
+              key={state.label}
+              className={styles.pill}
+              style={{
+                background: `var(${state.bg})`,
+                color: `var(${state.fg})`,
+                borderColor: state.border ? `var(${state.border})` : 'transparent',
+              }}
+            >
+              {state.label}
+            </li>
+          ))}
         </ul>
       </section>
 

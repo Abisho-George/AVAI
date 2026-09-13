@@ -76,7 +76,10 @@ await send('Emulation.setDeviceMetricsOverride', {
   width,
   height: 900,
   deviceScaleFactor: scale,
-  mobile: width < 700,
+  // mobile:true makes Chrome apply its own viewport fitting, which lands a few
+  // dozen pixels off the width asked for. Desktop metrics at a phone width give
+  // an exact CSS viewport, which is what the media queries are written against.
+  mobile: false,
 }, sessionId);
 
 const loaded = new Promise((resolve) => {
