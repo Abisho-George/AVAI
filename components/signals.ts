@@ -129,50 +129,65 @@ export type AttainmentBand =
   | 'below-60';
 
 /**
+ * The affected scale, for higher-is-worse bars. Derived from the attainment
+ * boundaries rather than guessed: the complement of 60 and 80 is 40 and 20, and
+ * the same 20-point rhythm extends one step to 60. Five bands, because "none
+ * affected" earns its own band the way full mastery does at the other end.
+ *
+ * Four bands would put X-A at 41% and X-D at 72% in the same colour, and a
+ * section chart where the best and the worst section paint identically has
+ * failed at its one job.
+ */
+export type AffectedBand =
+  | 'none-affected'
+  | 'up-to-20'
+  | 'twenty-to-forty'
+  | 'forty-to-sixty'
+  | 'over-sixty';
+
+export type Band = AttainmentBand | AffectedBand;
+
+/**
  * The same bar serves two opposite meanings. Class attainment: higher is
  * better. Students affected by section: higher is worse. There is no safe
  * default, so every call site states which it means.
  */
 export type Polarity = 'higher-is-better' | 'higher-is-worse';
 
-const BAND_COLOUR: Record<AttainmentBand, string> = {
-  'full-mastery': 'var(--state-strong)',
-  'at-or-above-80': 'var(--state-good)',
-  'sixty-to-eighty': 'var(--state-watch)',
-  'below-60': 'var(--state-risk)',
+const BAND: Record<Band, { colour: string; label: string }> = {
+  /* higher-is-better */
+  'full-mastery': {
+    colour: 'var(--state-strong)',
+    label: 'Full mastery of tested Board marks',
+  },
+  'at-or-above-80': { colour: 'var(--state-good)', label: '80%+ attainment' },
+  'sixty-to-eighty': { colour: 'var(--state-watch)', label: '60–80% attainment' },
+  'below-60': { colour: 'var(--state-risk)', label: 'Below 60%' },
+
+  /* higher-is-worse */
+  'none-affected': { colour: 'var(--state-strong)', label: 'None affected' },
+  'up-to-20': { colour: 'var(--state-good)', label: 'Up to 20% affected' },
+  'twenty-to-forty': { colour: 'var(--state-watch)', label: '20–40% affected' },
+  'forty-to-sixty': { colour: 'var(--state-high)', label: '40–60% affected' },
+  'over-sixty': { colour: 'var(--state-risk)', label: 'Over 60% affected' },
 };
 
-const BAND_LABEL_BETTER: Record<AttainmentBand, string> = {
-  'full-mastery': 'Full mastery of tested Board marks',
-  'at-or-above-80': '80%+ attainment',
-  'sixty-to-eighty': '60–80% attainment',
-  'below-60': 'Below 60%',
-};
-
-/**
- * The same two boundaries seen from the other side: 80% unaffected is 20%
- * affected, 60% unaffected is 40% affected. No new thresholds are introduced.
- */
-const BAND_LABEL_WORSE: Record<AttainmentBand, string> = {
-  'full-mastery': 'None affected',
-  'at-or-above-80': 'Up to 20% affected',
-  'sixty-to-eighty': '20–40% affected',
-  'below-60': 'Over 40% affected',
-};
-
-export function bandFor(percent: number, polarity: Polarity): AttainmentBand {
-  const good = polarity === 'higher-is-better' ? percent : 100 - percent;
-  if (good >= 100) return 'full-mastery';
-  if (good >= 80) return 'at-or-above-80';
-  if (good >= 60) return 'sixty-to-eighty';
-  return 'below-60';
+export function bandFor(percent: number, polarity: Polarity): Band {
+  if (polarity === 'higher-is-better') {
+    if (percent >= 100) return 'full-mastery';
+    if (percent >= 80) return 'at-or-above-80';
+    if (percent >= 60) return 'sixty-to-eighty';
+    return 'below-60';
+  }
+  if (percent <= 0) return 'none-affected';
+  if (percent <= 20) return 'up-to-20';
+  if (percent <= 40) return 'twenty-to-forty';
+  if (percent <= 60) return 'forty-to-sixty';
+  return 'over-sixty';
 }
 
-export const bandColour = (band: AttainmentBand) => BAND_COLOUR[band];
-export const bandLabel = (band: AttainmentBand, polarity: Polarity) =>
-  polarity === 'higher-is-better'
-    ? BAND_LABEL_BETTER[band]
-    : BAND_LABEL_WORSE[band];
+export const bandColour = (band: Band) => BAND[band].colour;
+export const bandLabel = (band: Band) => BAND[band].label;
 
 /* ------------------------------------------------------------------ *
  * The section-comparison note. Non-negotiable, and verbatim.

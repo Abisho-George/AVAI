@@ -250,11 +250,13 @@ export default function ComponentsHealth() {
 
         <h3 className={styles.sub}>higher-is-worse: students affected</h3>
         <p className={styles.lede}>
-          The same values under the opposite meaning. 72% affected is the
-          worst-hit section, and it must not be painted teal.
+          The opposite meaning, on its own five-band scale. X-A at 41% and
+          X-D at 72% have to separate: the section chart exists so a principal
+          can compare sections, and one where the best and the worst paint
+          identically has failed at that.
         </p>
         <div className={styles.bars}>
-          {[72, 41, 12, 0].map((percent) => (
+          {[72, 55, 41, 28, 12, 0].map((percent) => (
             <AttainmentBar
               key={percent}
               label={`${percent}% affected`}

@@ -36,7 +36,7 @@ export function AttainmentBar({ label, value, polarity }: AttainmentBarProps) {
       </span>
       <span className={styles.value}>{value.percent}%</span>
       {/* Colour is never the only carrier of meaning. */}
-      <span className={styles.band}>{bandLabel(band, polarity)}</span>
+      <span className={styles.band}>{bandLabel(band)}</span>
     </div>
   );
 }

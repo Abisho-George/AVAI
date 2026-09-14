@@ -66,3 +66,41 @@ stay visually separate:
 
 If the pair is ever sampled properly, replace the values here and the reasoning
 above stops applying.
+
+## The affected scale is derived from the attainment boundaries
+
+`AttainmentBar` carries a required `polarity`, because the same bar serves class
+attainment (higher is better) and students affected by section (higher is
+worse). The two scales are not the same scale read backwards.
+
+**Attainment**, from the Class X screen in `reference/screen-walkthrough.pdf`:
+
+```
+Full mastery of tested Board marks   100
+80%+ attainment                      >= 80
+60–80% attainment                    >= 60
+Below 60%                            <  60
+```
+
+**Affected**, derived from those boundaries rather than guessed:
+
+```
+None affected          0
+Up to 20% affected     <= 20
+20–40% affected        <= 40
+40–60% affected        <= 60
+Over 60% affected      >  60
+```
+
+The complement of 60 and 80 is 40 and 20. That gives two boundaries in a
+20-point rhythm, and the scale extends the same interval one step to 60. No new
+interval is introduced, and "none affected" earns its own band the way full
+mastery does at the other end.
+
+The first attempt mapped affected values onto the attainment bands by
+complement, which put X-A at 41% and X-D at 72% in the same bottom band. A
+section chart is where a principal compares sections. One where the best and
+the worst section paint identically has failed at its one job, which is why the
+scale carries its own boundaries.
+
+If the attainment boundaries ever move, these move with them.
