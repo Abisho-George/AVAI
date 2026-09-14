@@ -12,11 +12,11 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 
-const [url, outFile, widthArg = '1280', scaleArg = '2', selector] =
+const [url, outFile, widthArg = '1280', scaleArg = '2', selector, clickSelector] =
   process.argv.slice(2);
 if (!url || !outFile) {
   console.error(
-    'usage: node scripts/shot.mjs <url> <out.png> [width] [scale] [selector]',
+    'usage: node scripts/shot.mjs <url> <out.png> [width] [scale] [selector] [click]',
   );
   process.exit(1);
 }
@@ -99,6 +99,29 @@ await send('Page.navigate', { url }, sessionId);
 await loaded;
 // Let webfonts settle before capture.
 await new Promise((r) => setTimeout(r, 1200));
+
+/* An optional click selector opens whatever state is being reviewed: a menu, a
+ * drawer, a tab. Without it the shot only ever shows the page at rest. */
+if (clickSelector) {
+  const clicked = await send(
+    'Runtime.evaluate',
+    {
+      expression: `(() => {
+        const el = document.querySelector(${JSON.stringify(clickSelector)});
+        if (!el) return false;
+        el.click();
+        return true;
+      })()`,
+      returnByValue: true,
+    },
+    sessionId,
+  );
+  if (!clicked.result.value) {
+    console.error(`** click target not found: ${clickSelector} **`);
+    process.exit(1);
+  }
+  await new Promise((r) => setTimeout(r, 250));
+}
 
 /* An optional selector clips the capture to one element, for looking closely at
  * a detail that is unreadable in a full-page shot. */

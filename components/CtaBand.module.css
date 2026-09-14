@@ -1,0 +1,86 @@
+.band {
+  background: var(--tint);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 46px 24px;
+}
+
+.text {
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  max-width: 24ch;
+  text-wrap: balance;
+}
+
+.body {
+  margin: 12px 0 0;
+  max-width: 58ch;
+  line-height: 1.6;
+  color: var(--body);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.primary,
+.ghost {
+  padding: 11px 20px;
+  border-radius: var(--r);
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+
+.primary {
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  color: var(--white);
+}
+
+.primary:hover {
+  background: var(--ink-2);
+}
+
+.ghost {
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: var(--white);
+}
+
+.ghost:hover {
+  background: var(--paper-2);
+}
+
+.primary:focus-visible,
+.ghost:focus-visible {
+  outline: 2px solid var(--blue-2);
+  outline-offset: 3px;
+}
+
+.bird {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 760px) {
+  .inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 34px 16px;
+  }
+}

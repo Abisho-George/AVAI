@@ -1,0 +1,12 @@
+.placeholder {
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 56px 24px;
+  color: var(--body);
+}
+
+@media (max-width: 700px) {
+  .placeholder {
+    padding: 36px 16px;
+  }
+}

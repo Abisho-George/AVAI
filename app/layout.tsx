@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Outfit, IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
+import { Footer } from '../components/Footer';
+import { Header } from '../components/Header';
 import '../styles/tokens.css';
 
 const outfit = Outfit({
@@ -38,7 +40,17 @@ export default function RootLayout({
       lang="en-IN"
       className={`${outfit.variable} ${plexSans.variable} ${plexMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <Header />
+        {/* The skip link's target. Pages bring their own <main>. */}
+        <div id="main" tabIndex={-1}>
+          {children}
+        </div>
+        <Footer />
+      </body>
     </html>
   );
 }

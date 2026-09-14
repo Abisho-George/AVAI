@@ -1,11 +1,35 @@
+import { CtaBand } from '../components/CtaBand';
+import { PageHeader } from '../components/PageHeader';
+import styles from './page.module.css';
+
+/**
+ * Provisional. The homepage is built from prompt 6 onwards: hero loop, the
+ * lost-marks argument, the three signals, the honesty section, pilot proof.
+ * What is here exercises the shell.
+ */
 export default function Home() {
   return (
-    <main style={{ padding: '48px 24px' }}>
-      <h1>Avai</h1>
-      <p>
-        Scaffold only. Pages are built from prompt 4 onwards. The token palette
-        is at <a href="/health/">/health</a>.
-      </p>
+    <main>
+      <PageHeader
+        eyebrow="Diagnostic engine for schools"
+        title="What is stopping students from scoring higher?"
+        lede="Avai reads question-wise marks from the exams a school is already conducting, against a question paper mapped to the Board blueprint in advance, and reports where marks are being lost, how urgent it is for the Board exam, and how confident it is that the pattern is real."
+      />
+
+      <section className={styles.placeholder}>
+        <p>
+          Page content is built from prompt 6 onwards. The header, footer, page
+          header and call to action below are the shell.
+        </p>
+      </section>
+
+      <CtaBand
+        title="See it on your own students"
+        body="One question paper, one mark register. We return the findings."
+        action={{ href: '/contact', label: 'Request a pilot' }}
+        secondary={{ href: '/pilot', label: 'How the pilot works' }}
+        mascot
+      />
     </main>
   );
 }

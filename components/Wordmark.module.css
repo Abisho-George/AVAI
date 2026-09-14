@@ -1,0 +1,80 @@
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.glyph {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.45rem;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.name i {
+  font-style: normal;
+  color: var(--teal);
+}
+
+/*
+ * Eleven uppercase characters on wide tracking wrap at the first excuse, and a
+ * broken lockup is worse than a tight one. Never wraps; tracking is tightened
+ * rather than the line being allowed to break.
+ */
+.strap {
+  display: block;
+  white-space: nowrap;
+  margin-top: 3px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.47rem;
+  letter-spacing: 0.185em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lg .glyph {
+  width: 38px;
+  height: 38px;
+}
+
+.lg .name {
+  font-size: 1.8rem;
+}
+
+.lg .strap {
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+}
+
+.dark .name {
+  color: var(--white);
+}
+
+.dark .strap {
+  color: #8FA6C2;
+}
+
+@media (max-width: 400px) {
+  .name {
+    font-size: 1.3rem;
+  }
+  .strap {
+    letter-spacing: 0.15em;
+  }
+}
