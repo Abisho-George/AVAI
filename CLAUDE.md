@@ -277,6 +277,38 @@ Plus `HeroLoop`, `Mascot`, `Header`, `Footer`, `PageHeader`, `CtaBand`.
   5 sections, 146 students affected by the Quadratic Equations finding,
   4.2 average marks lost, Board recurrence 2022–2025
 
+### The demo findings, in full
+
+Traced to `reference/static-site/` and the product's own mock fixture by way of
+the walkthrough. Approved for use on any page.
+
+| Finding | Students affected | Avg marks lost | Board urgency | Attention | Confidence |
+|---|---|---|---|---|---|
+| Mathematics · Quadratic Equations, application problems | 146 of 240 | 4.2 per student | Very high · 4/4 years | Immediate | High |
+| Physics · Electricity, numericals | 122 of 240 | 3.8 per student | High · 3/4 years | Immediate | High |
+| Physics · Light, whole chapter, no single sub-skill | 84 of 240 | 2.7 per student | High · 3/4 years | Investigation required | High |
+
+Physics · Light is the Light card: cause not localised, so it carries no
+suggested action.
+
+Behind the Quadratic Equations finding: 3 questions tested, Board recurrence
+2022, 2023, 2024, 2025, and the observation "61% of analysed students
+demonstrate the underlying concept but lose marks when it appears in
+application-style questions."
+
+- Evidence from the paper: Q7 · 3 marks, 58% partial credit; Q12 · 4 marks, 41%
+  attempted; Concept MCQ Q2, 87% correct
+- Students affected by section: X-A 41%, X-B 66%, X-C 55%, X-D 72%, X-E 58%
+- Sections: X-A to X-E, 48 students each
+- Student rows: Aarav X-A 17/17, no blocker; Riya X-C 16/17, Physics numericals;
+  Rahul X-B 12/17, Maths application; Aditi R. X-A 16/17, no blocker
+
+**One conflict, resolved.** `index.html` gives Electricity as
+`Very high · 4/4 years`; `findings.html` gives `High · 3/4 years` and ranks it
+second behind Quadratic Equations. The site uses **High · 3/4 years**: two
+findings cannot both be the top-recurrence one, and the priority table is the
+more specific source.
+
 If you need a number that is not in this list, ask. Do not fill it in.
 
 **When `reference/static-site/` and this list disagree, this list wins.** The

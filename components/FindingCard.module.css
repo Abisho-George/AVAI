@@ -1,0 +1,106 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--white);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.subject {
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--body);
+}
+
+.subject strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.competency {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statLabel {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.statValue {
+  font-size: 0.86rem;
+  color: var(--body);
+}
+
+.statValue strong {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.signals {
+  margin-top: 2px;
+}
+
+.observation {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--body);
+}
+
+.action {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+
+.bodyNote {
+  margin-top: 2px;
+}
+
+.open {
+  align-self: flex-start;
+  margin-top: 2px;
+  font-size: 0.86rem;
+  color: var(--blue);
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.open:hover {
+  text-decoration: underline;
+}
+
+.open:focus-visible {
+  outline: 2px solid var(--blue-2);
+  outline-offset: 3px;
+}
