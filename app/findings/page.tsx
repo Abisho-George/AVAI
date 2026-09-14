@@ -11,28 +11,6 @@ export const metadata = {
     'A finding is always the same unit: what it costs, how urgent it is for the Board, and how sure Avai is that the pattern is real.',
 };
 
-const ANATOMY = [
-  {
-    term: 'The competency',
-    def: 'subject, chapter, and the specific skill, not just the chapter name',
-  },
-  { term: 'Students affected', def: 'how many, out of how many were analysed' },
-  {
-    term: 'Marks exposure',
-    def: 'the average marks each affected student is losing',
-  },
-  {
-    term: 'Board urgency',
-    def: 'how often this competency has recurred in recent Board papers',
-  },
-  {
-    term: 'Confidence',
-    def: 'how strong the evidence is that the pattern is real',
-  },
-  { term: 'Attention', def: 'what the school should actually do about it' },
-  { term: 'The observation', def: 'one plain sentence describing what was seen' },
-];
-
 const RISK_GROUPS = [
   {
     name: 'High potential gap',
@@ -60,44 +38,25 @@ export default function Findings() {
 
       <section className={styles.section}>
         <div className={styles.wrap}>
-          <div className={styles.anatomy}>
-            <div className={styles.anatomyCard}>
-              <FindingCard
-                subject="Mathematics"
-                chapter="Quadratic Equations"
-                competency="Application problems"
-                studentsAffected={{ scope: 'count', affected: 146, outOf: 240 }}
-                avgMarksLost={{ scope: 'student', marks: 4.2 }}
-                signals={{
-                  attention: 'immediate',
-                  urgency: { level: 'very-high', years: 4 },
-                  confidence: 'high',
-                }}
-                body={{
-                  kind: 'observation',
-                  observation:
-                    '61% of analysed students demonstrate the underlying concept but lose marks when the same concept appears in application-style questions.',
-                  action: 'application-focused revision, Board-style question practice',
-                }}
-              />
-            </div>
-
-            <div>
-              <h2 className={styles.h2}>Anatomy of a finding</h2>
-              <dl className={styles.parts}>
-                {ANATOMY.map((part) => (
-                  <div key={part.term} className={styles.part}>
-                    <dt>{part.term}</dt>
-                    <dd>{part.def}</dd>
-                  </div>
-                ))}
-              </dl>
-              <p className={styles.note}>
-                Every figure opens. Click any finding in the product and you get
-                the questions it read, the per-section spread, and the
-                recommended action.
-              </p>
-            </div>
+          <div className={styles.lead}>
+            <FindingCard
+              subject="Mathematics"
+              chapter="Quadratic Equations"
+              competency="Application problems"
+              studentsAffected={{ scope: 'count', affected: 146, outOf: 240 }}
+              avgMarksLost={{ scope: 'student', marks: 4.2 }}
+              signals={{
+                attention: 'immediate',
+                urgency: { level: 'very-high', years: 4 },
+                confidence: 'high',
+              }}
+              body={{
+                kind: 'observation',
+                observation:
+                  '61% of analysed students demonstrate the underlying concept but lose marks when the same concept appears in application-style questions.',
+                action: 'application-focused revision, Board-style question practice',
+              }}
+            />
           </div>
         </div>
       </section>

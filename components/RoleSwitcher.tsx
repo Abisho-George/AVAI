@@ -12,29 +12,29 @@ const ROLES: { id: Role; label: string; tagline: string; scope: string[] }[] = [
   {
     id: 'principal',
     label: 'Principal',
-    tagline: 'Sees cost, urgency and spread',
+    tagline: 'Sees every class and section',
     scope: [
-      'Every standard, every section, every subject',
-      'Marks exposure and Board urgency',
+      'Every class, every section, every subject, from one login',
+      'Where marks are being lost, and how many students it affects',
       'Section comparison, with its non-attribution note',
-      'Ranked intervention plan across the whole cohort',
+      'A plan for the whole school in one place',
     ],
   },
   {
     id: 'teacher',
     label: 'Teacher',
-    tagline: 'Sees their own scope, and can act',
+    tagline: 'Sees their own classes',
     scope: [
       'Their section, their subjects, nothing wider',
-      'The same finding, clipped to their students',
+      'The same finding, clipped to their own students',
       'Issue a report, then share it as a separate act',
-      'No school-wide view, no cross-teacher comparison',
+      'No school-wide view, no other teachers',
     ],
   },
   {
     id: 'student',
     label: 'Student',
-    tagline: 'Sees one report, and nobody else',
+    tagline: 'Sees only their own report',
     scope: [
       'Only reports a teacher has explicitly shared',
       'Opened with a one-time PIN, generated at the moment of sharing',
@@ -85,11 +85,9 @@ export function RoleSwitcher() {
                 competency="Application problems"
                 studentsAffected={{ scope: 'count', affected: 146, outOf: 240 }}
                 avgMarksLost={{ scope: 'student', marks: 4.2 }}
-                signals={{
-                  attention: 'immediate',
-                  urgency: { level: 'very-high', years: 4 },
-                  confidence: 'high',
-                }}
+                /* Attention only. This page answers who sees what, not how
+                   urgent a finding is or how sure Avai is about it. */
+                signals={{ attention: 'immediate' }}
                 body={{
                   kind: 'observation',
                   observation:
@@ -131,11 +129,7 @@ export function RoleSwitcher() {
                 competency="Application problems"
                 studentsAffected={{ scope: 'count', affected: 29, outOf: 48, noun: 'students' }}
                 avgMarksLost={{ scope: 'student', marks: 4.1 }}
-                signals={{
-                  attention: 'immediate',
-                  urgency: { level: 'very-high', years: 4 },
-                  confidence: 'high',
-                }}
+                signals={{ attention: 'immediate' }}
                 body={{
                   kind: 'observation',
                   observation:

@@ -14,8 +14,8 @@ export default function Roles() {
     <main>
       <PageHeader
         eyebrow="Who sees what"
-        title="The same finding, scoped three ways"
-        lede="One diagnosis sits underneath the whole product. What each person sees is clipped to what they are responsible for, and the student surface is deliberately the narrowest thing Avai renders."
+        title="One seat for the whole school"
+        lede="One login covers everyone. The principal sees every class and section, teachers see their own, and a student sees only their own report."
       />
 
       <section className={styles.section}>

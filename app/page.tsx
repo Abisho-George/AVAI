@@ -25,31 +25,6 @@ const TIERS = [
   { label: '…but not Social Sci.', value: 81 },
 ];
 
-/*
- * The honesty argument rests on the three states that are built and running.
- * The static site led with Cause not localised and carried No dominant common
- * blocker third; both are backend work, so neither leads here. They keep their
- * designed shapes on /how-it-works, with the caption that says so.
- */
-const HONESTY = [
-  {
-    title: 'Trend not yet available',
-    body: 'One analysed assessment is one data point. Avai says so, and holds back trend and consistency insights until a second assessment has been analysed rather than drawing a line through a single mark.',
-  },
-  {
-    title: 'Paper under-tests this area',
-    body: 'Avai will criticise your own question paper. If a test carried too few application questions to judge application readiness, it says so and marks every related finding as lower-strength.',
-  },
-  {
-    title: 'Early signal',
-    body: 'When a pattern is visible but the evidence behind it is thin, the finding is published as an early signal rather than promoted to a conclusion it has not earned.',
-  },
-  {
-    title: 'Section gaps are never teaching quality',
-    body: 'Section comparisons carry an explicit non-attribution note. Avai describes tested performance on one assessment. It does not evaluate teachers, and it never will.',
-  },
-];
-
 const PILOT = [
   { figure: '5', label: 'CBSE schools, onboarded one per week' },
   { figure: 'X & XII', label: 'Board-examination years' },
@@ -67,13 +42,13 @@ export default function Home() {
               A diagnostic layer on the exams you already run
             </p>
             <h1 className={styles.h1}>
-              What is stopping students from scoring higher?
+              Upload your question paper and your marks. Avai sends back a
+              report for every student, and everything your principal needs to
+              see, from one login.
             </h1>
+            {/* The product-UI line, kept as the question the reports answer. */}
             <p className={styles.lede}>
-              Avai reads question-wise marks against a Board-mapped question
-              paper and names the competency costing your students marks: how
-              many it affects, how urgent it is for the Board, and how sure we
-              are.
+              What is stopping students from scoring higher?
             </p>
             <div className={styles.heroActions}>
               <Link className={styles.primary} href="/contact">
@@ -165,30 +140,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* The honesty position, as one line rather than a taught module. */}
       <section className={styles.band}>
         <div className={styles.wrap}>
-          <h2 className={styles.h2}>
-            The unusual part: Avai tells you when it doesn't know
-          </h2>
-          <p className={styles.body}>
-            Every analytics product you have been shown produces an answer for
-            every question. That is a design choice, and it is the wrong one. A
-            confident wrong diagnosis costs a school a term.
-          </p>
-
-          <div className={styles.honesty}>
-            {HONESTY.map((item) => (
-              <div key={item.title} className={styles.honestyCard}>
-                <h3 className={styles.honestyTitle}>{item.title}</h3>
-                <p className={styles.honestyBody}>{item.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className={styles.footnote}>
-            Two further states are designed and not yet running in the current
-            build. They are shown, and labelled as such, on{' '}
-            <Link href="/how-it-works">How Avai reasons</Link>.
+          <p className={styles.honestyLine}>
+            Avai tells you when a paper didn't give it enough to be sure. It
+            doesn't guess.
           </p>
         </div>
       </section>

@@ -98,7 +98,10 @@ if (process.env.REDUCED_MOTION === '1') {
 }
 await send('Emulation.setDeviceMetricsOverride', {
   width,
-  height: 900,
+  /* A taller viewport lets scroll-triggered reveals fire before the capture:
+     an IntersectionObserver never sees content that was always off-screen,
+     so a full-page shot of a page with reveals is otherwise half empty. */
+  height: Number(process.env.VIEWPORT_HEIGHT ?? 900),
   deviceScaleFactor: scale,
   // mobile:true makes Chrome apply its own viewport fitting, which lands a few
   // dozen pixels off the width asked for. Desktop metrics at a phone width give

@@ -38,8 +38,12 @@ it is wrong. Delete it.
 
 ## The positioning, in priority order
 
-1. **"What is stopping students from scoring higher?"** — this is the homepage
-   headline. It is taken verbatim from the product UI. Do not replace it.
+1. **Upload in, reports out.** The homepage headline is now the outcome claim:
+   "Upload your question paper and your marks. Avai sends back a report for
+   every student, and everything your principal needs to see, from one login."
+   *"What is stopping students from scoring higher?"* is still taken verbatim
+   from the product UI and stays on the homepage as the secondary line, the
+   question those reports answer.
 2. **"Lost marks = lost Board potential"** — the economic argument. Principals
    buy Board marks, not "concept-level diagnostics".
 3. **The honesty rules are the moat.** Avai reports when it cannot explain
@@ -58,6 +62,14 @@ The second one breaks the voice rules below in any case.
 ---
 
 ## Voice
+
+**Show the outcome, never explain the mechanism.** This is a showcase site, not
+the product and not documentation. A finding card, a student report and a
+dashboard are self-explanatory at a glance. The tagging process, Board-blueprint
+mapping, "competency tier" language, blueprint-coverage percentages and the four
+limited-evidence states as a taught concept are all sales-call material and do
+not belong on a public page. If a figure does not mean something to a principal
+in three seconds, cut it.
 
 - Plain declarative sentences. Short. A principal in a district office is the reader.
 - Indian English spellings: "localised", "analysed", "programme". Sentence case,
@@ -120,12 +132,17 @@ teaching quality, and Avai does not attribute it to any teacher."*
 Risk groups are named **High Potential Gap** and **High Academic Risk**.
 Never "weak students", never "low performers".
 
-### Which honesty states lead
+### The honesty position on the public site is one sentence
 
-The honesty argument on `/` and `/findings` leads with the three states that are
-built and running: **Trend not yet available**, **Paper under-tests this area**,
-**Early signal**. `Cause not localised` stays in the four-state tab panel on
-`/how-it-works`, but it is no longer the hero example anywhere. See `## Unbuilt`.
+This is a showcase site, not documentation. The four states are **not taught**
+as a concept on any public page. The whole position is one line near the bottom
+of the homepage:
+
+> Avai tells you when a paper didn't give it enough to be sure. It doesn't guess.
+
+`EvidenceNote` stays in the component library and still renders on a finding
+where it applies, `Cause not localised` included, carrying its own unbuilt
+caption. What is gone is the tabbed panel that explained all four as a feature.
 
 ---
 
@@ -204,7 +221,7 @@ tutor, and no copy should suggest it does.
 |---|---|
 | `/` | Hero loop, lost-marks argument, three signals, honesty, pilot proof, CTA |
 | `/findings` | Anatomy of a finding, marks loss intelligence, risk groups, intervention plan |
-| `/how-it-works` | The five-step pipeline, paper diagnostic strength, the four honesty states |
+| `/how-it-works` | Three steps: send the paper and marks, Avai analyses it, reports appear |
 | `/roles` | Same finding scoped to principal / teacher / student; permission model |
 | `/pilot` | Krishnagiri, week by week, what the school provides and receives |
 | `/trust` | Data handling, isolation, consent separation, what Avai never does |
