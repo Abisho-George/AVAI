@@ -307,6 +307,23 @@ application-style questions."
 - Student rows: Aarav X-A 17/17, no blocker; Riya X-C 16/17, Physics numericals;
   Rahul X-B 12/17, Maths application; Aditi R. X-A 16/17, no blocker
 
+### The homepage and /findings figures
+
+From `reference/static-site/`, approved on the same basis as the rest.
+
+- The lost-marks comparison: a report card reading Mathematics 42/80, Science
+  49/80, Social Science 63/80, with 38 lost marks in Maths. Against it, Avai's
+  tiers: recall 88%, understanding 74%, application 31%, the same application
+  tier in Science 34%, and Social Science 81%.
+- The pilot strip: 5 CBSE schools onboarded one per week, Classes X and XII,
+  0 new exams a school has to write, about 1 hour of teacher time per exam.
+- The risk groups: High potential gap, 34 students, high confidence. High
+  academic risk, 28 students, medium confidence.
+
+Risk groups carry a confidence value and **no attention value**. Attention
+answers what the school should do about a *finding*, and a group is not a
+finding. `ConfidenceMeter` renders the meter on its own for exactly this case.
+
 ### The hero loop's figures
 
 From `reference/static-site/index.html`, and used only in the four-scene loop.

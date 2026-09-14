@@ -1,6 +1,6 @@
+import { ConfidenceMeter } from './ConfidenceMeter';
 import {
   ATTENTION,
-  CONFIDENCE,
   URGENCY,
   type Attention,
   type Confidence,
@@ -66,23 +66,7 @@ export function SignalCluster({
         </span>
       )}
 
-      {confidence && (
-        <span className={styles.meter}>
-          <span className={styles.dots} aria-hidden="true">
-            {[1, 2, 3].map((dot) => (
-              <span
-                key={dot}
-                className={
-                  dot <= CONFIDENCE[confidence].dots
-                    ? `${styles.dot} ${styles.dotOn}`
-                    : styles.dot
-                }
-              />
-            ))}
-          </span>
-          {CONFIDENCE[confidence].label}
-        </span>
-      )}
+      {confidence && <ConfidenceMeter confidence={confidence} />}
     </div>
   );
 }
