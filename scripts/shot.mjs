@@ -107,8 +107,15 @@ await writeFile(outFile, Buffer.from(data, 'base64'));
 const { result } = await send(
   'Runtime.evaluate',
   {
-    expression:
-      'JSON.stringify({ inner: innerWidth, scroll: document.documentElement.scrollWidth })',
+    expression: `JSON.stringify({
+      inner: innerWidth,
+      scroll: document.documentElement.scrollWidth,
+      body: getComputedStyle(document.body).fontFamily,
+      heading: (() => {
+        const h = document.querySelector('h1, h2');
+        return h ? getComputedStyle(h).fontFamily : '';
+      })(),
+    })`,
     returnByValue: true,
   },
   sessionId,
@@ -119,9 +126,32 @@ console.log(
     (metrics.scroll > metrics.inner ? '  ** HORIZONTAL OVERFLOW **' : ''),
 );
 
+/*
+ * A silent fall back to the browser's default serif looks plausible and is
+ * entirely wrong, the same class of bug as the 500px viewport floor. If the
+ * font variables are not in scope the page is not worth screenshotting, so
+ * fail loudly rather than produce a believable picture of the wrong typeface.
+ */
+const EXPECTED_BODY = 'IBM Plex Sans';
+const EXPECTED_HEADING = 'Outfit';
+const fontProblems = [];
+if (!metrics.body.includes(EXPECTED_BODY)) {
+  fontProblems.push(`body is ${metrics.body || '(empty)'}, expected ${EXPECTED_BODY}`);
+}
+if (metrics.heading && !metrics.heading.includes(EXPECTED_HEADING)) {
+  fontProblems.push(
+    `heading is ${metrics.heading || '(empty)'}, expected ${EXPECTED_HEADING}`,
+  );
+}
+if (fontProblems.length > 0) {
+  console.error(`** FONT FALLBACK ** ${fontProblems.join('; ')}`);
+}
+
 ws.close();
 chrome.kill();
 // Chrome flushes its profile asynchronously; a failed cleanup is not a failed
 // screenshot, so never let it fail the run.
 await new Promise((r) => setTimeout(r, 300));
 await rm(userDir, { recursive: true, force: true }).catch(() => {});
+
+if (fontProblems.length > 0) process.exit(1);

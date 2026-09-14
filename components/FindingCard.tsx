@@ -6,13 +6,15 @@ import styles from './FindingCard.module.css';
 /**
  * Two shapes, made structural rather than documented.
  *
- * `observation` carries what was seen and what to do about it.
+ * `observation` carries what was seen, and an action where one has been
+ * earned. The action is optional: an Insufficient evidence finding has an
+ * observation to state and no intervention it can justify.
  * `note` is the Light card: the cause could not be localised, so the note
  * replaces both. A Light card that also carries a suggested action cannot be
  * constructed, which is the point.
  */
 export type FindingBody =
-  | { kind: 'observation'; observation: string; action: string }
+  | { kind: 'observation'; observation: string; action?: string }
   | { kind: 'note'; note: EvidenceNoteProps };
 
 export type FindingCardProps = {
@@ -71,7 +73,7 @@ export function FindingCard({
       {body.kind === 'observation' ? (
         <>
           <p className={styles.observation}>{body.observation}</p>
-          <p className={styles.action}>Suggested: {body.action}</p>
+          {body.action && <p className={styles.action}>Suggested: {body.action}</p>}
         </>
       ) : (
         <EvidenceNote {...body.note} className={styles.bodyNote} />

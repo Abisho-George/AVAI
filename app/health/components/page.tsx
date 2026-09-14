@@ -186,36 +186,53 @@ export default function ComponentsHealth() {
           <FindingCard
             {...ELECTRICITY}
             signals={{ attention: 'insufficient-evidence' }}
-            body={{ kind: 'note', note: { state: 'early-signal' } }}
+            body={{
+              kind: 'observation',
+              observation:
+                'Not enough of this competency was tested in this assessment to confirm whether a pattern exists.',
+            }}
           />
         </div>
         <p className={styles.lede}>
           Card three is the Light card: the note replaces the observation and
           the suggested action, and the type makes a Light card with an action
-          impossible to construct. Card four repeats the Electricity figures
-          under Insufficient evidence, with no urgency and no confidence, to
-          show the shape without inventing a fourth finding.
+          impossible to construct. Card four is the Insufficient evidence
+          shape, which is a different thing: no note, no urgency, no
+          confidence, an observation and no suggested action, because nothing
+          has been confirmed that an intervention could answer. It reuses the
+          Electricity figures rather than inventing a fourth finding.
         </p>
       </Block>
 
       <Block
         title="FindingCard on a band"
-        lede="The same cards on --paper-2, where an unbordered neutral pill and a soft note border are at risk of disappearing."
+        lede="The same cards on --paper-2, where the unbordered neutral pill and the neutral note tint are at risk of disappearing into the surface."
         band
       >
         <div className={styles.cards}>
           <FindingCard
             {...LIGHT}
             signals={{
-              attention: 'insufficient-evidence',
+              attention: 'investigation-required',
               urgency: { level: 'high', years: 3 },
-              confidence: 'emerging',
+              confidence: 'high',
             }}
             body={{ kind: 'note', note: { state: 'cause-not-localised' } }}
           />
+          <FindingCard
+            {...ELECTRICITY}
+            signals={{ attention: 'insufficient-evidence' }}
+            body={{
+              kind: 'observation',
+              observation:
+                'Not enough of this competency was tested in this assessment to confirm whether a pattern exists.',
+            }}
+          />
           <div className={styles.stack}>
-            <EvidenceNote state="paper-under-tests" />
             <EvidenceNote state="trend-not-available" />
+            <EvidenceNote state="paper-under-tests" />
+            <EvidenceNote state="early-signal" />
+            <EvidenceNote state="cause-not-localised" />
           </div>
         </div>
       </Block>
