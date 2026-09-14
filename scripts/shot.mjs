@@ -12,14 +12,25 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 
-const [url, outFile, widthArg = '1280', scaleArg = '2', selector, clickSelector] =
-  process.argv.slice(2);
+const [
+  url,
+  outFile,
+  widthArg = '1280',
+  scaleArg = '2',
+  selector,
+  clickSelector,
+  settleArg = '250',
+] = process.argv.slice(2);
 if (!url || !outFile) {
   console.error(
-    'usage: node scripts/shot.mjs <url> <out.png> [width] [scale] [selector] [click]',
+    'usage: node scripts/shot.mjs <url> <out.png> [width] [scale] [selector] [click] [settleMs]\n' +
+      '  click     one selector, or several separated by commas, clicked in order\n' +
+      '  settleMs  wait between the last click and the capture; drop it to catch\n' +
+      '            a transition mid-flight rather than at its resting state',
   );
   process.exit(1);
 }
+const settleMs = Number(settleArg);
 const width = Number(widthArg);
 const scale = Number(scaleArg);
 const BIN =
@@ -75,6 +86,16 @@ const { sessionId } = await send('Target.attachToTarget', {
 });
 
 await send('Page.enable', {}, sessionId);
+
+/* REDUCED_MOTION=1 reviews the page as a reader who has asked for less motion:
+   autoplay off, transitions off, controls still working. */
+if (process.env.REDUCED_MOTION === '1') {
+  await send(
+    'Emulation.setEmulatedMedia',
+    { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] },
+    sessionId,
+  );
+}
 await send('Emulation.setDeviceMetricsOverride', {
   width,
   height: 900,
@@ -100,28 +121,40 @@ await loaded;
 // Let webfonts settle before capture.
 await new Promise((r) => setTimeout(r, 1200));
 
-/* An optional click selector opens whatever state is being reviewed: a menu, a
- * drawer, a tab. Without it the shot only ever shows the page at rest. */
+/* Optional clicks open whatever state is being reviewed: a menu, a drawer, a
+ * scene in a player. Without them the shot only ever shows the page at rest.
+ * Several selectors run in order, so "pause, then chapter 3" is one command. */
 if (clickSelector) {
-  const clicked = await send(
-    'Runtime.evaluate',
-    {
-      expression: `(() => {
-        const el = document.querySelector(${JSON.stringify(clickSelector)});
-        if (!el) return false;
-        el.click();
-        return true;
-      })()`,
-      returnByValue: true,
-    },
-    sessionId,
-  );
-  if (!clicked.result.value) {
-    console.error(`** click target not found: ${clickSelector} **`);
-    process.exit(1);
+  const steps = clickSelector.split(',').map((step) => step.trim()).filter(Boolean);
+  for (const [index, step] of steps.entries()) {
+    const clicked = await send(
+      'Runtime.evaluate',
+      {
+        expression: `(() => {
+          const el = document.querySelector(${JSON.stringify(step)});
+          if (!el) return false;
+          el.click();
+          return true;
+        })()`,
+        returnByValue: true,
+      },
+      sessionId,
+    );
+    if (!clicked.result.value) {
+      console.error(`** click target not found: ${step} **`);
+      process.exit(1);
+    }
+    /* Between clicks, long enough for the first to take effect. */
+    if (index < steps.length - 1) await new Promise((r) => setTimeout(r, 220));
   }
-  await new Promise((r) => setTimeout(r, 250));
 }
+
+/*
+ * The settle wait applies whether or not anything was clicked. It decides
+ * whether the capture lands at rest, mid-transition, or several seconds into a
+ * player that advances on its own.
+ */
+await new Promise((r) => setTimeout(r, settleMs));
 
 /* An optional selector clips the capture to one element, for looking closely at
  * a detail that is unreadable in a full-page shot. */

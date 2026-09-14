@@ -70,7 +70,10 @@ export function StudentReportCard({
           <p className={styles.who}>{studentName}</p>
           <p className={styles.assessment}>{assessment}</p>
         </div>
-        <Mascot pose={POSE_FOR_TREND[trend]} size={96} />
+        {/* 120 is the component's own threshold for the full body. Below it
+            Mascot falls back to the head crop, which reads as a floating head
+            on a card this size. */}
+        <Mascot pose={POSE_FOR_TREND[trend]} size={120} />
       </header>
 
       <div className={styles.scoreRow}>

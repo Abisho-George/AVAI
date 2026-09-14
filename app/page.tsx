@@ -1,4 +1,5 @@
 import { CtaBand } from '../components/CtaBand';
+import { HeroLoop } from '../components/HeroLoop';
 import { PageHeader } from '../components/PageHeader';
 import styles from './page.module.css';
 
@@ -16,10 +17,11 @@ export default function Home() {
         lede="Avai reads question-wise marks from the exams a school is already conducting, against a question paper mapped to the Board blueprint in advance, and reports where marks are being lost, how urgent it is for the Board exam, and how confident it is that the pattern is real."
       />
 
-      <section className={styles.placeholder}>
-        <p>
-          Page content is built from prompt 6 onwards. The header, footer, page
-          header and call to action below are the shell.
+      <section className={styles.loopSection}>
+        <HeroLoop />
+        <p className={styles.placeholder}>
+          The rest of the homepage is built in prompt 7: the lost-marks
+          argument, the three signals, the honesty section and pilot proof.
         </p>
       </section>
 

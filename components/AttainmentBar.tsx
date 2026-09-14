@@ -34,8 +34,12 @@ export function AttainmentBar({ label, value, polarity }: AttainmentBarProps) {
           }}
         />
       </span>
-      <span className={`${styles.value} tnum`}>{value.percent}%</span>
-      {/* Colour is never the only carrier of meaning. */}
+      <span className={`${styles.value} tnum`}>
+        {value.percent}%
+        {/* Colour is never the only carrier of meaning. On a phone the band
+            label rides with the value instead of taking its own row. */}
+        <span className={styles.valueMobile}> {bandLabel(band)}</span>
+      </span>
       <span className={styles.band}>{bandLabel(band)}</span>
     </div>
   );

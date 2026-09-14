@@ -1,12 +1,17 @@
-.placeholder {
+.loopSection {
   max-width: var(--w);
   margin: 0 auto;
-  padding: 56px 24px;
-  color: var(--body);
+  padding: 48px 24px;
+}
+
+.placeholder {
+  margin: 28px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
 }
 
 @media (max-width: 700px) {
-  .placeholder {
-    padding: 36px 16px;
+  .loopSection {
+    padding: 28px 16px;
   }
 }

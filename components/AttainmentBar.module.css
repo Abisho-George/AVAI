@@ -37,14 +37,23 @@
   color: var(--muted);
 }
 
+.valueMobile {
+  display: none;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* Two rows on a phone, not three: the band label moves up beside the value, so
+   five bars cost five rows less height. It stays a label, so colour is still
+   not carrying the meaning alone. */
 @media (max-width: 700px) {
   .row {
-    grid-template-columns: 1fr 44px;
+    grid-template-columns: 1fr auto;
     grid-template-areas:
       'label value'
-      'track track'
-      'band  band';
-    gap: 4px 10px;
+      'track track';
+    gap: 3px 10px;
+    padding: 5px 0;
   }
   .label {
     grid-area: label;
@@ -54,8 +63,12 @@
   }
   .value {
     grid-area: value;
+    order: 2;
   }
   .band {
-    grid-area: band;
+    display: none;
+  }
+  .valueMobile {
+    display: inline;
   }
 }

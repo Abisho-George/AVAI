@@ -307,6 +307,21 @@ application-style questions."
 - Student rows: Aarav X-A 17/17, no blocker; Riya X-C 16/17, Physics numericals;
   Rahul X-B 12/17, Maths application; Aditi R. X-A 16/17, no blocker
 
+### The hero loop's figures
+
+From `reference/static-site/index.html`, and used only in the four-scene loop.
+
+- Scene 1, the scorecard: Unit Test 2, Class X-B, Mathematics, 48 students.
+  Q1 2/2, Q2 3/3, Q3 1/1, Q4 2/2, Q5 3/4, Q6 2/2, Q7 1/3, Q8 3/3, Q9 2/2,
+  Q10 4/4, Q11 2/3, Q12 1/4. Total 26/33. Q7, Q11 and Q12 are the
+  application-tier questions scene 2 keeps lit.
+- Scene 4, the student report: Aditi R., Mathematics · Term 2, 78 of 80.
+
+The static site gives that report card the line "Keep going. You're on the right
+path." That is the retired brand-sheet tone, so the site says what was actually
+observed instead: "Your recall answers held up. The marks you lost were on
+application-style quadratic equations."
+
 **One conflict, resolved.** `index.html` gives Electricity as
 `Very high · 4/4 years`; `findings.html` gives `High · 3/4 years` and ranks it
 second behind Quadratic Equations. The site uses **High · 3/4 years**: two

@@ -1,0 +1,259 @@
+.loop {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--white);
+}
+
+.headStack,
+.captionStack {
+  display: grid;
+}
+
+.headStack > *,
+.captionStack > * {
+  grid-area: 1 / 1;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  visibility: hidden;
+}
+
+.headOn {
+  visibility: visible;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.12rem;
+  color: var(--ink);
+}
+
+.sub {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/*
+ * Every scene sits in the same grid cell, so the stage is always as tall as the
+ * tallest scene and a scene change shifts nothing on the page. min-height keeps
+ * the box steady before the fonts land.
+ */
+.stage {
+  display: grid;
+  min-height: 520px;
+}
+
+/* The stage is as tall as the tallest scene, so shorter scenes have height to
+   spare. Centring splits it instead of piling it under the content. */
+.scene {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sceneOn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* The cross-fade. Two elements move, the outgoing scene and the incoming one,
+   and nothing else on the stage animates. */
+@media (prefers-reduced-motion: no-preference) {
+  .scene {
+    transition: opacity 420ms ease;
+  }
+  .grid {
+    transition: opacity 420ms ease;
+  }
+}
+
+.stack {
+  display: grid;
+}
+
+.stack > * {
+  grid-area: 1 / 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.gridDimmed {
+  opacity: 0.4;
+}
+
+.gridLit {
+  pointer-events: none;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 6px;
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: var(--paper);
+  text-align: center;
+}
+
+/* Lit cells sit at full strength over the dimmed grid, so the three
+   application questions are the only thing the eye lands on. */
+.cellLit {
+  border-color: var(--gold);
+  background: var(--gold-tint);
+}
+
+.cellBlank {
+  visibility: hidden;
+}
+
+.cellQ {
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.cellMark {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+
+.foot,
+.conclusion {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--body);
+}
+
+.conclusion {
+  font-family: var(--display);
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.captionStack {
+  padding-top: 12px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.caption {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--body);
+  visibility: hidden;
+}
+
+.captionOn {
+  visibility: visible;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+}
+
+.play {
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.play:hover {
+  background: var(--paper-2);
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: none;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.dotMark {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+/* The active chapter is named as well as marked, so the state does not rest on
+   colour alone. */
+.dotOn {
+  border-color: var(--line);
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+.dotOn .dotMark {
+  background: var(--teal);
+}
+
+.play:focus-visible,
+.dot:focus-visible {
+  outline: 2px solid var(--blue-2);
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .stage {
+    min-height: 640px;
+  }
+}
+
+@media (max-width: 700px) {
+  .loop {
+    padding: 14px;
+  }
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .stage {
+    min-height: 620px;
+  }
+}
