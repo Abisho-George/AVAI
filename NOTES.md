@@ -104,3 +104,50 @@ the worst section paint identically has failed at its one job, which is why the
 scale carries its own boundaries.
 
 If the attainment boundaries ever move, these move with them.
+
+## Why the font-variable wrapper failed, and why :root works
+
+`review-page.mjs` publishes the body of an exported route. next/font declares
+`--font-outfit` and friends on generated classes that sit on `<html>`, so the
+body alone rendered every page in the browser's default serif.
+
+The obvious fix, a wrapper element carrying those same classes, **does not
+work**, and the reason is not obvious:
+
+```css
+:root      { --display: var(--font-outfit), "Segoe UI", sans-serif; }
+.__variable_ed3508 { --font-outfit: "Outfit", "Outfit Fallback"; }
+```
+
+A custom property is resolved **where it is declared**, at computed-value time.
+`--display` is declared on `:root`, and at `:root` there is no `--font-outfit`,
+so `--display` is already the guaranteed-invalid value before any descendant
+sees it. Putting `--font-outfit` on a wrapper inside the document is too late:
+descendants inherit the broken `--display`, not the raw declaration.
+
+So the generated declarations are promoted to `:root` itself, where `--display`
+can see them. The same trap applies to any variable that references another
+variable set further down the tree.
+
+`scripts/shot.mjs` asserts the computed font on `body` and on the first heading
+and exits non-zero on a fallback, because a silent serif fallback produces
+output that looks finished and is entirely wrong. It caught the wrapper fix.
+
+## Tabular figures are scoped, not global
+
+CLAUDE.md originally said tabular numerals on `body`. IBM Plex Sans gives the
+period a full digit advance in tabular mode, which is correct in a column of
+figures and wrong in a sentence: "2.7 marks per student" renders as "2 . 7".
+
+`tokens.css` now applies `font-variant-numeric: tabular-nums` to `table`, `th`,
+`td` and a `.tnum` utility.
+
+There were **two** causes of the spaced decimal, and the tabular rule was only
+one. `FindingCard`'s stat figure was also set in IBM Plex Mono, where the period
+takes a full character cell by definition, so scoping tabular-nums alone left
+"2 . 7" on screen. Mono is for IDs and question references, where every glyph
+genuinely wants the same advance. A measure inside a sentence is set in the body
+face. Use `.tnum` where figures stack: a KPI strip, the
+`AttainmentBar` value column, the `StudentReportCard` score. Inline prose
+measures stay proportional. Integers look the same either way, so the risk here
+runs one way only.

@@ -178,7 +178,11 @@ tutor, and no copy should suggest it does.
 - No component library. No Framer Motion unless a specific interaction needs it.
 - Static export target (`output: 'export'`) — this site has no server needs
 - Fonts: `next/font/google` — Outfit (display), IBM Plex Sans (body), IBM Plex Mono (marks/IDs)
-- All numerals tabular: `font-variant-numeric: tabular-nums` on `body`
+- Tabular numerals **where figures stack into columns**, not globally. IBM Plex
+  Sans gives the period a full digit advance in tabular mode, so a global rule
+  renders "4.2 marks per student" as "4 . 2" in running text. `tokens.css`
+  applies it to `table`, `th`, `td` and a `.tnum` utility; inline prose measures
+  use proportional figures. See `NOTES.md`.
 
 ### Accessibility, non-negotiable
 - All animation wrapped in `@media (prefers-reduced-motion: no-preference)`

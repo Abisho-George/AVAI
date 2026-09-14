@@ -59,10 +59,14 @@
   color: var(--body);
 }
 
+/* Not --mono. A monospaced period takes a full character cell, so "4.2 marks
+   per student" reads as "4 . 2". Mono stays for IDs and question references,
+   where every glyph genuinely wants the same advance. This is a measure in a
+   sentence, so it is set in the body face and left proportional. */
 .statValue strong {
-  font-family: var(--mono);
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 600;
   color: var(--ink);
 }
 

@@ -187,7 +187,7 @@ export default function ComponentsHealth() {
             {...ELECTRICITY}
             signals={{ attention: 'insufficient-evidence' }}
             body={{
-              kind: 'observation',
+              kind: 'observation-only',
               observation:
                 'Not enough of this competency was tested in this assessment to confirm whether a pattern exists.',
             }}
@@ -198,8 +198,8 @@ export default function ComponentsHealth() {
           the suggested action, and the type makes a Light card with an action
           impossible to construct. Card four is the Insufficient evidence
           shape, which is a different thing: no note, no urgency, no
-          confidence, an observation and no suggested action, because nothing
-          has been confirmed that an intervention could answer. It reuses the
+          confidence, and the observation-only body, because nothing has been
+          confirmed that an intervention could answer. It reuses the
           Electricity figures rather than inventing a fourth finding.
         </p>
       </Block>
@@ -223,7 +223,7 @@ export default function ComponentsHealth() {
             {...ELECTRICITY}
             signals={{ attention: 'insufficient-evidence' }}
             body={{
-              kind: 'observation',
+              kind: 'observation-only',
               observation:
                 'Not enough of this competency was tested in this assessment to confirm whether a pattern exists.',
             }}

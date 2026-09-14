@@ -12,9 +12,12 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 
-const [url, outFile, widthArg = '1280', scaleArg = '2'] = process.argv.slice(2);
+const [url, outFile, widthArg = '1280', scaleArg = '2', selector] =
+  process.argv.slice(2);
 if (!url || !outFile) {
-  console.error('usage: node scripts/shot.mjs <url> <out.png> [width] [scale]');
+  console.error(
+    'usage: node scripts/shot.mjs <url> <out.png> [width] [scale] [selector]',
+  );
   process.exit(1);
 }
 const width = Number(widthArg);
@@ -97,9 +100,35 @@ await loaded;
 // Let webfonts settle before capture.
 await new Promise((r) => setTimeout(r, 1200));
 
+/* An optional selector clips the capture to one element, for looking closely at
+ * a detail that is unreadable in a full-page shot. */
+let clip;
+if (selector) {
+  const box = await send(
+    'Runtime.evaluate',
+    {
+      expression: `(() => {
+        const el = document.querySelector(${JSON.stringify(selector)});
+        if (!el) return 'null';
+        const r = el.getBoundingClientRect();
+        return JSON.stringify({
+          x: r.x + scrollX, y: r.y + scrollY, width: r.width, height: r.height, scale: 1,
+        });
+      })()`,
+      returnByValue: true,
+    },
+    sessionId,
+  );
+  if (box.result.value === 'null') {
+    console.error(`** selector not found: ${selector} **`);
+    process.exit(1);
+  }
+  clip = JSON.parse(box.result.value);
+}
+
 const { data } = await send(
   'Page.captureScreenshot',
-  { format: 'png', captureBeyondViewport: true, fromSurface: true },
+  { format: 'png', captureBeyondViewport: true, fromSurface: true, ...(clip ? { clip } : {}) },
   sessionId,
 );
 await writeFile(outFile, Buffer.from(data, 'base64'));

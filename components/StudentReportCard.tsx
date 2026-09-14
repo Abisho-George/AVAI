@@ -74,7 +74,7 @@ export function StudentReportCard({
       </header>
 
       <div className={styles.scoreRow}>
-        <p className={styles.score}>
+        <p className={`${styles.score} tnum`}>
           <strong>{score.marks}</strong>
           <span> / {score.outOf}</span>
         </p>

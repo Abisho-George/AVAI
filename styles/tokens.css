@@ -80,10 +80,21 @@
 
 body {
   font-family: var(--sans);
-  font-variant-numeric: tabular-nums;
   color: var(--ink);
   background: var(--paper);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Tabular figures are for columns, not for sentences. IBM Plex Sans gives the
+   period a full digit advance in tabular mode, so "2.7 marks per student" reads
+   as "2 . 7" in running text. Scoped to where figures actually stack: tables,
+   and anything marked .tnum (the KPI strip, the AttainmentBar value column, the
+   StudentReportCard score). Integers are unaffected either way. */
+table,
+th,
+td,
+.tnum {
+  font-variant-numeric: tabular-nums;
 }
 
 h1, h2, h3, h4 {

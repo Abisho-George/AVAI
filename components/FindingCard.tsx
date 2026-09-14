@@ -6,15 +6,20 @@ import styles from './FindingCard.module.css';
 /**
  * Two shapes, made structural rather than documented.
  *
- * `observation` carries what was seen, and an action where one has been
- * earned. The action is optional: an Insufficient evidence finding has an
- * observation to state and no intervention it can justify.
- * `note` is the Light card: the cause could not be localised, so the note
- * replaces both. A Light card that also carries a suggested action cannot be
- * constructed, which is the point.
+ * Three kinds, one per epistemic state, each asserting exactly what it can
+ * support. The type says which state a card is in rather than leaving it to
+ * whether someone filled a field in:
+ *
+ *   observation       the problem is confirmed and an action is justified
+ *   observation-only  something was observed, no action is justified yet
+ *   note              the Light card: cause not localised, so neither holds
+ *
+ * A confirmed finding therefore cannot ship without an action, and a Light card
+ * cannot carry one. Both are structural, not documented.
  */
 export type FindingBody =
-  | { kind: 'observation'; observation: string; action?: string }
+  | { kind: 'observation'; observation: string; action: string }
+  | { kind: 'observation-only'; observation: string }
   | { kind: 'note'; note: EvidenceNoteProps };
 
 export type FindingCardProps = {
@@ -70,13 +75,15 @@ export function FindingCard({
 
       <SignalCluster {...signals} className={styles.signals} />
 
-      {body.kind === 'observation' ? (
+      {body.kind === 'note' ? (
+        <EvidenceNote {...body.note} className={styles.bodyNote} />
+      ) : (
         <>
           <p className={styles.observation}>{body.observation}</p>
-          {body.action && <p className={styles.action}>Suggested: {body.action}</p>}
+          {body.kind === 'observation' && (
+            <p className={styles.action}>Suggested: {body.action}</p>
+          )}
         </>
-      ) : (
-        <EvidenceNote {...body.note} className={styles.bodyNote} />
       )}
 
       {notes?.map((note) => (
