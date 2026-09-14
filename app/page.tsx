@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { AttainmentBar } from '../components/AttainmentBar';
 import { CtaBand } from '../components/CtaBand';
-import { FindingCard } from '../components/FindingCard';
+import { SignalExplorer } from '../components/SignalExplorer';
 import { HeroLoop } from '../components/HeroLoop';
 import styles from './page.module.css';
 
@@ -23,22 +23,6 @@ const TIERS = [
   { label: 'Application tier', value: 31 },
   { label: '…same in Science', value: 34 },
   { label: '…but not Social Sci.', value: 81 },
-];
-
-/* The three dimensions, as they are named on every finding. */
-const DIMENSIONS = [
-  { title: 'Board urgency', values: ['Very high', 'High', 'Medium', 'Low'] },
-  { title: 'Confidence', values: ['High', 'Medium', 'Emerging'] },
-  {
-    title: 'Attention',
-    values: [
-      'Immediate',
-      'Watch',
-      'On track',
-      'Investigation required',
-      'Insufficient evidence',
-    ],
-  },
 ];
 
 /*
@@ -173,49 +157,11 @@ export default function Home() {
             Most dashboards merge everything into a single red-amber-green. Avai
             keeps them apart, because "this matters a lot for the Board" and "we
             are sure this is real" are different claims, and a principal
-            deserves to see when they disagree.
+            deserves to see when they disagree. Change any one control below.
+            The other two hold still.
           </p>
 
-          <div className={styles.dimensions}>
-            {DIMENSIONS.map((dimension) => (
-              <div key={dimension.title} className={styles.dimension}>
-                <h3 className={styles.panelTitle}>{dimension.title}</h3>
-                <ul className={styles.dimensionList}>
-                  {dimension.values.map((value) => (
-                    <li key={value}>{value}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          <p className={styles.body}>
-            Move any one of these and the other two hold still. A
-            medium-urgency finding can carry high confidence. A very
-            high-urgency one can carry an emerging signal, and Avai will say so
-            rather than round it up.
-          </p>
-
-          <div className={styles.single}>
-            <FindingCard
-              subject="Physics"
-              chapter="Electricity"
-              competency="Numericals"
-              studentsAffected={{ scope: 'count', affected: 122, outOf: 240 }}
-              avgMarksLost={{ scope: 'student', marks: 3.8 }}
-              signals={{
-                attention: 'immediate',
-                urgency: { level: 'high', years: 3 },
-                confidence: 'high',
-              }}
-              body={{
-                kind: 'observation',
-                observation:
-                  'Students consistently lose marks converting the concept into a numerical answer, though the underlying law is generally understood.',
-                action: 'numerical-practice drill sets, worked-example walkthroughs',
-              }}
-            />
-          </div>
+          <SignalExplorer />
         </div>
       </section>
 

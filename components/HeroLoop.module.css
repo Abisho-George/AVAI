@@ -246,12 +246,25 @@
   }
 }
 
+/*
+ * Kept at 6 columns rather than dropping to 4: at 390px, 12 cells at 4-wide is
+ * three rows, and that row of height was most of scene 2's excess over the
+ * other three scenes. 6-wide keeps it at two rows, with smaller cells and
+ * tighter type to stay legible.
+ */
 @media (max-width: 700px) {
   .loop {
     padding: 14px;
   }
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
+  .cell {
+    padding: 5px 3px;
+    gap: 0;
+  }
+  .cellQ {
+    font-size: 0.6rem;
+  }
+  .cellMark {
+    font-size: 0.72rem;
   }
   .stage {
     min-height: 620px;

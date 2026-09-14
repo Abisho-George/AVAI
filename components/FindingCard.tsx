@@ -33,6 +33,12 @@ export type FindingCardProps = {
   /** Supplementary notes, below the body. */
   notes?: EvidenceNoteProps[];
   href?: string;
+  /**
+   * Tighter padding and type, for contexts that already bound the card's
+   * height, such as a scene inside HeroLoop. Spacing only: no field is
+   * dropped and nothing here is decorative-only, so the card stays legible.
+   */
+  compact?: boolean;
 };
 
 /** Never a bare stat: the unit comes off the measure type, not off the caller. */
@@ -58,9 +64,10 @@ export function FindingCard({
   body,
   notes,
   href,
+  compact,
 }: FindingCardProps) {
   return (
-    <article className={styles.card}>
+    <article className={compact ? `${styles.card} ${styles.compact}` : styles.card}>
       <header className={styles.head}>
         <p className={styles.subject}>
           {subject} · <strong>{chapter}</strong>

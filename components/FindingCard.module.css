@@ -8,6 +8,31 @@
   background: var(--white);
 }
 
+/* Same fields, tighter spacing. For a card sitting inside a bounded stage,
+   such as HeroLoop's scenes, where height is shared with a grid above it. */
+.compact {
+  gap: 8px;
+  padding: 14px;
+}
+
+.compact .stats {
+  padding: 8px 0;
+  gap: 4px 20px;
+}
+
+.compact .statValue strong {
+  font-size: 1rem;
+}
+
+.compact .competency {
+  font-size: 0.95rem;
+}
+
+.compact .observation,
+.compact .action {
+  font-size: 0.84rem;
+}
+
 .head {
   display: flex;
   flex-direction: column;

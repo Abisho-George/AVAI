@@ -41,7 +41,7 @@ const SCENES: Scene[] = [
     label: 'Finding',
     duration: 7000,
     heading: 'Avai reads the pattern',
-    sub: 'The same three questions, across 240 students',
+    sub: 'The same two questions, across 240 students',
     caption: 'Not a subject total. A named gap, with what it costs.',
   },
   {
@@ -75,7 +75,7 @@ const MARKS = [
   { q: 'Q8', got: 3, of: 3 },
   { q: 'Q9', got: 2, of: 2 },
   { q: 'Q10', got: 4, of: 4 },
-  { q: 'Q11', got: 2, of: 3, application: true },
+  { q: 'Q11', got: 2, of: 3 },
   { q: 'Q12', got: 1, of: 4, application: true },
 ];
 
@@ -225,6 +225,7 @@ export function HeroLoop() {
                       '61% of analysed students demonstrate the underlying concept but lose marks when it appears in application-style questions.',
                     action: 'application-focused revision, Board-style question practice',
                   }}
+                  compact
                 />
               </>
             )}
