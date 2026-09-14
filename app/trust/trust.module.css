@@ -1,0 +1,135 @@
+.wrap {
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 72px 0;
+}
+
+.band {
+  padding: 72px 0;
+  background: var(--paper-2);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  max-width: 26ch;
+  text-wrap: balance;
+}
+
+.body {
+  margin: 0 0 30px;
+  max-width: 64ch;
+  line-height: 1.65;
+  color: var(--body);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--white);
+}
+
+.cardTitle {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.cardBody {
+  margin: 0;
+  font-size: 0.89rem;
+  line-height: 1.6;
+  color: var(--body);
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  min-width: 480px;
+  max-width: 720px;
+  border-collapse: collapse;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  padding: 16px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 0.9rem;
+}
+
+.table th {
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.table td {
+  color: var(--body);
+}
+
+.table tr:last-child th,
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.qaList {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+}
+
+.qa {
+  padding: 24px 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+.qa:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.qaQ {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: 1.05rem;
+}
+
+.qaA {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--body);
+}
+
+@media (max-width: 700px) {
+  .wrap {
+    padding: 0 16px;
+  }
+  .section,
+  .band {
+    padding: 44px 0;
+  }
+  .card {
+    padding: 16px;
+  }
+}

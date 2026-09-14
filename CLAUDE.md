@@ -324,6 +324,17 @@ Risk groups carry a confidence value and **no attention value**. Attention
 answers what the school should do about a *finding*, and a group is not a
 finding. `ConfidenceMeter` renders the meter on its own for exactly this case.
 
+### The /how-it-works and /roles figures
+
+From `reference/static-site/`, approved on the same basis as the rest.
+
+- Diagnostic strength: blueprint coverage 82% (8 of 9 chapters), application
+  questions 22% against 30% expected, higher-order questions 10% against 20%
+  expected.
+- The Quadratic Equations finding, scoped to Class X-A for the teacher view:
+  29 of 48 students, 4.1 marks per student (a section-level subset of the
+  school-level 146 of 240, 4.2, which stays the principal-scoped figure).
+
 ### The hero loop's figures
 
 From `reference/static-site/index.html`, and used only in the four-scene loop.
