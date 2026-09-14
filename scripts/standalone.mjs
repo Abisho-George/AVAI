@@ -11,6 +11,7 @@ import path from 'node:path';
 
 const [reviewDir, outDir] = process.argv.slice(2);
 const PAGES = [
+  { src: 'home.html', out: 'avai-home.html', label: 'Home' },
   { src: 'index.html', out: 'avai-components.html', label: 'Components' },
   { src: 'tokens.html', out: 'avai-tokens.html', label: 'Token palette' },
   { src: 'mascot.html', out: 'avai-mascot.html', label: 'Mascot poses' },
