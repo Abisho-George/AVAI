@@ -1,0 +1,97 @@
+.page {
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 6rem;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.intro {
+  color: var(--muted);
+  margin-top: 0.5rem;
+  max-width: 60ch;
+}
+
+.section {
+  margin-top: 3rem;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.swatch {
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--white);
+}
+
+.fill {
+  height: 64px;
+  border-bottom: 1px solid var(--line);
+}
+
+.meta {
+  padding: 0.6rem 0.75rem;
+}
+
+.varName {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  display: block;
+}
+
+.desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  display: block;
+  margin-top: 0.15rem;
+}
+
+.fonts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.fontSample {
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 1rem 1.25rem;
+}
+
+.fontLabel {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.displaySample {
+  font-family: var(--display);
+  font-size: 1.5rem;
+}
+
+.sansSample {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+}
+
+.monoSample {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+}
