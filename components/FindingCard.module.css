@@ -1,0 +1,86 @@
+.finding {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  padding: 18px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.subj {
+  font-size: 0.68rem;
+  letter-spacing: 0.11em;
+  color: var(--blue);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.finding h3 {
+  margin: 3px 0 1px;
+  font-size: 1.08rem;
+}
+
+.comp {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.metric {
+  background: var(--paper-2);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.metric span {
+  display: block;
+  font-size: 0.66rem;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.metric b {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.metric em {
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+.signals {
+  margin-bottom: 11px;
+}
+
+.obs {
+  font-size: 0.88rem;
+  color: var(--body);
+  margin: 0 0 10px;
+}
+
+.act {
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line-soft);
+  padding-top: 10px;
+}

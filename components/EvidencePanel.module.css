@@ -1,0 +1,60 @@
+.evid {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  padding: 18px;
+}
+
+.evid h4 {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+}
+
+.list {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 0.86rem;
+}
+
+.list li span {
+  color: var(--body);
+}
+
+.list li b {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.concl {
+  background: var(--tint);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.sectionHead {
+  margin: 18px 0 8px;
+  font-size: 0.95rem;
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.note {
+  margin-top: 14px;
+}

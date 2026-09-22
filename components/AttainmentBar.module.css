@@ -1,0 +1,45 @@
+.row {
+  display: grid;
+  grid-template-columns: minmax(70px, 1fr) 2.2fr auto;
+  gap: 14px;
+  align-items: center;
+  font-size: 0.86rem;
+}
+
+.label {
+  color: var(--body);
+}
+
+.track {
+  height: 7px;
+  border-radius: 20px;
+  background: var(--line-soft);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 20px;
+}
+
+.f-teal {
+  background: var(--teal);
+}
+
+.f-blue {
+  background: var(--blue-2);
+}
+
+.f-gold {
+  background: var(--gold);
+}
+
+.f-coral {
+  background: var(--coral);
+}
+
+.value {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink);
+}
