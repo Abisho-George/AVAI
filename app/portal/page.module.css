@@ -1,0 +1,149 @@
+.portal {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 900px) {
+  .portal {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+}
+
+.portalL {
+  background: var(--ink);
+  color: var(--white);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.portalL h2 {
+  font-size: 2rem;
+  max-width: 14ch;
+  margin-top: 18px;
+}
+
+.portalL p {
+  color: #a9bace;
+  max-width: 40ch;
+}
+
+.schoolLine {
+  color: #6e85a3;
+  margin: 0;
+}
+
+.portalR {
+  padding: 56px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portalBox {
+  width: 100%;
+  max-width: 380px;
+}
+
+.portalBox h1 {
+  font-size: 1.7rem;
+}
+
+.formSingle {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.fld {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fld label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.fld input {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  padding: 12px 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--white);
+  color: var(--ink);
+}
+
+.helpText {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.failNote {
+  margin-top: 14px;
+  padding: 13px 16px;
+  border-radius: var(--r);
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  font-size: 0.86rem;
+  color: var(--body);
+}
+
+.demoNote {
+  background: var(--gold-tint);
+  border: 1px solid #f2d6a6;
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 0.8rem;
+  color: var(--gold-deep);
+  margin-top: 26px;
+}
+
+.roles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.roleBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 13px 15px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  border-radius: var(--r);
+  cursor: pointer;
+  font-family: var(--sans);
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.roleBtn:hover {
+  border-color: var(--ink);
+}
+
+.roleBtn b {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.roleBtn span {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.backLink {
+  margin-top: 22px;
+}

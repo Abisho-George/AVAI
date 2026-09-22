@@ -484,3 +484,76 @@ section.snug {
 .f-coral {
   background: var(--coral);
 }
+
+/*
+ * Bare pill/urg chips, for contexts like the dashboard's section and
+ * student tables where the label is a short local word (Low/Medium/High,
+ * Intervention) rather than SignalCluster's canonical finding-level
+ * attention/urgency text. Same visual treatment, same tokens.
+ */
+.pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 11px;
+  border-radius: 20px;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.pill-track {
+  background: var(--attention-track-bg);
+  color: var(--attention-track-fg);
+}
+
+.pill-watch {
+  background: var(--attention-watch-bg);
+  color: var(--attention-watch-fg);
+}
+
+.pill-act {
+  background: var(--attention-act-bg);
+  color: var(--attention-act-fg);
+}
+
+.pill-inv {
+  background: var(--attention-inv-bg);
+  color: var(--attention-inv-fg);
+}
+
+.urg {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid;
+  background: transparent;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.urg::before {
+  content: "▲";
+  font-size: 0.55rem;
+}
+
+.urg-vh {
+  color: var(--coral);
+  border-color: var(--coral);
+}
+
+.urg-h {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.urg-m {
+  color: var(--gold-deep);
+  border-color: var(--gold);
+}
+
+.urg-l {
+  color: var(--muted);
+  border-color: var(--line);
+}

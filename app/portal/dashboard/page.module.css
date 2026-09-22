@@ -1,0 +1,309 @@
+.app {
+  display: grid;
+  grid-template-columns: 232px 1fr;
+  min-height: 100vh;
+}
+
+.side {
+  background: var(--ink);
+  padding: 22px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sideMark {
+  color: var(--white);
+  padding: 0 8px 24px;
+  display: block;
+}
+
+.side nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.side nav a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #a9bace;
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+
+.side nav a.on {
+  background: #0e3457;
+  color: var(--white);
+}
+
+.side nav a:hover {
+  color: var(--white);
+}
+
+.sideFt {
+  margin-top: auto;
+  padding: 14px 8px 0;
+  border-top: 1px solid #16375f;
+}
+
+.sideFt b {
+  display: block;
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.sideFt span {
+  font-size: 0.76rem;
+  color: #6e85a3;
+}
+
+.sideFt a {
+  color: #6e85a3;
+}
+
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .side {
+    display: none;
+  }
+}
+
+.main {
+  padding: 26px 32px 60px;
+  background: var(--paper);
+  /* A grid item defaults to min-width: auto, which lets its widest
+     content (the tables below) push this 1fr track wider than the
+     viewport. min-width: 0 lets it shrink and hand overflow to .panel. */
+  min-width: 0;
+}
+
+@media (max-width: 620px) {
+  .main {
+    padding: 22px 18px 50px;
+  }
+}
+
+.demoNote {
+  background: var(--gold-tint);
+  border: 1px solid #f2d6a6;
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 0.8rem;
+  color: var(--gold-deep);
+  margin-bottom: 20px;
+}
+
+.crumbs {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.crumbs a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.crumbs b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.appHd {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.appHd h1 {
+  font-size: 1.8rem;
+  margin-bottom: 2px;
+}
+
+.appHd p {
+  margin: 0;
+}
+
+.secn {
+  margin-bottom: 34px;
+}
+
+.secn > h2 {
+  font-size: 1.12rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: 0;
+  margin-bottom: 3px;
+}
+
+.secn > p {
+  margin-bottom: 16px;
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 760px) {
+  .kpis {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.kpi {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.kpi span {
+  display: block;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.kpi b {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.attainCell {
+  width: 34%;
+}
+
+.rowlink {
+  cursor: pointer;
+  border: none;
+  background: none;
+  text-align: left;
+  padding: 0;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  display: block;
+}
+
+.rowlink:hover {
+  background: var(--paper-2);
+}
+
+.footHint {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+/* ---------- drawer ---------- */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 420px;
+  max-width: 92vw;
+  background: var(--white);
+  border-left: 1px solid var(--line);
+  padding: 24px;
+  overflow-y: auto;
+  transform: translateX(102%);
+  z-index: 80;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .drawer {
+    transition: transform 0.28s ease;
+  }
+}
+
+.drawer.on {
+  transform: none;
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 33, 62, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 70;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scrim {
+    transition: opacity 0.28s;
+  }
+}
+
+.scrim.on {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawerX {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.drawerH4 {
+  margin-top: 18px;
+  font-size: 1rem;
+  font-family: var(--sans);
+  font-weight: 600;
+}
+
+.evidList {
+  list-style: none;
+  margin: 0 0 6px;
+  padding: 0;
+}
+
+.evidList li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 0.86rem;
+}
+
+.evidList li span {
+  color: var(--body);
+}
+
+.evidList li b {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sectionBars {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.footNav {
+  margin-top: 8px;
+}
