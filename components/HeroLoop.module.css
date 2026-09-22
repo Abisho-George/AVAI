@@ -1,0 +1,193 @@
+.loop {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--paper-2);
+}
+
+.barDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.barLabel {
+  margin-left: 6px;
+  font-size: 0.76rem;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+.stage {
+  position: relative;
+  min-height: 620px;
+  padding: 26px;
+}
+
+@media (max-width: 620px) {
+  .stage {
+    min-height: 780px;
+    padding: 18px;
+  }
+}
+
+.scene {
+  position: absolute;
+  inset: 26px;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+}
+
+@media (max-width: 620px) {
+  .scene {
+    inset: 18px;
+  }
+}
+
+.scene.on {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scene {
+    transition: opacity 0.5s ease;
+  }
+}
+
+.sceneHead {
+  font-family: var(--display);
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.sceneSub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+/* ---------- scene 1 & 2: marks grid ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+@media (max-width: 620px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cell {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 7px 4px;
+  text-align: center;
+  background: var(--white);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cell {
+    transition:
+      opacity 0.45s,
+      border-color 0.45s,
+      background-color 0.45s;
+  }
+}
+
+.cell span {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--muted);
+}
+
+.cell b {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.cellDim {
+  opacity: 0.28;
+}
+
+.cellKey {
+  opacity: 1;
+  border-color: var(--gold);
+  background: var(--gold-tint);
+}
+
+.gridNote {
+  margin-top: 16px;
+}
+
+/* ---------- caption row ---------- */
+.capRow {
+  padding: 14px 20px;
+  border-top: 1px solid var(--line-soft);
+  background: var(--paper-2);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.capText {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--body);
+  flex: 1;
+  min-width: 200px;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dotBtn {
+  width: 26px;
+  height: 4px;
+  border-radius: 3px;
+  border: none;
+  background: var(--line);
+  cursor: pointer;
+  padding: 0;
+}
+
+.dotBtn.on {
+  background: var(--teal);
+}
+
+.pp {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  color: var(--body);
+  font-size: 0.7rem;
+  line-height: 1;
+}
