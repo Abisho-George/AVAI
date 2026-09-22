@@ -13,3 +13,10 @@
 .ctaBand p {
   margin: 0;
 }
+
+.copy {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}

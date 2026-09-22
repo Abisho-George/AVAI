@@ -1,0 +1,50 @@
+.hero {
+  padding: 64px 0 34px;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 52px;
+  align-items: center;
+}
+
+@media (max-width: 1000px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+.heroGrid h1 {
+  max-width: 15ch;
+}
+
+.eyebrow {
+  color: var(--teal-deep);
+  font-family: var(--display);
+  font-size: 1.02rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.cardsRow {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}

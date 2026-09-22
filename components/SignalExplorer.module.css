@@ -1,0 +1,38 @@
+.toggles {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.tgroup span {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.tgroup div {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.tg {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border: 1px solid var(--line);
+  background: var(--white);
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: var(--sans);
+  color: var(--body);
+}
+
+.tg.on {
+  border-color: var(--ink);
+  color: var(--ink);
+  font-weight: 600;
+}

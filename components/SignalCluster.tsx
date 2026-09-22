@@ -25,7 +25,8 @@ export function SignalCluster({ attention, urgency, confidence }: SignalClusterP
     <div className={styles.cluster}>
       {urgency ? (
         <span className={`${styles.urg} ${styles[`urg-${urgency.level}`]}`}>
-          {URGENCY_LABEL[urgency.level]} · {urgency.recurrence}
+          {URGENCY_LABEL[urgency.level]}
+          {urgency.recurrence ? ` · ${urgency.recurrence}` : ""}
         </span>
       ) : null}
       {attention ? (
