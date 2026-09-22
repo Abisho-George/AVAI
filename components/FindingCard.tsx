@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import styles from "./FindingCard.module.css";
 import { SignalCluster } from "./SignalCluster";
 import type { Attention, Confidence, Urgency } from "./types";
@@ -15,10 +16,14 @@ type FindingCardProps = {
   scope: string;
   urgency: Urgency;
   metrics: [Metric, Metric];
-  attention: Attention;
-  confidence: Confidence;
-  observation: string;
-  suggestedAction: string;
+  attention?: Attention;
+  confidence?: Confidence;
+  observation?: string;
+  suggestedAction?: string;
+  /** Extra content between the signals row and the observation — e.g. a per-section spread. */
+  extra?: ReactNode;
+  /** Replaces the default "Suggested: …" footer — e.g. role-scoped action buttons or a disclaimer note. */
+  footer?: ReactNode;
 };
 
 /**
@@ -36,6 +41,8 @@ export function FindingCard({
   confidence,
   observation,
   suggestedAction,
+  extra,
+  footer,
 }: FindingCardProps) {
   return (
     <article className={styles.finding}>
@@ -60,12 +67,21 @@ export function FindingCard({
         ))}
       </div>
 
-      <div className={styles.signals}>
-        <SignalCluster attention={attention} confidence={confidence} />
-      </div>
+      {attention || confidence ? (
+        <div className={styles.signals}>
+          <SignalCluster attention={attention} confidence={confidence} />
+        </div>
+      ) : null}
 
-      <p className={styles.obs}>{observation}</p>
-      <div className={styles.act}>Suggested: {suggestedAction}</div>
+      {extra}
+
+      {observation ? <p className={styles.obs}>{observation}</p> : null}
+
+      {footer ? (
+        <div className={styles.act}>{footer}</div>
+      ) : suggestedAction ? (
+        <div className={styles.act}>Suggested: {suggestedAction}</div>
+      ) : null}
     </article>
   );
 }

@@ -1,0 +1,10 @@
+.gaugeValue {
+  font-family: var(--display);
+  font-size: 2.2rem;
+  line-height: 1.1;
+  margin: 6px 0 2px;
+}
+
+.gaugeCaption {
+  margin: 0 0 12px;
+}

@@ -1,0 +1,13 @@
+.teacherActions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sectionBars {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin: 14px 0 4px;
+}

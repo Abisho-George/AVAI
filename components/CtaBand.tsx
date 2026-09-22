@@ -14,6 +14,8 @@ type CtaBandProps = {
    * that want a mascot here should use "hello" or "calm" instead.
    */
   mascotPose?: MascotPose;
+  /** "gold" (default) for a hard sell; "line" for a softer ask like "Still have questions?". */
+  ctaTone?: "gold" | "line";
 };
 
 /** The closing pitch band: a heading, one line, one button. */
@@ -24,6 +26,7 @@ export function CtaBand({
   ctaHref,
   className,
   mascotPose,
+  ctaTone = "gold",
 }: CtaBandProps) {
   return (
     <section className={className}>
@@ -36,7 +39,7 @@ export function CtaBand({
               <p>{description}</p>
             </div>
           </div>
-          <Link className="btn btn-gold" href={ctaHref}>
+          <Link className={`btn btn-${ctaTone}`} href={ctaHref}>
             {ctaLabel}
           </Link>
         </div>
