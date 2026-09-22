@@ -1,0 +1,75 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+@media (max-width: 700px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fld {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.fld label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.fld input,
+.fld select,
+.fld textarea {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  padding: 12px 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--white);
+  color: var(--ink);
+}
+
+.fld textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.invalid input,
+.invalid select,
+.invalid textarea {
+  border-color: var(--coral);
+}
+
+.error {
+  font-size: 0.8rem;
+  color: var(--coral);
+}
+
+.ok {
+  margin-top: 20px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: var(--teal-tint);
+  border: 1px solid #9fdcda;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.ok p {
+  margin: 0;
+  color: var(--teal-deep);
+}
+
+.submitRow p {
+  margin-top: 12px;
+}
