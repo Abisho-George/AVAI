@@ -1,0 +1,15 @@
+.ctaBand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.ctaBand h2 {
+  margin-bottom: 6px;
+}
+
+.ctaBand p {
+  margin: 0;
+}

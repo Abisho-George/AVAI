@@ -6,13 +6,211 @@
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
 }
 
+body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 0.45em;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 4.4vw, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.65rem, 2.7vw, 2.3rem);
+}
+
+h3 {
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
+h4 {
+  font-size: 1rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+p {
+  margin: 0 0 1em;
+  color: var(--body);
+  max-width: 64ch;
+}
+
 a {
-  color: inherit;
+  color: var(--blue);
   text-decoration: none;
+}
+
+strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.lede {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--body);
+  max-width: 56ch;
+}
+
+.small {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* Visually hidden but reachable — the skip link before focus. */
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* ---------- layout ---------- */
+.wrap {
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+section {
+  padding: 90px 0;
+}
+
+section.snug {
+  padding: 56px 0;
+}
+
+.band-2 {
+  background: var(--paper-2);
+}
+
+.band-tint {
+  background: var(--tint);
+}
+
+.band-ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.band-ink p,
+.band-ink .small {
+  color: #a9bace;
+}
+
+.band-ink h2,
+.band-ink h3 {
+  color: var(--white);
+}
+
+@media (max-width: 700px) {
+  section {
+    padding: 56px 0;
+  }
+
+  section.snug {
+    padding: 40px 0;
+  }
+
+  .wrap {
+    padding: 0 20px;
+  }
+
+  h1 {
+    font-size: clamp(1.95rem, 8vw, 2.4rem);
+  }
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+  padding: 13px 24px;
+  border-radius: var(--r);
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--ink-2);
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.btn-gold:hover {
+  background: #e89320;
+}
+
+.btn-line {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.btn-line:hover {
+  border-color: var(--ink);
+}
+
+.band-ink .btn-line {
+  color: var(--white);
+  border-color: #2c4970;
+}
+
+.band-ink .btn-line:hover {
+  border-color: var(--white);
+}
+
+.btn-sm {
+  padding: 9px 16px;
+  font-size: 0.85rem;
 }

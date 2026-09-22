@@ -1,0 +1,21 @@
+.pghead {
+  padding: 62px 0 10px;
+}
+
+@media (max-width: 700px) {
+  .pghead {
+    padding: 38px 0 6px;
+  }
+}
+
+.eyebrow {
+  color: var(--teal-deep);
+  font-family: var(--display);
+  font-size: 1.02rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.pghead :global(.lede) {
+  max-width: 66ch;
+}

@@ -1,0 +1,94 @@
+.hdr {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  /* paper token at 93% opacity, for the backdrop blur */
+  background: rgba(253, 252, 250, 0.93);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.hdrIn {
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+  margin-right: auto;
+}
+
+.nav a {
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--body);
+  font-size: 0.93rem;
+  padding: 5px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.nav a:hover {
+  color: var(--ink);
+}
+
+.nav a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--teal);
+}
+
+.hdrAct {
+  display: flex;
+  gap: 10px;
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: auto;
+}
+
+.burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  margin: 5px 0;
+}
+
+.mnav {
+  display: none;
+  flex-direction: column;
+  padding: 6px 28px 20px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.mnav a {
+  padding: 13px 0;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.mnav.on {
+  display: flex;
+}
+
+@media (max-width: 1000px) {
+  .nav,
+  .hdrAct {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
+}

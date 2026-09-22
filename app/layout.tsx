@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Outfit, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "../styles/tokens.css";
 import "./globals.css";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -33,7 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${outfit.variable} ${plexSans.variable} ${plexMono.variable}`}>
-        {children}
+        <Header />
+        <main id="main">{children}</main>
+        <Footer />
       </body>
     </html>
   );
