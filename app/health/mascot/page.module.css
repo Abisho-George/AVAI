@@ -1,0 +1,84 @@
+.page {
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 6rem;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.intro {
+  color: var(--muted);
+  margin-top: 0.5rem;
+  max-width: 60ch;
+}
+
+.table {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.row,
+.rowHead {
+  display: grid;
+  grid-template-columns: 100px repeat(3, 1fr);
+  align-items: center;
+  gap: 1rem;
+}
+
+.row {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.rowHead {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rowHead .cell {
+  display: block;
+}
+
+.poseLabel {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.cell {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.size {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.mark {
+  margin-top: 2.5rem;
+}
+
+.markRow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.markSwatch {
+  padding: 0.5rem;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+}
+
+.dark {
+  background: var(--ink-deep);
+}
