@@ -47,7 +47,7 @@ export function StudentReportCard({
         </div>
       </div>
       <div className={styles.bd}>
-        <h4>What you&rsquo;re doing well</h4>
+        <p className={styles.label}>What you&rsquo;re doing well</p>
         <ul>
           {doingWell.map((item) => (
             <li className={styles.good} key={item}>
@@ -55,7 +55,7 @@ export function StudentReportCard({
             </li>
           ))}
         </ul>
-        <h4>What to work on next</h4>
+        <p className={styles.label}>What to work on next</p>
         <ul>
           {workOnNext.map((item) => (
             <li className={styles.next} key={item}>

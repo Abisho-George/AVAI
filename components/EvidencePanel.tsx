@@ -35,7 +35,7 @@ export function EvidencePanel({
 }: EvidencePanelProps) {
   return (
     <div className={styles.evid}>
-      <h4>Evidence from this paper</h4>
+      <p className={styles.label}>Evidence from this paper</p>
       <ul className={styles.list}>
         {questions.map((row) => (
           <li key={row.label}>
@@ -48,7 +48,7 @@ export function EvidencePanel({
 
       {sections && sections.length > 0 ? (
         <>
-          <h4 className={styles.sectionHead}>{sectionsLabel}</h4>
+          <p className={styles.sectionHead}>{sectionsLabel}</p>
           <div className={styles.bars}>
             {sections.map((row) => (
               <AttainmentBar

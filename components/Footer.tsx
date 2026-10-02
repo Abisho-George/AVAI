@@ -7,7 +7,7 @@ export function Footer() {
     <footer className={styles.ftr}>
       <div className={styles.ftrIn}>
         <div>
-          <Link href="/" aria-label="Avai home">
+          <Link href="/">
             <Logo dark />
           </Link>
           <p className={styles.sig}>A brighter tomorrow for every student.</p>
@@ -18,21 +18,21 @@ export function Footer() {
         </div>
         <div className={styles.cols}>
           <div className={styles.col}>
-            <h4>Product</h4>
+            <h2>Product</h2>
             <Link href="/findings">What Avai finds</Link>
             <Link href="/how-it-works">How Avai reasons</Link>
             <Link href="/roles">Who sees what</Link>
             <Link href="/portal">School portal</Link>
           </div>
           <div className={styles.col}>
-            <h4>School</h4>
+            <h2>School</h2>
             <Link href="/pilot">Pilot programme</Link>
             <Link href="/pricing">Pricing</Link>
             <Link href="/trust">Trust &amp; data</Link>
             <Link href="/contact">Request a pilot</Link>
           </div>
           <div className={styles.col}>
-            <h4>Company</h4>
+            <h2>Company</h2>
             <Link href="/about">About</Link>
             <Link href="/about#yaadhum">Yaadhum research</Link>
             <Link href="/contact">Contact</Link>

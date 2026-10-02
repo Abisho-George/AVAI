@@ -13,10 +13,15 @@
   line-height: 1.3;
 }
 
+/*
+ * Sized to WCAG's large-text bold threshold (>=18.66px/700) so the warn
+ * variant's gold-deep-on-gold-tint title (3.64:1) clears AA at 3:1 instead
+ * of the 4.5:1 bar its actual size would otherwise require.
+ */
 .title {
   display: block;
-  font-weight: 600;
-  font-size: 0.88rem;
+  font-weight: 700;
+  font-size: 1.2rem;
   margin-bottom: 2px;
 }
 

@@ -38,7 +38,7 @@ export default function PortalPage() {
   return (
     <div className={styles.portal}>
       <div className={styles.portalL}>
-        <Link href="/" aria-label="Avai home">
+        <Link href="/">
           <Logo dark />
         </Link>
         <div>

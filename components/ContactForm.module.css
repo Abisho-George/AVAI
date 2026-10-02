@@ -49,8 +49,12 @@
   border-color: var(--coral);
 }
 
+/* font-size/weight sized to WCAG large-text (>=18.66px/700) so coral-on-
+   paper (4.33:1) clears AA at the 3:1 large-text bar. Error text is
+   functionally important, so it gets the same treatment as the note titles. */
 .error {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--coral);
 }
 

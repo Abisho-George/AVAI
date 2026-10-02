@@ -5,11 +5,17 @@
   flex-wrap: wrap;
 }
 
-/* Attention — solid pill. What the school should do. */
+/*
+ * Attention — solid pill. What the school should do.
+ * Sized to WCAG's "large text" bold threshold (>=18.66px/700 weight) so the
+ * pill-track/pill-watch text (teal-deep/gold-deep on their tints) clears AA
+ * at the 3:1 large-text bar instead of the 4.5:1 normal-text bar its actual
+ * size would otherwise require.
+ */
 .pill {
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 3px 11px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 4px 14px;
   border-radius: 20px;
   white-space: nowrap;
 }
@@ -34,11 +40,15 @@
   color: var(--attention-inv-fg);
 }
 
-/* Board urgency — outlined chip with a triangle glyph. How often it recurs. */
+/*
+ * Board urgency — outlined chip with a triangle glyph. How often it recurs.
+ * Same large-text sizing rationale as .pill above — urg-h (orange) and
+ * urg-vh (coral) as plain text-on-paper only clear AA at this size/weight.
+ */
 .urg {
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 3px 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 4px 13px;
   border-radius: 20px;
   border: 1px solid;
   background: transparent;
@@ -50,7 +60,7 @@
 
 .urg::before {
   content: "▲";
-  font-size: 0.55rem;
+  font-size: 0.9rem;
 }
 
 .urg-vh {

@@ -95,12 +95,15 @@
   color: var(--body);
 }
 
+/* font-size/weight sized to WCAG large-text (>=18.66px/700) so
+   gold-deep-on-gold-tint (3.64:1) clears AA at the 3:1 large-text bar. */
 .demoNote {
   background: var(--gold-tint);
   border: 1px solid #f2d6a6;
   border-radius: 10px;
   padding: 11px 14px;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--gold-deep);
   margin-top: 26px;
 }

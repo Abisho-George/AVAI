@@ -37,7 +37,7 @@ export function Header() {
         Skip to content
       </a>
       <div className={styles.hdrIn}>
-        <Link href="/" aria-label="Avai home">
+        <Link href="/">
           <Logo />
         </Link>
         <nav className={styles.nav} aria-label="Primary">

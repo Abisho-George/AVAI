@@ -490,11 +490,16 @@ section.snug {
  * student tables where the label is a short local word (Low/Medium/High,
  * Intervention) rather than SignalCluster's canonical finding-level
  * attention/urgency text. Same visual treatment, same tokens.
+ *
+ * Sized to WCAG's large-text bold threshold (>=18.66px/700) so
+ * pill-track/pill-watch (teal-deep/gold-deep on their tints) and urg-h/
+ * urg-vh (orange/coral as plain text) clear AA at 3:1 instead of the 4.5:1
+ * normal-text bar their actual size would otherwise require.
  */
 .pill {
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 3px 11px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 4px 14px;
   border-radius: 20px;
   white-space: nowrap;
   display: inline-block;
@@ -521,9 +526,9 @@ section.snug {
 }
 
 .urg {
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 3px 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 4px 13px;
   border-radius: 20px;
   border: 1px solid;
   background: transparent;
@@ -535,7 +540,7 @@ section.snug {
 
 .urg::before {
   content: "▲";
-  font-size: 0.55rem;
+  font-size: 0.9rem;
 }
 
 .urg-vh {

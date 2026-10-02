@@ -5,8 +5,15 @@
   padding: 18px;
 }
 
-.evid h4 {
+/*
+ * A field-group label inside the card, not a document heading — this
+ * component is embedded in contexts (HeroLoop's mock product screen) that
+ * don't guarantee a preceding h1-h3, so it stays out of the heading outline.
+ */
+.label {
   margin: 0 0 12px;
+  font-family: var(--sans);
+  font-weight: 600;
   font-size: 0.95rem;
 }
 
@@ -46,6 +53,8 @@
 
 .sectionHead {
   margin: 18px 0 8px;
+  font-family: var(--sans);
+  font-weight: 600;
   font-size: 0.95rem;
 }
 
