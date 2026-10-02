@@ -171,7 +171,6 @@ export function HeroLoop() {
           <StudentReportCard
             subjectTerm="Mathematics · Term 2"
             score="78 / 80"
-            trend={{ direction: "up", label: "Keep going" }}
             line="Keep going. You're on the right path."
             doingWell={["Recall-based questions", "Basic algebra"]}
             workOnNext={["Quadratic equations — application-style questions"]}

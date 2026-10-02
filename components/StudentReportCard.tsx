@@ -31,7 +31,7 @@ export function StudentReportCard({
   return (
     <article className={styles.report}>
       <div className={styles.hd}>
-        <Mascot pose={mascotPose} size={64} title={`Avai, ${mascotPose} pose`} />
+        <Mascot pose={mascotPose} size={120} title={`Avai, ${mascotPose} pose`} />
         <div>
           <div className={styles.meta}>{subjectTerm}</div>
           <div className={styles.scoreRow}>

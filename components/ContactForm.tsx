@@ -2,7 +2,7 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import styles from "./ContactForm.module.css";
-import { Mascot } from "./Mascot";
+import { MascotMark } from "./Mascot";
 
 type FieldErrors = Record<string, string>;
 
@@ -58,7 +58,7 @@ export function ContactForm() {
   if (submitted) {
     return (
       <div className={styles.ok}>
-        <Mascot pose="hello" size={58} title="Avai" />
+        <MascotMark size={58} title="Avai" />
         <p>
           <strong>Request received.</strong> We will be in touch within two working days —
           usually sooner.

@@ -33,7 +33,7 @@ export function CtaBand({
       <div className="wrap">
         <div className={styles.ctaBand}>
           <div className={styles.copy}>
-            {mascotPose ? <Mascot pose={mascotPose} size={82} /> : null}
+            {mascotPose ? <Mascot pose={mascotPose} size={120} /> : null}
             <div>
               <h2>{title}</h2>
               <p>{description}</p>

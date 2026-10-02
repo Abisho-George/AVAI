@@ -13,8 +13,7 @@ export default function NotFound() {
       <Mascot pose="hello" size={120} title="Avai" />
       <h1>Page not found</h1>
       <p className={styles.line}>
-        That page doesn&rsquo;t exist. Nothing to worry about — the rest of the site is right
-        where you left it.
+        That page doesn&rsquo;t exist. The rest of the site is right where you left it.
       </p>
       <Link className="btn btn-primary" href="/">
         Back to avai.school

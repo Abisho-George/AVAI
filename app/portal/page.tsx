@@ -42,7 +42,7 @@ export default function PortalPage() {
           <Logo dark />
         </Link>
         <div>
-          <Mascot pose="hello" size={104} title="Avai" />
+          <Mascot pose="hello" size={120} title="Avai" />
           <h2>A brighter tomorrow for every student.</h2>
           <p>
             Avai reads your assessments against the Board blueprint and tells you where marks are

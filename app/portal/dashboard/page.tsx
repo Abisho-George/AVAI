@@ -7,22 +7,23 @@ import { FindingCard } from "@/components/FindingCard";
 import { EvidenceNote } from "@/components/EvidenceNote";
 import { AttainmentBar } from "@/components/AttainmentBar";
 import { SignalCluster } from "@/components/SignalCluster";
+import type { Attention, BarTone } from "@/components/types";
 
 const NAV = ["School", "BoardX", "Papers", "Enter marks", "Manage teachers", "Settings"];
 
-const SECTIONS = [
-  { label: "X-A", students: 48, percent: 81, tone: "teal" as const, findings: 1, attention: "Low", pillClass: "pill-track" },
-  { label: "X-B", students: 48, percent: 74, tone: "blue" as const, findings: 3, attention: "Medium", pillClass: "pill-watch" },
-  { label: "X-C", students: 48, percent: 78, tone: "blue" as const, findings: 2, attention: "Medium", pillClass: "pill-watch" },
-  { label: "X-D", students: 48, percent: 68, tone: "gold" as const, findings: 5, attention: "High", pillClass: "pill-act" },
-  { label: "X-E", students: 48, percent: 76, tone: "blue" as const, findings: 3, attention: "Medium", pillClass: "pill-watch" },
+const SECTIONS: { label: string; students: number; percent: number; tone: BarTone; findings: number; attention: Attention }[] = [
+  { label: "X-A", students: 48, percent: 81, tone: "teal", findings: 1, attention: "track" },
+  { label: "X-B", students: 48, percent: 74, tone: "blue", findings: 3, attention: "watch" },
+  { label: "X-C", students: 48, percent: 78, tone: "blue", findings: 2, attention: "watch" },
+  { label: "X-D", students: 48, percent: 68, tone: "gold", findings: 5, attention: "act" },
+  { label: "X-E", students: 48, percent: 76, tone: "blue", findings: 3, attention: "watch" },
 ];
 
-const STUDENTS = [
-  { name: "Aarav", section: "X-A", attainment: "17/17", lost: 0, blocker: "—", attention: "On track", pillClass: "pill-track" },
-  { name: "Riya", section: "X-C", attainment: "16/17", lost: 1, blocker: "Physics numericals", attention: "Watch", pillClass: "pill-watch" },
-  { name: "Rahul", section: "X-B", attainment: "12/17", lost: 5, blocker: "Maths application", attention: "Intervention", pillClass: "pill-act" },
-  { name: "Aditi R.", section: "X-A", attainment: "16/17", lost: 1, blocker: "—", attention: "On track", pillClass: "pill-track" },
+const STUDENTS: { name: string; section: string; attainment: string; lost: number; blocker: string; attention: Attention }[] = [
+  { name: "Aarav", section: "X-A", attainment: "17/17", lost: 0, blocker: "—", attention: "track" },
+  { name: "Riya", section: "X-C", attainment: "16/17", lost: 1, blocker: "Physics numericals", attention: "watch" },
+  { name: "Rahul", section: "X-B", attainment: "12/17", lost: 5, blocker: "Maths application", attention: "act" },
+  { name: "Aditi R.", section: "X-A", attainment: "16/17", lost: 1, blocker: "—", attention: "track" },
 ];
 
 export default function DashboardPage() {
@@ -104,7 +105,7 @@ export default function DashboardPage() {
               What this assessment tells us about Board readiness — and how confidently.
             </p>
           </div>
-          <span className="urg urg-m">Attention: medium</span>
+          <SignalCluster attention="watch" />
         </div>
 
         <div style={{ marginBottom: 24 }}>
@@ -207,7 +208,7 @@ export default function DashboardPage() {
                     </td>
                     <td className="num">{row.findings}</td>
                     <td>
-                      <span className={`pill ${row.pillClass}`}>{row.attention}</span>
+                      <SignalCluster attention={row.attention} />
                     </td>
                   </tr>
                 ))}
@@ -249,7 +250,7 @@ export default function DashboardPage() {
                     <td className="num">{row.lost}</td>
                     <td className="small">{row.blocker}</td>
                     <td>
-                      <span className={`pill ${row.pillClass}`}>{row.attention}</span>
+                      <SignalCluster attention={row.attention} />
                     </td>
                   </tr>
                 ))}
