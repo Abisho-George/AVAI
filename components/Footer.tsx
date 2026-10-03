@@ -19,16 +19,13 @@ export function Footer() {
         <div className={styles.cols}>
           <div className={styles.col}>
             <h2>Product</h2>
-            <Link href="/findings">What Avai finds</Link>
             <Link href="/how-it-works">How Avai reasons</Link>
-            <Link href="/roles">Who sees what</Link>
+            <Link href="/portal/dashboard">Sample dashboard</Link>
             <Link href="/portal">School portal</Link>
           </div>
           <div className={styles.col}>
             <h2>School</h2>
             <Link href="/pilot">Pilot programme</Link>
-            <Link href="/pricing">Pricing</Link>
-            <Link href="/trust">Trust &amp; data</Link>
             <Link href="/contact">Request a pilot</Link>
           </div>
           <div className={styles.col}>
@@ -40,7 +37,7 @@ export function Footer() {
         </div>
       </div>
       <p className={styles.meta}>
-        © 2026 INAT Venture Pvt Ltd, Krishnagiri, Tamil Nadu. Avai does not set exams, does not
+        © 2026 INAT Venture Pvt Ltd. Avai does not set exams, does not
         grade answers, and does not evaluate teachers.
       </p>
     </footer>

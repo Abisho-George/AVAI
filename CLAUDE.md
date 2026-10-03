@@ -57,7 +57,8 @@ in the footer and the portal welcome panel. It is not the hero headline.
   "AI-powered", "cutting-edge", "seamless", "leverage".
 - Never claim prediction accuracy, score improvement percentages, or outcomes
   we have not measured. There is no "35% improvement" number. Do not invent one.
-- Avoid em-dash asides and "not X, but Y" constructions.
+- No em dashes or en dashes anywhere in site copy, titles or metadata. Use a
+  colon, a comma, a full stop or "to" (2022 to 2025). Avoid "not X, but Y" constructions.
 
 ---
 
@@ -126,6 +127,8 @@ tutor, and no copy should suggest it does.
 - Next.js 15, App Router, TypeScript
 - **Hand-written CSS with CSS custom properties. No Tailwind.** Matches the product app.
 - CSS Modules per component, plus one global `tokens.css`
+- White is the primary page background. Separate sections with the cool
+  `--paper-2` wash or the ink band; no warm or peach surfaces
 - No component library. No Framer Motion unless a specific interaction needs it.
 - Static export target (`output: 'export'`) — this site has no server needs
 - Fonts: `next/font/google` — Outfit (display), IBM Plex Sans (body), IBM Plex Mono (marks/IDs)
@@ -141,7 +144,8 @@ tutor, and no copy should suggest it does.
 ### Performance
 - Lighthouse 95+ on performance and accessibility for the homepage
 - No layout shift from the hero loop — reserve its height
-- Mascot ships as inline SVG, not a raster image
+- Mascot and logo ship as the supplied brand artwork in `public/brand/`
+  (WebP with transparency), rendered through `components/Mascot.tsx` and `components/Logo.tsx`
 
 ---
 
@@ -150,15 +154,11 @@ tutor, and no copy should suggest it does.
 | Route | Purpose |
 |---|---|
 | `/` | Hero loop, lost-marks argument, three signals, honesty, pilot proof, CTA |
-| `/findings` | Anatomy of a finding, marks loss intelligence, risk groups, intervention plan |
 | `/how-it-works` | The five-step pipeline, paper diagnostic strength, the four honesty states |
-| `/roles` | Same finding scoped to principal / teacher / student; permission model |
-| `/pilot` | Krishnagiri, week by week, what the school provides and receives |
-| `/trust` | Data handling, isolation, consent separation, what Avai never does |
-| `/pricing` | Per student, verified headcount, whole grade, 60-student floor |
+| `/pilot` | Six weeks, week by week, what the school provides and receives |
 | `/about` | INAT Venture, Yaadhum, the government-school programme |
 | `/contact` | Pilot request form |
-| `/portal` | School portal sign-in — two tabs (staff / student) plus demo role switcher |
+| `/portal` | School portal sign-in: two tabs (staff / student) plus demo role switcher |
 | `/portal/dashboard` | Sample dashboard with the finding detail drawer |
 
 ---
@@ -181,11 +181,10 @@ Plus `HeroLoop`, `Mascot`, `Header`, `Footer`, `PageHeader`, `CtaBand`.
 
 ## Facts you may use. Do not invent others.
 
-- Pilot: 5 CBSE schools, Krishnagiri district, Tamil Nadu, onboarded one per week
 - Grades: Classes X and XII
-- Reference school: Bharat International Senior Secondary School
-- District Collector Thiru C. Dinesh Kumar has expressed support for a free
-  diagnostics and scholarship programme in government schools
+- Pilot: six weeks, attached to an exam already on the school's calendar
+- Do not mention Krishnagiri, the pilot's location, the number of pilot schools,
+  the reference school's name or the District Collector anywhere on the site
 - Pricing: per student, against CBSE List of Candidates or DGE registration;
   whole grade only; minimum 60 students per grade; school pays
 - Data: scorecard images retained 30 days post-extraction, gated on teacher

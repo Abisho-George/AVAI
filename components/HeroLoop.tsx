@@ -23,7 +23,7 @@ const MARKS: Mark[] = [
   { q: "Q12", value: "1/4" },
 ];
 
-/** Q5, Q7, Q12 — the three application-tier questions the finding is built on. */
+/** Q5, Q7, Q12: the three application-tier questions the finding is built on. */
 const KEY_INDICES = new Set([4, 6, 11]);
 
 const SCENE_NAMES = ["Marks", "Finding", "Evidence", "Report"];
@@ -173,9 +173,8 @@ export function HeroLoop() {
             score="78 / 80"
             line="Keep going. You're on the right path."
             doingWell={["Recall-based questions", "Basic algebra"]}
-            workOnNext={["Quadratic equations — application-style questions"]}
+            workOnNext={["Quadratic equations: application-style questions"]}
             footerNote="Shared by your teacher. Ask them if you want to go through any of this together."
-            mascotPose="improve"
           />
         </div>
       </div>

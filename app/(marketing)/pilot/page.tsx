@@ -4,16 +4,16 @@ import { PageHeader } from "@/components/PageHeader";
 import { CtaBand } from "@/components/CtaBand";
 
 export const metadata: Metadata = {
-  title: "Pilot programme — five CBSE schools in Krishnagiri",
+  title: "Pilot programme: six weeks on the exams you already run",
   description:
-    "Onboarded one school per week. Classes 10 and 12, the Board-examination years, where a diagnosis still has time to change an outcome.",
+    "Classes 10 and 12, the Board-examination years, where a diagnosis still has time to change an outcome.",
 };
 
 const WEEKS = [
   {
     n: "W1",
     title: "Set up the school",
-    body: "Standards, sections, subjects and staff. Teachers are given assignments — class teacher of a section, subject teacher across sections — which is what scopes everything they later see.",
+    body: "Standards, sections, subjects and staff. Teachers are given assignments (class teacher of a section, subject teacher across sections), which is what scopes everything they later see.",
   },
   {
     n: "W2",
@@ -33,7 +33,7 @@ const WEEKS = [
   {
     n: "W5",
     title: "Review findings together",
-    body: "We sit with your principal and heads of department in front of the findings. This session matters more than any demo — it is where a school decides whether the diagnosis matches what they already suspected.",
+    body: "We sit with your principal and heads of department in front of the findings. This session matters more than any demo. It is where a school decides whether the diagnosis matches what they already suspected.",
   },
   {
     n: "W6",
@@ -47,24 +47,24 @@ export default function PilotPage() {
     <>
       <PageHeader
         eyebrow="Pilot programme"
-        title="Five CBSE schools in Krishnagiri"
-        lede="Onboarded one school per week, so School 1 has already found the rough edges before School 5 arrives. Classes 10 and 12 — the Board-examination years, where a diagnosis still has time to change an outcome."
+        title="Six weeks, on the exams you already run"
+        lede="Classes 10 and 12 are the Board-examination years, where a diagnosis still has time to change an outcome. A pilot attaches to an exam already on your calendar."
       />
 
       <section className="snug">
         <div className="wrap">
           <div className="stats">
             <div className="stat">
-              <b>5</b>
-              <span>CBSE schools, Krishnagiri district</span>
+              <b>6</b>
+              <span>weeks from set-up to student reports</span>
             </div>
             <div className="stat">
               <b>X &amp; XII</b>
               <span>Board-examination years</span>
             </div>
             <div className="stat">
-              <b>1/week</b>
-              <span>onboarding cadence</span>
+              <b>0</b>
+              <span>new exams a school has to write</span>
             </div>
             <div className="stat">
               <b>~1 hr</b>
@@ -105,7 +105,7 @@ export default function PilotPage() {
               <ul className="ticks">
                 <li>One question paper per subject, before the exam is marked</li>
                 <li>Your existing mark register, transcribed onto our scorecard</li>
-                <li>A verified headcount — CBSE List of Candidates or DGE registration</li>
+                <li>A verified headcount: CBSE List of Candidates or DGE registration</li>
                 <li>About an hour of each subject teacher&rsquo;s time per exam</li>
                 <li>One review session with school leadership</li>
               </ul>
@@ -128,28 +128,24 @@ export default function PilotPage() {
         <div className="wrap">
           <div className="split">
             <div>
-              <h2>Reference school</h2>
+              <h2>Evaluating a pilot?</h2>
               <p>
-                Bharat International Senior Secondary School, CBSE, Tamil Nadu. Classes X and XII,
-                five sections in the Class X cohort. Happy to speak to schools evaluating the
-                pilot.
+                We are happy to speak to schools evaluating the pilot. Start with the sample
+                dashboard: it shows the same findings, signals and honesty notes your leadership
+                would see.
               </p>
-              <div className="quote" style={{ borderColor: "var(--gold)" }}>
-                <p style={{ color: "#fff" }}>
-                  The District Collector has expressed support for a free diagnostics and
-                  scholarship programme in government schools across the district.
-                </p>
-                <cite style={{ color: "#8AA3C0" }}>
-                  Thiru C. Dinesh Kumar, District Collector, Krishnagiri
-                </cite>
-              </div>
+              <p>
+                <Link className="btn btn-line" href="/portal/dashboard">
+                  Open the sample dashboard
+                </Link>
+              </p>
             </div>
             <div className="card">
               <h3>The government-school track</h3>
               <p>
                 Findings from government schools feed the scholarship identification work
                 published openly under Yaadhum. That research runs on separately consented,
-                anonymised data — it is never fed by the commercial pipeline.
+                anonymised data. It is never fed by the commercial pipeline.
               </p>
               <p>
                 <Link href="/about#yaadhum" style={{ color: "var(--gold)" }}>

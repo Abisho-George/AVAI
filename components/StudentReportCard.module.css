@@ -7,7 +7,7 @@
 }
 
 .hd {
-  background: linear-gradient(105deg, var(--teal-tint) 0%, var(--gold-tint) 100%);
+  background: linear-gradient(105deg, var(--teal-tint) 0%, var(--tint) 100%);
   padding: 20px 22px;
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@
 }
 
 /*
- * A field-group label inside the card, not a document heading — this
+ * A field-group label inside the card, not a document heading: this
  * component is embedded in contexts (HeroLoop's mock product screen) that
  * don't guarantee a preceding h1-h3, so it stays out of the heading outline.
  */

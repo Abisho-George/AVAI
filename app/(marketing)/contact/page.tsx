@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { ContactForm } from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Request a pilot — send us one paper and one mark register",
+  title: "Request a pilot: send us one paper and one mark register",
   description:
     "We will map the paper, read the marks, and come back with the findings from your own students. If a pilot doesn't make sense for you this term, we will say so.",
 };
@@ -26,7 +26,7 @@ export default function ContactPage() {
               <div className="card">
                 <h3>Want the full walkthrough first?</h3>
                 <p>
-                  Twenty-four screens from the running build — principal, teacher and student,
+                  Twenty-four screens from the running build: principal, teacher and student,
                   including every state where Avai declines to draw a conclusion.
                 </p>
                 <p className="small">
@@ -47,8 +47,8 @@ export default function ContactPage() {
               <div className="card" style={{ marginTop: 18 }}>
                 <h3>Government schools</h3>
                 <p>
-                  Krishnagiri district government schools participate free of charge under the
-                  scholarship programme. Mention your school in the message and we will route it
+                  Government schools participate free of charge under the scholarship
+                  programme. Mention your school in the message and we will route it
                   there.
                 </p>
               </div>

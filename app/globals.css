@@ -88,7 +88,7 @@ strong {
   color: var(--muted);
 }
 
-/* Visually hidden but reachable — the skip link before focus. */
+/* Visually hidden but reachable: the skip link before focus. */
 .sr {
   position: absolute;
   width: 1px;
@@ -456,7 +456,7 @@ section.snug {
   }
 }
 
-/* Standalone gauge — a bare track+fill without AttainmentBar's label/value row. */
+/* Standalone gauge: a bare track+fill without AttainmentBar's label/value row. */
 .bar-track {
   height: 7px;
   border-radius: 20px;

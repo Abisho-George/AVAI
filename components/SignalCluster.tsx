@@ -16,7 +16,7 @@ type SignalClusterProps = {
 
 /**
  * Three independent signals, three different visual treatments. They never
- * collapse into one red-amber-green scale — a finding can be very-high
+ * collapse into one red-amber-green scale. A finding can be very-high
  * urgency with only an emerging-confidence signal, and this must be able to
  * show that disagreement.
  */

@@ -8,20 +8,13 @@ import { Logo } from "./Logo";
 
 const NAV = [
   { href: "/", label: "Home" },
-  { href: "/findings", label: "Findings" },
   { href: "/how-it-works", label: "How it works" },
-  { href: "/roles", label: "Roles" },
   { href: "/pilot", label: "Pilot" },
-  { href: "/trust", label: "Trust" },
-  { href: "/pricing", label: "Pricing" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
-const MOBILE_NAV = [
-  ...NAV,
-  { href: "/about", label: "About" },
-  { href: "/portal", label: "School portal" },
-  { href: "/contact", label: "Request a pilot" },
-];
+const MOBILE_NAV = [...NAV, { href: "/portal", label: "School portal" }];
 
 export function Header() {
   const pathname = usePathname();

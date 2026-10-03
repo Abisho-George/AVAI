@@ -2,8 +2,8 @@
   position: sticky;
   top: 0;
   z-index: 60;
-  /* paper token at 93% opacity, for the backdrop blur */
-  background: rgba(253, 252, 250, 0.93);
+  /* white at 94% opacity, for the backdrop blur */
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line-soft);
 }

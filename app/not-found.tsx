@@ -4,7 +4,7 @@ import styles from "./not-found.module.css";
 import { Mascot } from "@/components/Mascot";
 
 export const metadata: Metadata = {
-  title: "Page not found — Avai",
+  title: "Page not found | Avai",
 };
 
 export default function NotFound() {

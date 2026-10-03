@@ -6,12 +6,8 @@ const BASE_URL = "https://avai.school";
 
 const ROUTES = [
   "",
-  "/findings",
   "/how-it-works",
-  "/roles",
   "/pilot",
-  "/trust",
-  "/pricing",
   "/about",
   "/contact",
   "/portal",

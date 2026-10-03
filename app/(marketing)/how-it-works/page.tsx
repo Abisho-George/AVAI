@@ -6,7 +6,7 @@ import { EvidenceNote } from "@/components/EvidenceNote";
 import { Tabs } from "@/components/Tabs";
 
 export const metadata: Metadata = {
-  title: "How Avai reasons — from a tagged paper to a named gap",
+  title: "How Avai reasons: from a tagged paper to a named gap",
   description:
     "Avai does not set exams, does not grade answers, and never reads what a student wrote. Five steps from a Board-mapped question paper to a named, evidenced finding.",
 };
@@ -24,9 +24,9 @@ const STEPS = [
     n: "02",
     title: "Teachers enter marks the way they already do",
     body: [
-      "Teachers mark the paper as normal, then transcribe question-wise marks onto a pre-printed structured scorecard — one box per question, sections mirroring the paper. Scorecards are scanned and read automatically.",
+      "Teachers mark the paper as normal, then transcribe question-wise marks onto a pre-printed structured scorecard, with one box per question and sections mirroring the paper. Scorecards are scanned and read automatically.",
       "Four checks run on every scorecard before it is accepted: question marks sum to the declared total, each mark is within range for that question, the roll number resolves to a real student, and a blank is distinguished from a zero. A student who didn't attempt a question is not the same as one who attempted and scored nothing.",
-      "The teacher confirms the extracted marks on screen. That human check is deliberate — it keeps the pipeline honest and the cost low.",
+      "The teacher confirms the extracted marks on screen. That human check is deliberate. It keeps the pipeline honest and the cost low.",
     ],
   },
   {
@@ -40,12 +40,12 @@ const STEPS = [
     n: "04",
     title: "Findings are produced, ranked, and held to evidence",
     body: [
-      "Performance is computed per concept and per competency tier across every subject a student takes — which is what makes a cross-subject pattern visible. Findings are ranked by marks exposure, Board recurrence and confidence together, not by raw average.",
+      "Performance is computed per concept and per competency tier across every subject a student takes. That is what makes a cross-subject pattern visible. Findings are ranked by marks exposure, Board recurrence and confidence together, not by raw average.",
     ],
   },
   {
     n: "05",
-    title: "Reports are issued, then shared — two separate acts",
+    title: "Reports are issued, then shared: two separate acts",
     body: [
       "Issuing a report freezes the diagnosis. Sharing it with a student is a second, deliberate action that generates a one-time PIN. A school can share Term 1 and hold Term 2 back until a parent meeting without anyone inventing a workaround.",
     ],
@@ -129,7 +129,7 @@ export default function HowItWorksPage() {
             <h2>What Avai refuses to conclude</h2>
             <p>
               Four states where a lesser product would guess. None is styled as an error, because
-              none of them is one — they are the accurate answer.
+              none of them is one. They are the accurate answer.
             </p>
           </div>
           <Tabs
@@ -187,7 +187,7 @@ export default function HowItWorksPage() {
                       <h3>A pattern that might be there</h3>
                       <p>
                         A shape is visible in the data but the evidence is thin. Avai shows it,
-                        marks it as emerging, and lets a principal decide whether to watch it —
+                        marks it as emerging, and lets a principal decide whether to watch it,
                         instead of either hiding it or promoting it to a conclusion.
                       </p>
                     </div>
@@ -219,7 +219,7 @@ export default function HowItWorksPage() {
 
       <CtaBand
         className="band-ink"
-        title="The full walkthrough — 24 screens"
+        title="The full walkthrough: 24 screens"
         description="Every screen in the product, captured from the running build: principal, teacher and student."
         ctaLabel="Request the walkthrough"
         ctaHref="/contact"

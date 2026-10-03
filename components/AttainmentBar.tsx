@@ -3,9 +3,9 @@ import type { BarTone } from "./types";
 
 type AttainmentBarProps = {
   label: string;
-  /** 0–100. Drives the fill width. */
+  /** 0 to 100. Drives the fill width. */
   percent: number;
-  /** What the track shows, e.g. "41%" or "42/80". Never inferred — always explicit. */
+  /** What the track shows, e.g. "41%" or "42/80". Never inferred; always explicit. */
   value: string;
   tone: BarTone;
 };

@@ -1,26 +1,28 @@
+import Image from "next/image";
 import styles from "./Logo.module.css";
 
 type LogoProps = {
-  /** Use on dark surfaces — the footer, the portal panel. */
+  /** Use on dark surfaces: the footer, the portal panel. */
   dark?: boolean;
+  /** Rendered height in px. */
+  height?: number;
   className?: string;
 };
 
-/** The AVAI wordmark lockup: icon + "AVAI" with a teal A, "LEARN GROW ACHIEVE" beneath. */
-export function Logo({ dark = false, className }: LogoProps) {
+// Intrinsic size of the exported wordmark in public/brand/.
+const W = 411;
+const H = 120;
+
+/** The AVAI wordmark. The dark-surface version swaps the navy letterforms for white. */
+export function Logo({ dark = false, height = 34, className }: LogoProps) {
   return (
-    <span className={[styles.mark, dark ? styles.dark : "", className].filter(Boolean).join(" ")}>
-      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-        <rect width="30" height="30" rx="8" fill="var(--ink)" />
-        <path d="M8 21 C12 15 17 10 23 7 C19 13 15 18 11 22 Z" fill="var(--gold)" />
-        <path d="M7 22 C11 16 16 11 22 8 C17 14 12 19 9 23 Z" fill="var(--teal)" />
-      </svg>
-      <span>
-        <span className={styles.markTxt}>
-          AV<i className={styles.markA}>A</i>I
-        </span>
-        <span className={styles.markSub}>LEARN GROW ACHIEVE</span>
-      </span>
-    </span>
+    <Image
+      className={[styles.logo, className].filter(Boolean).join(" ")}
+      src={dark ? "/brand/avai-logo-light.webp" : "/brand/avai-logo.webp"}
+      width={Math.round((height * W) / H)}
+      height={height}
+      alt="Avai"
+      priority={!dark}
+    />
   );
 }

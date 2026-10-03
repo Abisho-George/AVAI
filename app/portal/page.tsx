@@ -7,7 +7,7 @@ import { Logo } from "@/components/Logo";
 import { Mascot } from "@/components/Mascot";
 import { Tabs } from "@/components/Tabs";
 
-// Demo only — not real authentication. Every submission (staff or student)
+// Demo only: not real authentication. Every submission (staff or student)
 // returns the same generic message, so a real failed sign-in would never
 // reveal which field was wrong or whether an account exists.
 const GENERIC_FAIL_MESSAGE =
@@ -50,7 +50,7 @@ export default function PortalPage() {
           </p>
         </div>
         <p className={`small ${styles.schoolLine}`}>
-          Bharat International Sr. Sec. School · CBSE · Tamil Nadu
+          Demo school · CBSE · Classes X and XII
         </p>
       </div>
 
@@ -72,7 +72,7 @@ export default function PortalPage() {
                     <SignInForm>
                       <div className={styles.fld}>
                         <label htmlFor="sc">School code</label>
-                        <input id="sc" name="sc" placeholder="e.g. BIS-TN-001" />
+                        <input id="sc" name="sc" placeholder="e.g. SCH-0001" />
                       </div>
                       <div className={styles.fld}>
                         <label htmlFor="sk">Sign-in key</label>
@@ -93,7 +93,7 @@ export default function PortalPage() {
                     <SignInForm>
                       <div className={styles.fld}>
                         <label htmlFor="sc2">School code</label>
-                        <input id="sc2" name="sc2" placeholder="e.g. BIS-TN-001" />
+                        <input id="sc2" name="sc2" placeholder="e.g. SCH-0001" />
                       </div>
                       <div className={styles.fld}>
                         <label htmlFor="rn">Roll number</label>
@@ -114,7 +114,7 @@ export default function PortalPage() {
           />
 
           <div className={styles.demoNote}>
-            Public demo — sample data only. No real school or student information appears here.
+            Public demo with sample data only. No real school or student information appears here.
           </div>
 
           <div className={styles.roles}>

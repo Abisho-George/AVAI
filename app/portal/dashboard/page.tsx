@@ -20,10 +20,10 @@ const SECTIONS: { label: string; students: number; percent: number; tone: BarTon
 ];
 
 const STUDENTS: { name: string; section: string; attainment: string; lost: number; blocker: string; attention: Attention }[] = [
-  { name: "Aarav", section: "X-A", attainment: "17/17", lost: 0, blocker: "—", attention: "track" },
+  { name: "Aarav", section: "X-A", attainment: "17/17", lost: 0, blocker: "None", attention: "track" },
   { name: "Riya", section: "X-C", attainment: "16/17", lost: 1, blocker: "Physics numericals", attention: "watch" },
   { name: "Rahul", section: "X-B", attainment: "12/17", lost: 5, blocker: "Maths application", attention: "act" },
-  { name: "Aditi R.", section: "X-A", attainment: "16/17", lost: 1, blocker: "—", attention: "track" },
+  { name: "Aditi R.", section: "X-A", attainment: "16/17", lost: 1, blocker: "None", attention: "track" },
 ];
 
 export default function DashboardPage() {
@@ -84,7 +84,7 @@ export default function DashboardPage() {
 
       <main className={styles.main}>
         <div className={styles.demoNote}>
-          Public demo — sample data only. Nothing here is a real school or student.
+          Public demo with sample data only. Nothing here is a real school or student.
         </div>
 
         <p className={styles.crumbs}>
@@ -102,7 +102,7 @@ export default function DashboardPage() {
           <div>
             <h1>Unit Test 2</h1>
             <p className="small">
-              What this assessment tells us about Board readiness — and how confidently.
+              What this assessment tells us about Board readiness, and how confidently.
             </p>
           </div>
           <SignalCluster attention="watch" />
@@ -162,7 +162,7 @@ export default function DashboardPage() {
             <FindingCard
               subject="Physics"
               competency="Light"
-              scope="Whole chapter — no single sub-skill"
+              scope="Whole chapter, no single sub-skill"
               urgency={{ level: "h", recurrence: "3/4 years" }}
               metrics={[
                 { label: "Students affected", value: 84, qualifier: "of 240" },

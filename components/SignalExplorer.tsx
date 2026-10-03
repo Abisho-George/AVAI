@@ -18,7 +18,7 @@ const CONFIDENCE_LABEL: Record<Confidence, string> = { 3: "High", 2: "Medium", 1
 const ATTENTION_LEVELS: Attention[] = ["act", "watch", "track", "inv"];
 
 /**
- * Move any one signal and the other two hold still — the interactive proof
+ * Move any one signal and the other two hold still: the interactive proof
  * that attention, Board urgency and confidence are independent, wired to a
  * live FindingCard exactly as reference/static-site/index.html's
  * #signal-demo does.
@@ -83,7 +83,7 @@ export function SignalExplorer() {
         </div>
         <p className="small">
           Move any one of these and the other two hold still. A medium-urgency finding can carry
-          high confidence. A very high-urgency one can carry an emerging signal — and Avai will
+          high confidence. A very high-urgency one can carry an emerging signal, and Avai will
           say so rather than round it up.
         </p>
       </div>

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { CtaBand } from "@/components/CtaBand";
 
 export const metadata: Metadata = {
-  title: "About — built in Krishnagiri, for schools like the ones around it",
+  title: "About Avai",
   description:
     "Avai is built and owned by INAT Venture Pvt Ltd. It started from a plain observation: every school in India already produces the data needed to know exactly where a student is stuck.",
 };
@@ -14,7 +13,7 @@ export default function AboutPage() {
     <>
       <PageHeader
         eyebrow="About"
-        title="Built in Krishnagiri, for schools like the ones around it"
+        title="Built from the data schools already have"
         lede="Avai is built and owned by INAT Venture Pvt Ltd. It started from a plain observation: every school in India already produces the data needed to know exactly where a student is stuck, and nobody extracts it, because by hand it is a week of work per class."
       />
 
@@ -37,14 +36,14 @@ export default function AboutPage() {
                 Board marks.
               </p>
               <p>
-                Nothing in the Indian K–12 diagnostic market currently detects that pattern.
+                Nothing in the Indian school diagnostics market currently detects that pattern.
                 Everything stops at the subject total.
               </p>
             </div>
             <div className="card">
               <h3>What makes it hard to copy</h3>
               <p>
-                Not the mark extraction, and not the tagging on its own — both are becoming
+                Not the mark extraction, and not the tagging on its own. Both are becoming
                 commodity capability.
               </p>
               <p>
@@ -73,7 +72,7 @@ export default function AboutPage() {
                 anonymised, separately consented, and published openly.
               </p>
               <p>
-                Two purposes. Scholarship identification — finding students whose diagnosis shows
+                Two purposes. Scholarship identification: finding students whose diagnosis shows
                 real capability that circumstances are masking. And public education research,
                 because the question of how Indian students actually lose marks deserves an answer
                 in the open rather than inside one company&rsquo;s dashboard.
@@ -82,15 +81,12 @@ export default function AboutPage() {
                 Avai data and Yaadhum data do not mix. Each requires its own purpose-specific
                 parental consent, and a school can run one without the other.
               </p>
-              <p>
-                <Link href="/trust">How the separation is enforced</Link>
-              </p>
             </div>
             <div className="card">
               <h3>The government-school programme</h3>
               <p>
-                The District Collector of Krishnagiri has expressed support for a free diagnostics
-                and scholarship programme across government schools in the district.
+                District administration has expressed support for a free diagnostics and
+                scholarship programme across government schools.
               </p>
               <p>
                 Government schools pay nothing. The findings feed the scholarship work, under the
@@ -117,7 +113,7 @@ export default function AboutPage() {
             <div className="defrow">
               <h3>Avai</h3>
               <p>
-                The product schools buy. Also the bird — who appears when there is something to
+                The product schools buy. Also the bird, who appears when there is something to
                 welcome, something to wait for, or something to hand to a student. Never on a
                 screen full of findings, where a mascot has no business being.
               </p>

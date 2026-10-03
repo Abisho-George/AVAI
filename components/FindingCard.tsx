@@ -6,7 +6,7 @@ import type { Attention, Confidence, Urgency } from "./types";
 type Metric = {
   label: string;
   value: string | number;
-  /** Denominator or unit — "of 240", "per student". Never a bare number. */
+  /** Denominator or unit: "of 240", "per student". Never a bare number. */
   qualifier: string;
 };
 
@@ -20,15 +20,15 @@ type FindingCardProps = {
   confidence?: Confidence;
   observation?: string;
   suggestedAction?: string;
-  /** Extra content between the signals row and the observation — e.g. a per-section spread. */
+  /** Extra content between the signals row and the observation, e.g. a per-section spread. */
   extra?: ReactNode;
-  /** Replaces the default "Suggested: …" footer — e.g. role-scoped action buttons or a disclaimer note. */
+  /** Replaces the default "Suggested: …" footer, e.g. role-scoped action buttons or a disclaimer note. */
   footer?: ReactNode;
 };
 
 /**
  * Subject, competency, students affected, avg marks lost, the three
- * signals, one observation sentence, suggested action. Never a bare stat —
+ * signals, one observation sentence, suggested action. Never a bare stat:
  * every number in `metrics` carries its denominator or unit.
  */
 export function FindingCard({

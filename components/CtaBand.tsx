@@ -9,9 +9,9 @@ type CtaBandProps = {
   ctaHref: string;
   className?: string;
   /**
-   * Only the homepage's final CtaBand should pass "achieve" — CLAUDE.md
+   * Only the homepage's final CtaBand should pass "achieve": CLAUDE.md
    * reserves that pose for exactly one appearance sitewide. Other pages
-   * that want a mascot here should use "hello" or "calm" instead.
+   * that want a mascot here should use "hello" instead.
    */
   mascotPose?: MascotPose;
   /** "gold" (default) for a hard sell; "line" for a softer ask like "Still have questions?". */
@@ -33,7 +33,7 @@ export function CtaBand({
       <div className="wrap">
         <div className={styles.ctaBand}>
           <div className={styles.copy}>
-            {mascotPose ? <Mascot pose={mascotPose} size={120} /> : null}
+            {mascotPose ? <Mascot pose={mascotPose} size={mascotPose === "achieve" ? 180 : 120} /> : null}
             <div>
               <h2>{title}</h2>
               <p>{description}</p>

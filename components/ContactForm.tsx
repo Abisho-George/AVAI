@@ -60,7 +60,7 @@ export function ContactForm() {
       <div className={styles.ok}>
         <MascotMark size={58} title="Avai" />
         <p>
-          <strong>Request received.</strong> We will be in touch within two working days —
+          <strong>Request received.</strong> We will be in touch within two working days,
           usually sooner.
         </p>
       </div>
@@ -83,7 +83,7 @@ export function ContactForm() {
           <label htmlFor="board">Board</label>
           <select id="board" name="board" defaultValue="CBSE">
             <option>CBSE</option>
-            <option>State board — Tamil Nadu</option>
+            <option>State board</option>
             <option>ICSE</option>
             <option>Other</option>
           </select>
@@ -93,7 +93,7 @@ export function ContactForm() {
           <input
             id="district"
             name="district"
-            placeholder="Krishnagiri, Tamil Nadu"
+            placeholder="District, state"
             aria-invalid={Boolean(errors.district)}
             aria-describedby={errors.district ? "district-error" : undefined}
           />

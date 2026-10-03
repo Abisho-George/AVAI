@@ -29,7 +29,7 @@
   color: var(--body);
 }
 
-/* Cause not localised — neutral. */
+/* Cause not localised: neutral. */
 .neu {
   background: var(--paper-2);
   border-color: var(--line);
@@ -39,7 +39,7 @@
   color: var(--ink);
 }
 
-/* Paper under-tests this area — a caution, but gold, never red. */
+/* Paper under-tests this area: a caution, but gold, never red. */
 .warn {
   background: var(--gold-tint);
   border-color: #f2d6a6;
@@ -49,7 +49,7 @@
   color: var(--gold-deep);
 }
 
-/* Early signal / trend not yet available — informational, blue tint. */
+/* Early signal / trend not yet available: informational, blue tint. */
 .info {
   background: var(--tint);
   border-color: #c7dcf0;

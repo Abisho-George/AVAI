@@ -7,7 +7,7 @@ import { SignalExplorer } from "@/components/SignalExplorer";
 import { CtaBand } from "@/components/CtaBand";
 
 export const metadata: Metadata = {
-  title: "Avai — what is stopping students from scoring higher?",
+  title: "Avai | What is stopping students from scoring higher?",
   description:
     "Avai reads question-wise marks against a Board-mapped question paper and names the competency costing your students marks, how urgent it is, and how sure it is.",
 };
@@ -23,20 +23,17 @@ export default function Home() {
               <h1>What is stopping students from scoring higher?</h1>
               <p className="lede">
                 Avai reads question-wise marks against a Board-mapped question paper and names
-                the competency costing your students marks — how many it affects, how urgent it
+                the competency costing your students marks: how many it affects, how urgent it
                 is for the Board, and how sure we are.
               </p>
               <div className={styles.ctaRow}>
                 <Link className="btn btn-primary" href="/contact">
                   Request a pilot
                 </Link>
-                <Link className="btn btn-line" href="/findings">
+                <Link className="btn btn-line" href="/portal/dashboard">
                   See a sample finding
                 </Link>
               </div>
-              <p className="small" style={{ marginTop: 22 }}>
-                Running now in 5 CBSE schools across Krishnagiri district, Tamil Nadu.
-              </p>
             </div>
             <HeroLoop />
           </div>
@@ -151,12 +148,12 @@ export default function Home() {
       <section>
         <div className="wrap">
           <div className="head-2">
-            <h2>Running now in Krishnagiri</h2>
+            <h2>What a pilot asks of a school</h2>
           </div>
           <div className="stats">
             <div className="stat">
-              <b>5</b>
-              <span>CBSE schools, onboarded one per week</span>
+              <b>1</b>
+              <span>question paper and one mark register to start</span>
             </div>
             <div className="stat">
               <b>X &amp; XII</b>
@@ -171,14 +168,7 @@ export default function Home() {
               <span>of teacher time per exam</span>
             </div>
           </div>
-          <div className="quote">
-            <p>
-              The District Collector has expressed support for a free diagnostics and scholarship
-              programme in government schools across the district.
-            </p>
-            <cite>Thiru C. Dinesh Kumar, District Collector, Krishnagiri</cite>
-          </div>
-          <Link className="btn btn-line" href="/pilot">
+          <Link className={`btn btn-line ${styles.pilotLink}`} href="/pilot">
             What a pilot actually involves
           </Link>
         </div>
