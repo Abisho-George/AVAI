@@ -43,10 +43,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${outfit.variable} ${plexSans.variable} ${plexMono.variable}`}>
-        {children}
-      </body>
+    // Font variables sit on <html> so the :root tokens in tokens.css can resolve them.
+    <html lang="en" className={`${outfit.variable} ${plexSans.variable} ${plexMono.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
