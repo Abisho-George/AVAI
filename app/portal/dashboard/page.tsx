@@ -7,6 +7,7 @@ import { FindingCard } from "@/components/FindingCard";
 import { EvidenceNote } from "@/components/EvidenceNote";
 import { AttainmentBar } from "@/components/AttainmentBar";
 import { SignalCluster } from "@/components/SignalCluster";
+import { Logo } from "@/components/Logo";
 import type { Attention, BarTone } from "@/components/types";
 
 const NAV = ["School", "BoardX", "Papers", "Enter marks", "Manage teachers", "Settings"];
@@ -52,12 +53,8 @@ export default function DashboardPage() {
   return (
     <div className={styles.app}>
       <aside className={styles.side}>
-        <Link href="/" className={styles.sideMark} aria-label="Avai home">
-          <svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-            <rect width="30" height="30" rx="8" fill="var(--ink-2)" />
-            <path d="M8 21 C12 15 17 10 23 7 C19 13 15 18 11 22 Z" fill="var(--gold)" />
-            <path d="M7 22 C11 16 16 11 22 8 C17 14 12 19 9 23 Z" fill="var(--teal)" />
-          </svg>
+        <Link href="/" className={styles.sideMark}>
+          <Logo dark height={28} />
         </Link>
         <nav>
           {NAV.map((item, i) => (
