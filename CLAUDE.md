@@ -130,6 +130,10 @@ tutor, and no copy should suggest it does.
 - White is the primary page background. Separate sections with the cool
   `--paper-2` wash or the ink band; no warm or peach surfaces
 - No component library. No Framer Motion unless a specific interaction needs it.
+- Motion: add `data-reveal` (or `data-stagger` on a list parent) for scroll reveals,
+  `.enter` for above-the-fold entrances, `grow-x` / `ring-fill` for bars and rings,
+  `CountUp` for numbers. All of it is a no-op under reduced motion or without JS.
+- Icons come from `components/Icon.tsx` (line icons, currentColor). Add new ones there.
 - Static export target (`output: 'export'`) — this site has no server needs
 - Fonts: `next/font/google` — Outfit (display), IBM Plex Sans (body), IBM Plex Mono (marks/IDs)
 - All numerals tabular: `font-variant-numeric: tabular-nums` on `body`

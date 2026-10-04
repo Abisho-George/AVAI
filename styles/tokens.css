@@ -12,6 +12,7 @@
   --ink-deep:   #041C34;  /* app-icon background */
   --body:       #40536B;  /* body copy */
   --muted:      #7D8DA1;  /* hints, captions, table headers */
+  --subtle:     #5B6B80;  /* small captions that must clear WCAG AA on white and --paper-2 */
 
   /* --- Surfaces --- */
   --paper:      #FFFFFF;  /* page background: white is primary */
@@ -46,6 +47,12 @@
   --w:      1140px;
   --r:      10px;
   --r-lg:   16px;
+
+  /* --- Elevation --- */
+  --shadow-sm: 0 1px 2px rgba(6, 33, 62, 0.05), 0 2px 8px rgba(6, 33, 62, 0.04);
+  --shadow-md: 0 2px 6px rgba(6, 33, 62, 0.06), 0 12px 28px rgba(6, 33, 62, 0.08);
+  --shadow-lg: 0 4px 12px rgba(6, 33, 62, 0.08), 0 24px 56px rgba(6, 33, 62, 0.12);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 /* Semantic aliases: use these in components, not the raw colours,

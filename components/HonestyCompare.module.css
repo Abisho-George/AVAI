@@ -1,0 +1,153 @@
+.toggle {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: #0c2b4c;
+  border: 1px solid #1b416b;
+  margin-bottom: 26px;
+}
+
+.toggle button {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: #a9bace;
+  cursor: pointer;
+  transition:
+    background-color 0.25s,
+    color 0.25s;
+}
+
+.toggle button:hover {
+  color: var(--white);
+}
+
+.toggle .on {
+  background: var(--teal);
+  color: var(--white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.cell {
+  perspective: 1400px;
+}
+
+/* Both faces share one grid cell, so the card is as tall as its taller face. */
+.card {
+  display: grid;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.face {
+  grid-area: 1 / 1;
+  border-radius: 14px;
+  padding: 22px;
+  backface-visibility: hidden;
+}
+
+.face h3 {
+  font-size: 1.05rem;
+  margin: 12px 0 6px;
+}
+
+.face p {
+  margin: 0;
+  font-size: 0.93rem;
+}
+
+.front {
+  background: #0c2b4c;
+  border: 1px solid #1b416b;
+}
+
+.front h3 {
+  color: var(--white);
+}
+
+.front p {
+  color: #a9bace;
+}
+
+.back {
+  background: var(--white);
+  border: 1px solid var(--line);
+  transform: rotateY(180deg);
+}
+
+.face.back h3 {
+  color: var(--ink);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: rgba(6, 169, 164, 0.16);
+  color: #5fd6d1;
+}
+
+.iconTypical {
+  background: var(--paper-2);
+  color: var(--subtle);
+}
+
+.face .quote {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.face .why {
+  color: var(--body);
+  font-size: 0.85rem;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card {
+    transition: transform 0.7s var(--ease-out);
+  }
+}
+
+/* Without motion the flip still has to swap faces, so fall back to a plain show/hide. */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .flipped,
+  .back {
+    transform: none;
+  }
+
+  .back {
+    visibility: hidden;
+  }
+
+  .flipped .back {
+    visibility: visible;
+  }
+
+  .flipped .front {
+    visibility: hidden;
+  }
+}

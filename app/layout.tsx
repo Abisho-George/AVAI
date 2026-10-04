@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "../styles/tokens.css";
 import "./globals.css";
+import { MotionObserver } from "@/components/MotionObserver";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -37,6 +38,11 @@ export const metadata: Metadata = {
   },
 };
 
+// Runs before first paint. Scroll reveals only hide content when the visitor
+// allows motion and the browser can reveal it again; if the app never
+// hydrates, the class comes off after three seconds so nothing stays hidden.
+const MOTION_BOOT = `(function(){try{if(window.matchMedia("(prefers-reduced-motion: reduce)").matches||!("IntersectionObserver" in window))return;var d=document.documentElement;d.classList.add("motion-ready");setTimeout(function(){if(!window.__avaiMotion)d.classList.remove("motion-ready")},3000)}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,8 +50,18 @@ export default function RootLayout({
 }>) {
   return (
     // Font variables sit on <html> so the :root tokens in tokens.css can resolve them.
-    <html lang="en" className={`${outfit.variable} ${plexSans.variable} ${plexMono.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${outfit.variable} ${plexSans.variable} ${plexMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: MOTION_BOOT }} />
+      </head>
+      <body>
+        {children}
+        <MotionObserver />
+      </body>
     </html>
   );
 }

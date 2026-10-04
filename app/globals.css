@@ -174,7 +174,35 @@ section.snug {
   transition:
     background-color 0.15s,
     border-color 0.15s,
-    color 0.15s;
+    color 0.15s,
+    box-shadow 0.2s,
+    transform 0.2s var(--ease-out);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(6, 33, 62, 0.2);
+}
+
+.btn-gold:hover {
+  box-shadow: 0 8px 20px rgba(247, 161, 52, 0.3);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .btn .btn-ic {
+    transition: transform 0.2s var(--ease-out);
+  }
+
+  .btn:hover .btn-ic {
+    transform: translateX(3px);
+  }
 }
 
 .btn-primary {
@@ -299,7 +327,7 @@ section.snug {
 
 .stat span {
   font-size: 0.87rem;
-  color: var(--muted);
+  color: var(--subtle);
 }
 
 .band-ink .stat b {
@@ -483,4 +511,240 @@ section.snug {
 
 .f-coral {
   background: var(--coral);
+}
+
+/* ---------- icons, chips, accordions ---------- */
+.icon-tile {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border-radius: 12px;
+}
+
+.icon-tile-teal {
+  background: var(--teal-tint);
+  color: var(--teal-deep);
+}
+
+.icon-tile-blue {
+  background: var(--tint);
+  color: var(--blue);
+}
+
+.icon-tile-gold {
+  background: var(--gold-tint);
+  color: var(--gold-deep);
+}
+
+.icon-tile-ink {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.icon-tile-coral {
+  background: var(--coral-tint);
+  color: #9b2f25;
+}
+
+.band-ink .icon-tile-teal {
+  background: rgba(6, 169, 164, 0.16);
+  color: #5fd6d1;
+}
+
+.band-ink .icon-tile-gold {
+  background: rgba(247, 161, 52, 0.16);
+  color: var(--gold);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 13px 6px 10px;
+  border-radius: 999px;
+  background: var(--teal-tint);
+  /* A shade under --teal-deep so small chip text clears AA on the tint. */
+  color: #05605d;
+  font-family: var(--display);
+  font-size: 0.92rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex: none;
+}
+
+.more {
+  margin-top: 10px;
+}
+
+.more summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  list-style: none;
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
+.more summary::-webkit-details-marker {
+  display: none;
+}
+
+.more summary svg {
+  transition: transform 0.2s var(--ease-out);
+}
+
+.more[open] summary svg {
+  transform: rotate(90deg);
+}
+
+.more-body {
+  padding-top: 10px;
+}
+
+.more-body p {
+  font-size: 0.93rem;
+}
+
+.card.lift {
+  transition:
+    transform 0.25s var(--ease-out),
+    box-shadow 0.25s,
+    border-color 0.25s;
+}
+
+.card.lift:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #c8d5e5;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feature h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.feature p {
+  margin: 0;
+  font-size: 0.93rem;
+}
+
+/* ---------- motion ---------- */
+/*
+ * Everything below is decoration on top of a page that already reads
+ * correctly. [data-reveal] and [data-stagger] only start hidden while
+ * <html> has .motion-ready (see app/layout.tsx), and every rule sits
+ * behind prefers-reduced-motion: no-preference.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .card.lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .motion-ready [data-reveal]:not(.is-done) {
+    transition:
+      opacity 0.75s var(--ease-out),
+      transform 0.75s var(--ease-out);
+    transition-delay: var(--d, 0s);
+  }
+
+  .motion-ready [data-reveal]:not(.is-in) {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .motion-ready [data-reveal="fade"]:not(.is-in) {
+    transform: none;
+  }
+
+  .motion-ready [data-reveal="zoom"]:not(.is-in) {
+    transform: scale(0.95);
+  }
+
+  .motion-ready [data-stagger]:not(.is-done) > * {
+    transition:
+      opacity 0.6s var(--ease-out),
+      transform 0.6s var(--ease-out);
+  }
+
+  .motion-ready [data-stagger]:not(.is-in) > * {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  .motion-ready [data-stagger]:not(.is-done) > :nth-child(2) { transition-delay: 0.08s; }
+  .motion-ready [data-stagger]:not(.is-done) > :nth-child(3) { transition-delay: 0.16s; }
+  .motion-ready [data-stagger]:not(.is-done) > :nth-child(4) { transition-delay: 0.24s; }
+  .motion-ready [data-stagger]:not(.is-done) > :nth-child(5) { transition-delay: 0.32s; }
+  .motion-ready [data-stagger]:not(.is-done) > :nth-child(6) { transition-delay: 0.4s; }
+  .motion-ready [data-stagger]:not(.is-done) > :nth-child(7) { transition-delay: 0.48s; }
+  .motion-ready [data-stagger]:not(.is-done) > :nth-child(8) { transition-delay: 0.56s; }
+
+  /* Bars grow and rings sweep once their section is revealed. */
+  .grow-x {
+    transform-origin: left center;
+    transition: transform 1.1s var(--ease-out) var(--gd, 0.2s);
+  }
+
+  .motion-ready :is([data-reveal], [data-stagger]):not(.is-in) .grow-x {
+    transform: scaleX(0);
+  }
+
+  .ring-fill {
+    transition: stroke-dashoffset 1.3s var(--ease-out) var(--gd, 0.25s);
+  }
+
+  .motion-ready :is([data-reveal], [data-stagger]):not(.is-in) .ring-fill {
+    stroke-dashoffset: 100;
+  }
+
+  /* Page-load entrance for above-the-fold content. CSS only, so it plays
+     on first paint without waiting for JavaScript. */
+  .enter {
+    animation: enter-up 0.8s var(--ease-out) both;
+    animation-delay: var(--d, 0s);
+  }
+
+  .live-dot {
+    animation: live-pulse 2.4s ease-out infinite;
+  }
+
+  .more[open] .more-body {
+    animation: enter-up 0.35s var(--ease-out) both;
+  }
+
+  @keyframes enter-up {
+    from {
+      opacity: 0.01;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes live-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(6, 169, 164, 0.45);
+    }
+    70%,
+    100% {
+      box-shadow: 0 0 0 9px rgba(6, 169, 164, 0);
+    }
+  }
 }

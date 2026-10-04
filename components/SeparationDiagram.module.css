@@ -1,0 +1,275 @@
+.diagram {
+  margin: 0;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 620px) {
+  .diagram {
+    padding: 18px 14px;
+  }
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.top > span:last-child {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.82rem;
+  color: #a9bace;
+}
+
+.top b {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.02rem;
+  color: var(--white);
+}
+
+.topIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--ink-2);
+  flex: none;
+}
+
+/* The two branches leaving the company box. */
+.fork {
+  position: relative;
+  height: 34px;
+  margin: 0 auto;
+  /* spans centre of the left column to centre of the right: half the width plus half the wall and gaps */
+  width: calc(50% + 38px);
+}
+
+.fork::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 16px;
+  border-left: 2px solid var(--line);
+}
+
+.fork span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 16px;
+  height: 18px;
+  border: 2px solid var(--line);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 620px) {
+  .cols {
+    grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .fork {
+    width: calc(50% + 21px);
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.node {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  padding: 16px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+}
+
+.node b {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+.node span {
+  font-size: 0.82rem;
+  color: var(--body);
+}
+
+.nodeAvai {
+  background: var(--teal-tint);
+  color: var(--teal-deep);
+  border-color: #bfe6e4;
+}
+
+.nodeYaadhum {
+  background: var(--gold-tint);
+  color: var(--gold-deep);
+  border-color: #f2d6a6;
+}
+
+.lane {
+  position: relative;
+  width: 2px;
+  height: 86px;
+  margin: 6px 0;
+  background-image: linear-gradient(var(--line) 50%, transparent 50%);
+  background-size: 2px 8px;
+}
+
+.lane i {
+  position: absolute;
+  left: -4px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.teal i {
+  background: var(--teal);
+}
+
+.gold i {
+  background: var(--gold);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lane i {
+    animation: flow 2.7s linear infinite;
+  }
+
+  .lane i:nth-child(2) {
+    animation-delay: 0.9s;
+  }
+
+  .lane i:nth-child(3) {
+    animation-delay: 1.8s;
+  }
+
+  @keyframes flow {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    15%,
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(76px);
+      opacity: 0;
+    }
+  }
+}
+
+.facts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.facts li {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 0.84rem;
+  color: var(--body);
+  line-height: 1.4;
+}
+
+.facts li svg {
+  flex: none;
+  color: var(--teal-deep);
+  margin-top: 2px;
+}
+
+.wall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 12px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--ink) 0 14px,
+    var(--ink-2) 14px 16px
+  );
+  color: var(--white);
+  padding: 14px 4px;
+}
+
+.wallLock {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--teal);
+}
+
+.wallText {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+@media (max-width: 620px) {
+  .wallLock {
+    width: 26px;
+    height: 26px;
+  }
+
+  .wallLock svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.caption {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--body);
+}

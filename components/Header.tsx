@@ -19,13 +19,21 @@ const MOBILE_NAV = [...NAV, { href: "/portal", label: "School portal" }];
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className={styles.hdr}>
+    <header className={`${styles.hdr} ${scrolled ? styles.scrolled : ""}`}>
       <a href="#main" className="sr">
         Skip to content
       </a>

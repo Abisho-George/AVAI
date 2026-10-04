@@ -24,7 +24,7 @@ export function AttainmentBar({ label, percent, value, tone }: AttainmentBarProp
         aria-valuemax={100}
       >
         <div
-          className={`${styles.fill} ${styles[`f-${tone}`]}`}
+          className={`${styles.fill} ${styles[`f-${tone}`]} grow-x`}
           style={{ width: `${Math.max(0, Math.min(100, percent))}%` }}
         />
       </div>

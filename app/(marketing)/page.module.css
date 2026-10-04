@@ -20,13 +20,6 @@
   max-width: 15ch;
 }
 
-.eyebrow {
-  color: var(--teal-deep);
-  font-family: var(--display);
-  font-size: 1.02rem;
-  font-weight: 500;
-  margin-bottom: 14px;
-}
 
 .ctaRow {
   display: flex;
@@ -51,4 +44,55 @@
 
 .pilotLink {
   margin-top: 36px;
+}
+
+.promises {
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+.promises li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.88rem;
+  color: var(--body);
+}
+
+.promises svg {
+  color: var(--teal-deep);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avaiCard {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px rgba(6, 169, 164, 0.08);
+}
+
+.chipDark {
+  background: rgba(6, 169, 164, 0.16);
+  color: #5fd6d1;
+}
+
+.stats {
+  gap: 22px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
 }

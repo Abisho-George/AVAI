@@ -3,6 +3,7 @@
 import { useRef, useState, type FormEvent } from "react";
 import styles from "./ContactForm.module.css";
 import { MascotMark } from "./Mascot";
+import { Icon } from "./Icon";
 
 type FieldErrors = Record<string, string>;
 
@@ -160,7 +161,7 @@ export function ContactForm() {
 
         <div className={`${styles.fld} ${styles.full} ${styles.submitRow}`}>
           <button className="btn btn-primary" type="submit">
-            Send request
+            Send request <Icon name="send" size={16} className="btn-ic" />
           </button>
           <p className="small">
             We reply within two working days. Nothing is shared with anyone outside INAT Venture.

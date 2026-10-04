@@ -1,21 +1,44 @@
 .pghead {
-  padding: 62px 0 10px;
+  padding: 62px 0 26px;
+}
+
+.withAside {
+  padding-bottom: 64px;
 }
 
 @media (max-width: 700px) {
   .pghead {
-    padding: 38px 0 6px;
+    padding: 38px 0 14px;
+  }
+
+  .withAside {
+    padding-bottom: 44px;
   }
 }
 
-.eyebrow {
-  color: var(--teal-deep);
-  font-family: var(--display);
-  font-size: 1.02rem;
-  font-weight: 500;
-  margin-bottom: 14px;
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.withAside .grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+}
+
+@media (max-width: 960px) {
+  .withAside .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+  }
 }
 
 .pghead :global(.lede) {
-  max-width: 66ch;
+  max-width: 60ch;
+}
+
+.aside {
+  min-width: 0;
 }

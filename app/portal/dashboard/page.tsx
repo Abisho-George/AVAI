@@ -8,9 +8,18 @@ import { EvidenceNote } from "@/components/EvidenceNote";
 import { AttainmentBar } from "@/components/AttainmentBar";
 import { SignalCluster } from "@/components/SignalCluster";
 import { Logo } from "@/components/Logo";
+import { CountUp } from "@/components/CountUp";
+import { Icon, type IconName } from "@/components/Icon";
 import type { Attention, BarTone } from "@/components/types";
 
-const NAV = ["School", "BoardX", "Papers", "Enter marks", "Manage teachers", "Settings"];
+const NAV: { label: string; icon: IconName }[] = [
+  { label: "School", icon: "building" },
+  { label: "BoardX", icon: "target" },
+  { label: "Papers", icon: "paper" },
+  { label: "Enter marks", icon: "scorecard" },
+  { label: "Manage teachers", icon: "users" },
+  { label: "Settings", icon: "settings" },
+];
 
 const SECTIONS: { label: string; students: number; percent: number; tone: BarTone; findings: number; attention: Attention }[] = [
   { label: "X-A", students: 48, percent: 81, tone: "teal", findings: 1, attention: "track" },
@@ -59,12 +68,13 @@ export default function DashboardPage() {
         <nav>
           {NAV.map((item, i) => (
             <a
-              key={item}
+              key={item.label}
               href="#"
               className={i === 0 ? "on" : ""}
               onClick={(e) => e.preventDefault()}
             >
-              {item}
+              <Icon name={item.icon} size={17} />
+              {item.label}
             </a>
           ))}
         </nav>
@@ -112,18 +122,24 @@ export default function DashboardPage() {
           />
         </div>
 
-        <div className={styles.kpis}>
+        <div className={styles.kpis} data-stagger>
           <div className={styles.kpi}>
             <span>Students</span>
-            <b>240</b>
+            <b>
+              <CountUp value={240} />
+            </b>
           </div>
           <div className={styles.kpi}>
             <span>Sections</span>
-            <b>5</b>
+            <b>
+              <CountUp value={5} />
+            </b>
           </div>
           <div className={styles.kpi}>
             <span>Subjects</span>
-            <b>5</b>
+            <b>
+              <CountUp value={5} />
+            </b>
           </div>
           <div className={styles.kpi}>
             <span>Diagnostic strength</span>
@@ -131,7 +147,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className={styles.secn}>
+        <div className={styles.secn} data-reveal>
           <h2>What is stopping students from scoring higher?</h2>
           <p className="small">Each card is one finding. The three statuses are independent of each other.</p>
           <div className="split-2">
@@ -177,7 +193,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className={styles.secn}>
+        <div className={styles.secn} data-reveal>
           <h2>Are all the sections facing the same problem?</h2>
           <p className="small">Attention is a section-level signal, separate from Board urgency and confidence.</p>
           <div className="panel">
@@ -218,7 +234,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className={styles.secn}>
+        <div className={styles.secn} data-reveal>
           <h2>Which students need what?</h2>
           <p className="small">
             Rank is present but never the headline. The row&rsquo;s real payload is what is
@@ -256,7 +272,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className={styles.secn}>
+        <div className={styles.secn} data-reveal>
           <h2>What can&rsquo;t we recommend yet, and why?</h2>
           <div className="split-2">
             <EvidenceNote state="cause-not-localised" detail="Problem confirmed. Manual review recommended." />

@@ -1,10 +1,61 @@
-.gaugeValue {
-  font-family: var(--display);
-  font-size: 2.2rem;
-  line-height: 1.1;
-  margin: 6px 0 2px;
+.hero {
+  padding: 56px 0 72px;
 }
 
-.gaugeCaption {
-  margin: 0 0 12px;
+@media (max-width: 700px) {
+  .hero {
+    padding: 34px 0 48px;
+  }
+}
+
+.hero h1 {
+  max-width: 14ch;
+}
+
+.detailList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 860px) {
+  .detailList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.detail {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.detail:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.detailText {
+  min-width: 0;
+}
+
+.detailText h3 {
+  font-size: 1.08rem;
+  margin-bottom: 6px;
+}
+
+.detailText > p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.detailNum {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--teal-deep);
+  margin-bottom: 4px;
 }

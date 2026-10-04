@@ -6,6 +6,14 @@
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line-soft);
+  transition:
+    box-shadow 0.25s,
+    border-color 0.25s;
+}
+
+.scrolled {
+  box-shadow: 0 6px 24px rgba(6, 33, 62, 0.07);
+  border-bottom-color: transparent;
 }
 
 .hdrIn {
@@ -24,21 +32,48 @@
 }
 
 .nav a {
+  position: relative;
   white-space: nowrap;
   text-decoration: none;
   color: var(--body);
   font-size: 0.93rem;
   padding: 5px 0;
-  border-bottom: 2px solid transparent;
+}
+
+/* Underline that grows from the left on hover and stays on the current page. */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transform-origin: left center;
 }
 
 .nav a:hover {
   color: var(--ink);
 }
 
+.nav a:hover::after {
+  transform: scaleX(0.6);
+}
+
 .nav a[aria-current="page"] {
   color: var(--ink);
-  border-bottom-color: var(--teal);
+}
+
+.nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nav a::after {
+    transition: transform 0.3s var(--ease-out);
+  }
 }
 
 .hdrAct {
@@ -80,6 +115,29 @@
 
 .mnav.on {
   display: flex;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mnav.on a {
+    animation: mnav-in 0.35s var(--ease-out) both;
+  }
+
+  .mnav.on a:nth-child(2) { animation-delay: 0.03s; }
+  .mnav.on a:nth-child(3) { animation-delay: 0.06s; }
+  .mnav.on a:nth-child(4) { animation-delay: 0.09s; }
+  .mnav.on a:nth-child(5) { animation-delay: 0.12s; }
+  .mnav.on a:nth-child(6) { animation-delay: 0.15s; }
+
+  @keyframes mnav-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
 @media (max-width: 1000px) {

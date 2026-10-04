@@ -43,8 +43,8 @@ export default function PortalPage() {
         </Link>
         <div>
           <Mascot pose="hello" size={120} title="Avai" />
-          <h2>A brighter tomorrow for every student.</h2>
-          <p>
+          <h2 className="enter">A brighter tomorrow for every student.</h2>
+          <p className="enter" style={{ ["--d" as string]: "0.08s" }}>
             Avai reads your assessments against the Board blueprint and tells you where marks are
             being lost, how urgent it is, and how sure we are.
           </p>
@@ -55,7 +55,7 @@ export default function PortalPage() {
       </div>
 
       <div className={styles.portalR}>
-        <div className={styles.portalBox}>
+        <div className={`${styles.portalBox} enter`} style={{ ["--d" as string]: "0.12s" }}>
           <h1>Sign in</h1>
           <p className="small" style={{ marginBottom: 22 }}>
             Choose how you are signing in to your school.
