@@ -5,6 +5,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { Logo } from "@/components/Logo";
 import { Mascot } from "@/components/Mascot";
+import { SchoolDoodles } from "@/components/SchoolDoodles";
 import { Tabs } from "@/components/Tabs";
 
 // Demo only: not real authentication. Every submission (staff or student)
@@ -37,7 +38,8 @@ function SignInForm({ children }: { children: React.ReactNode }) {
 export default function PortalPage() {
   return (
     <div className={styles.portal}>
-      <div className={styles.portalL}>
+      <div className={`${styles.portalL} has-doodles`}>
+        <SchoolDoodles variant="dark" />
         <Link href="/">
           <Logo dark />
         </Link>

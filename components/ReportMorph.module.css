@@ -1,0 +1,259 @@
+.morph {
+  position: relative;
+}
+
+.card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+  transition:
+    border-color 0.5s,
+    box-shadow 0.5s,
+    transform 0.4s var(--ease-out);
+}
+
+.cardAvai {
+  border-color: var(--teal);
+  box-shadow:
+    0 0 0 5px rgba(6, 169, 164, 0.1),
+    var(--shadow-lg);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.student {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.student > span:last-child {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.78rem;
+  color: var(--subtle);
+}
+
+.student b {
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--tint);
+  color: var(--blue);
+}
+
+.toggle {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+}
+
+.toggle button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--subtle);
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+}
+
+.toggle .on {
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+
+.cardAvai .toggle .on {
+  background: var(--teal);
+  color: var(--white);
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 150px 1fr 54px;
+  gap: 12px;
+  align-items: center;
+  height: 34px;
+  overflow: hidden;
+  transition:
+    height 0.5s var(--ease-out),
+    opacity 0.4s;
+}
+
+@media (max-width: 520px) {
+  .row {
+    grid-template-columns: 112px 1fr 44px;
+    gap: 8px;
+  }
+}
+
+.rowGone {
+  height: 0;
+  opacity: 0;
+}
+
+.label {
+  font-size: 0.88rem;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.value {
+  font-family: var(--mono);
+  font-size: 0.84rem;
+  text-align: right;
+  color: var(--ink);
+}
+
+.track {
+  height: 10px;
+  border-radius: 10px;
+  background: var(--line-soft);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: 10px;
+  transform-origin: left center;
+  transition:
+    transform 0.9s var(--ease-out),
+    background-color 0.6s;
+}
+
+.coral { background: var(--coral); }
+.gold { background: var(--gold); }
+.teal { background: var(--teal); }
+.blue { background: var(--blue-2); }
+
+.verdict {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: none;
+}
+
+.verdictLabel {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--subtle);
+}
+
+.verdict b {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.12rem;
+  color: var(--ink);
+}
+
+.cardAvai .verdict b {
+  color: #05605d;
+}
+
+.insights {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.insights li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  font-size: 0.86rem;
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  opacity: 0.35;
+  transition:
+    opacity 0.4s,
+    transform 0.4s var(--ease-out),
+    border-color 0.4s;
+  transition-delay: calc(var(--i) * 0.12s);
+}
+
+.insights li svg {
+  color: var(--teal-deep);
+}
+
+.insightsOn li {
+  opacity: 1;
+  border-color: #9fdcda;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .label,
+  .value {
+    animation: swap 0.5s var(--ease-out) both;
+  }
+
+  .verdict b {
+    animation: type 0.8s steps(30, end) both;
+  }
+
+  .insights li {
+    transform: translateY(6px);
+  }
+
+  .insightsOn li {
+    transform: none;
+  }
+
+  @keyframes swap {
+    from { opacity: 0; transform: translateY(8px); filter: blur(4px); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+
+  @keyframes type {
+    from { clip-path: inset(0 100% 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+}

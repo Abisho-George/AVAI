@@ -3,6 +3,7 @@ import { Outfit, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "../styles/tokens.css";
 import "./globals.css";
 import { MotionObserver } from "@/components/MotionObserver";
+import { InteractiveFX } from "@/components/InteractiveFX";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -61,6 +62,7 @@ export default function RootLayout({
       <body>
         {children}
         <MotionObserver />
+        <InteractiveFX />
       </body>
     </html>
   );

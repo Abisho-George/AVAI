@@ -1,6 +1,8 @@
 import Link from "next/link";
 import styles from "./CtaBand.module.css";
 import { Mascot, type MascotPose } from "./Mascot";
+import { SchoolDoodles } from "./SchoolDoodles";
+import { Icon } from "./Icon";
 
 type CtaBandProps = {
   title: string;
@@ -29,9 +31,10 @@ export function CtaBand({
   ctaTone = "gold",
 }: CtaBandProps) {
   return (
-    <section className={className}>
+    <section className={`${className ?? ""} has-doodles`}>
+      <SchoolDoodles variant={className?.includes("band-ink") ? "dark" : "header"} />
       <div className="wrap">
-        <div className={styles.ctaBand}>
+        <div className={`${styles.ctaBand} glow-border spot`} data-reveal="zoom">
           <div className={styles.copy}>
             {mascotPose ? <Mascot pose={mascotPose} size={mascotPose === "achieve" ? 180 : 120} /> : null}
             <div>
@@ -41,6 +44,7 @@ export function CtaBand({
           </div>
           <Link className={`btn btn-${ctaTone}`} href={ctaHref}>
             {ctaLabel}
+            <Icon name="arrow-right" size={16} strokeWidth={2.2} className="btn-ic" />
           </Link>
         </div>
       </div>

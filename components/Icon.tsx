@@ -42,7 +42,11 @@ export type IconName =
   | "alert"
   | "mail"
   | "spark"
-  | "settings";
+  | "settings"
+  | "book"
+  | "laptop"
+  | "cursor"
+  | "bell";
 
 const PATHS: Record<IconName, React.ReactNode> = {
   paper: (
@@ -243,6 +247,25 @@ const PATHS: Record<IconName, React.ReactNode> = {
     </>
   ),
   spark: <path d="M12 3v5M12 16v5M3 12h5M16 12h5M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3" />,
+  book: (
+    <>
+      <path d="M3.5 6c3-1.5 6-1.5 8.5 0v13c-2.5-1.5-5.5-1.5-8.5 0z" />
+      <path d="M20.5 6c-3-1.5-6-1.5-8.5 0v13c2.5-1.5 5.5-1.5 8.5 0z" />
+    </>
+  ),
+  laptop: (
+    <>
+      <rect x="4" y="5" width="16" height="11" rx="1.5" />
+      <path d="M2 19h20" />
+    </>
+  ),
+  cursor: <path d="M5 3.5l13 7-5.6 1.6L10 18z" />,
+  bell: (
+    <>
+      <path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z" />
+      <path d="M10 20.5a2 2 0 0 0 4 0" />
+    </>
+  ),
   settings: (
     <>
       <circle cx="12" cy="12" r="3" />

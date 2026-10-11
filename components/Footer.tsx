@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./Footer.module.css";
 import { Logo } from "./Logo";
+import { Icon } from "./Icon";
 
 export function Footer() {
   return (
@@ -33,6 +34,13 @@ export function Footer() {
             <Link href="/contact">Contact</Link>
           </div>
         </div>
+      </div>
+      <div className={styles.eduStrip}>
+        <span>
+          <Icon name="school" size={16} /> Built for Classes X and XII, in CBSE and State Board
+          schools
+        </span>
+        <span className={styles.lga}>Learn · Grow · Achieve</span>
       </div>
       <p className={styles.meta}>
         © 2026 INAT Venture Pvt Ltd. Avai does not set exams, does not

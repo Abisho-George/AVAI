@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./not-found.module.css";
 import { Mascot } from "@/components/Mascot";
+import { SchoolDoodles } from "@/components/SchoolDoodles";
 
 export const metadata: Metadata = {
   title: "Page not found | Avai",
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className={styles.wrap}>
+    <div className={`${styles.wrap} has-doodles`}>
+      <SchoolDoodles variant="hero" />
       <Mascot pose="hello" size={120} title="Avai" />
       <h1>Page not found</h1>
       <p className={styles.line}>

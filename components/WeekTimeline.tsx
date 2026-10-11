@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./WeekTimeline.module.css";
 import { Icon, IconTile, type IconName } from "./Icon";
 
@@ -19,10 +19,30 @@ export type Week = {
  */
 export function WeekTimeline({ weeks }: { weeks: Week[] }) {
   const [active, setActive] = useState(0);
+  const [auto, setAuto] = useState(true);
+  const [visible, setVisible] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const week = weeks[active];
 
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.4 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  // Walks through the weeks on its own while on screen, until someone picks one.
+  useEffect(() => {
+    if (!auto || !visible) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = window.setTimeout(() => setActive((a) => (a + 1) % weeks.length), 3800);
+    return () => window.clearTimeout(t);
+  }, [active, auto, visible, weeks.length]);
+
   function select(n: number, focus = false) {
+    setAuto(false);
     const next = (n + weeks.length) % weeks.length;
     setActive(next);
     if (focus) refs.current[next]?.focus();
@@ -42,7 +62,7 @@ export function WeekTimeline({ weeks }: { weeks: Week[] }) {
   }
 
   return (
-    <div className={styles.timeline}>
+    <div className={styles.timeline} ref={rootRef}>
       <div className={styles.railWrap}>
         <div className={styles.rail} aria-hidden="true">
           <span

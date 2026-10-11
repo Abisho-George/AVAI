@@ -72,7 +72,10 @@ export default function AboutPage() {
           </div>
           <ol className={styles.story}>
             <li data-reveal>
-              <span className={styles.storyN}>01</span>
+              <span className={styles.storyN}>
+                <Icon name="search" size={22} />
+                <small>01</small>
+              </span>
               <div>
                 <h3>The observation</h3>
                 <p>
@@ -82,7 +85,10 @@ export default function AboutPage() {
               </div>
             </li>
             <li data-reveal>
-              <span className={styles.storyN}>02</span>
+              <span className={styles.storyN}>
+                <Icon name="clock" size={22} />
+                <small>02</small>
+              </span>
               <div>
                 <h3>The problem</h3>
                 <p>
@@ -92,7 +98,10 @@ export default function AboutPage() {
               </div>
             </li>
             <li data-reveal>
-              <span className={styles.storyN}>03</span>
+              <span className={styles.storyN}>
+                <Icon name="spark" size={22} />
+                <small>03</small>
+              </span>
               <div>
                 <h3>What we built</h3>
                 <p>
@@ -174,7 +183,7 @@ export default function AboutPage() {
       <section className="band-2">
         <div className="wrap">
           <div className={styles.vm} data-stagger>
-            <div className={`${styles.vmCard} ${styles.vision}`}>
+            <div className={`${styles.vmCard} ${styles.vision} glow-border`} data-tilt="5">
               <IconTile name="eye" size={48} />
               <span className={styles.vmLabel}>Our vision</span>
               <p className={styles.vmText}>
@@ -182,7 +191,7 @@ export default function AboutPage() {
                 higher.
               </p>
             </div>
-            <div className={`${styles.vmCard} ${styles.mission}`}>
+            <div className={`${styles.vmCard} ${styles.mission} glow-border`} data-tilt="5">
               <IconTile name="target" tone="gold" size={48} />
               <span className={styles.vmLabel}>Our mission</span>
               <p className={styles.vmText}>

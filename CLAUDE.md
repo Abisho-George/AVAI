@@ -134,6 +134,13 @@ tutor, and no copy should suggest it does.
   `.enter` for above-the-fold entrances, `grow-x` / `ring-fill` for bars and rings,
   `CountUp` for numbers. All of it is a no-op under reduced motion or without JS.
 - Icons come from `components/Icon.tsx` (line icons, currentColor). Add new ones there.
+- School look: hero and page-header sections carry `<SchoolDoodles />` (exercise-book
+  grid plus drifting classroom doodles) inside a `has-doodles` section. Cards get a
+  cursor spotlight automatically (`.card`, `.spot`); add `data-tilt` for a 3D tilt and
+  `glow-border` for the rare highlight card. `.kicker` is the section eyebrow.
+- Performance: below-the-fold sections use `content-visibility: auto` (see globals.css).
+  Avoid always-on animations that repaint (gradients, box-shadow, filters); animate
+  transform and opacity, or run the effect on hover only.
 - Static export target (`output: 'export'`) — this site has no server needs
 - Fonts: `next/font/google` — Outfit (display), IBM Plex Sans (body), IBM Plex Mono (marks/IDs)
 - All numerals tabular: `font-variant-numeric: tabular-nums` on `body`

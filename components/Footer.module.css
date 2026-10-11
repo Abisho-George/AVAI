@@ -61,9 +61,40 @@
 
 .meta {
   max-width: var(--w);
-  margin: 42px auto 0;
-  padding: 20px 28px 0;
-  border-top: 1px solid #16375f;
+  margin: 14px auto 0;
+  padding: 0 28px;
   font-size: 0.8rem;
-  color: #6e85a3;
+  /* Lighter than the old #6e85a3 so small print clears WCAG AA on ink. */
+  color: #8fa5c1;
+}
+
+.eduStrip {
+  max-width: var(--w);
+  margin: 40px auto 0;
+  padding: 18px 28px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 24px;
+  border-top: 1px solid #1b416b;
+  font-size: 0.88rem;
+  color: #c3d1e2;
+}
+
+.eduStrip > span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eduStrip svg {
+  color: #5fd6d1;
+}
+
+.lga {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #7fe0db;
 }

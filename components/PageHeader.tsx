@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import styles from "./PageHeader.module.css";
 import { Icon, type IconName } from "./Icon";
+import { SchoolDoodles } from "./SchoolDoodles";
 
 type PageHeaderProps = {
   eyebrow?: string;
@@ -14,7 +15,8 @@ type PageHeaderProps = {
 /** The section at the top of every inner page: eyebrow, h1, lede, optional graphic. */
 export function PageHeader({ eyebrow, icon, title, lede, aside }: PageHeaderProps) {
   return (
-    <section className={`${styles.pghead} ${aside ? styles.withAside : ""}`}>
+    <section className={`${styles.pghead} ${aside ? styles.withAside : ""} has-doodles`}>
+      <SchoolDoodles variant="header" />
       <div className="wrap">
         <div className={styles.grid}>
           <div>

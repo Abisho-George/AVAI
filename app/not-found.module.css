@@ -13,3 +13,8 @@
   color: var(--body);
   max-width: 40ch;
 }
+
+.wrap > :not(:first-child) {
+  position: relative;
+  z-index: 1;
+}

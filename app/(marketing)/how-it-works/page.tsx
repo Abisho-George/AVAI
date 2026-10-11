@@ -6,6 +6,7 @@ import { StepsScroll, type Step } from "@/components/StepsScroll";
 import { HonestyPanels } from "@/components/HonestyPanels";
 import { PipelinePlayer } from "@/components/PipelinePlayer";
 import { RingGauge } from "@/components/RingGauge";
+import { SchoolDoodles } from "@/components/SchoolDoodles";
 import { EvidenceNote } from "@/components/EvidenceNote";
 
 export const metadata: Metadata = {
@@ -63,7 +64,8 @@ const STEPS: Step[] = [
 export default function HowItWorksPage() {
   return (
     <>
-      <section className={styles.hero}>
+      <section className={`${styles.hero} has-doodles`}>
+        <SchoolDoodles variant="header" />
         <div className="wrap">
           <PipelinePlayer
             intro={

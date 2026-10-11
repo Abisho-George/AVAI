@@ -20,6 +20,11 @@
   justify-content: space-between;
 }
 
+.portalL > :not(:first-child) {
+  position: relative;
+  z-index: 1;
+}
+
 .portalL h2 {
   font-size: 2rem;
   max-width: 14ch;

@@ -572,11 +572,21 @@ section.snug {
 }
 
 .live-dot {
+  position: relative;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--teal);
   flex: none;
+}
+
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--teal);
+  opacity: 0;
 }
 
 .more {
@@ -719,7 +729,7 @@ section.snug {
     animation-delay: var(--d, 0s);
   }
 
-  .live-dot {
+  .live-dot::after {
     animation: live-pulse 2.4s ease-out infinite;
   }
 
@@ -740,11 +750,162 @@ section.snug {
 
   @keyframes live-pulse {
     0% {
-      box-shadow: 0 0 0 0 rgba(6, 169, 164, 0.45);
+      opacity: 0.5;
+      transform: scale(1);
     }
     70%,
     100% {
-      box-shadow: 0 0 0 9px rgba(6, 169, 164, 0);
+      opacity: 0;
+      transform: scale(3);
     }
   }
+}
+
+/* ---------- surfaces and interactive light ---------- */
+/* Anything placed after a <SchoolDoodles /> layer sits above it. */
+.has-doodles {
+  position: relative;
+  isolation: isolate;
+}
+
+.has-doodles > .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* A soft light that follows the cursor across cards (InteractiveFX sets
+   --mx and --my). It sits above the card background, below its content. */
+.card,
+.spot {
+  position: relative;
+  isolation: isolate;
+}
+
+.card::after,
+.spot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    360px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(6, 169, 164, 0.1),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.band-ink .card::after,
+.band-ink .spot::after {
+  background: radial-gradient(
+    360px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(95, 214, 209, 0.14),
+    transparent 45%
+  );
+}
+
+.card:hover::after,
+.spot:hover::after {
+  opacity: 1;
+}
+
+[data-tilt] {
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.4s var(--ease-out);
+  transform-style: preserve-3d;
+}
+
+/* Gradient text accent for a key word or phrase in a heading. */
+.grad-text {
+  /* Teal to blue and back: mixing blue into gold muddies the middle letters. */
+  background: linear-gradient(100deg, #0a9e99 0%, #2f74c0 70%, #3a6fc0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* A rotating gradient border for the few cards that deserve it. */
+.glow-border {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Only a 2px ring is visible: the mask cuts the gradient out of the content box. */
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    var(--teal),
+    var(--blue-2),
+    var(--gold),
+    var(--teal)
+  );
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Repainting a gradient every frame is expensive, so the border only
+     turns while the pointer is on the card. */
+  .glow-border:hover::before {
+    animation: spin-angle 4s linear infinite;
+  }
+
+  @keyframes spin-angle {
+    to {
+      --angle: 360deg;
+    }
+  }
+}
+
+/* Section eyebrow with a short line before it: a quieter alternative to .chip. */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #05605d;
+  margin-bottom: 14px;
+}
+
+.kicker::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+}
+
+.band-ink .kicker {
+  color: #7fe0db;
+}
+
+/* Sections after the first are laid out only as they approach the viewport.
+   A big saving on long pages; "auto" remembers each section's real height
+   once rendered so scrolling back up does not jump. */
+/* Dark bands are left out: checkers read skipped content against the page
+   background and would report white-on-ink text as unreadable. */
+#main > section:not(:first-child):not(.band-ink) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 760px;
 }

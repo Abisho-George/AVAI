@@ -169,14 +169,24 @@
   place-items: center;
   background: var(--white);
   border: 2px solid var(--teal);
-  font-family: var(--display);
-  font-size: 1.2rem;
-  color: var(--ink);
+  color: var(--teal-deep);
   box-shadow: 0 0 0 6px var(--white);
+  flex-direction: column;
+  gap: 0;
+}
+
+.storyN small {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--subtle);
+  line-height: 1;
 }
 
 .story li > div {
   flex: 1;
+  transition:
+    box-shadow 0.3s,
+    border-color 0.3s;
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 16px;
