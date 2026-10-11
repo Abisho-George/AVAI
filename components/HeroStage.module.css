@@ -1,0 +1,318 @@
+.stage {
+  position: relative;
+  height: 560px;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 620px) {
+  .stage {
+    height: 500px;
+  }
+}
+
+/* Soft brand-coloured light behind the bird. */
+.glow {
+  position: absolute;
+  inset: 8% 6%;
+  pointer-events: none;
+}
+
+.glow i {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(46px);
+  opacity: 0.55;
+}
+
+.glow i:nth-child(1) {
+  width: 52%;
+  height: 52%;
+  left: 8%;
+  top: 14%;
+  background: #8fd8f5;
+}
+
+.glow i:nth-child(2) {
+  width: 46%;
+  height: 46%;
+  right: 6%;
+  top: 22%;
+  background: #ffd38a;
+}
+
+.glow i:nth-child(3) {
+  width: 44%;
+  height: 44%;
+  left: 30%;
+  bottom: 6%;
+  background: #9fe3df;
+}
+
+.ring {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  border: 2px dashed rgba(6, 169, 164, 0.28);
+}
+
+@media (max-width: 620px) {
+  .ring {
+    width: 290px;
+    height: 290px;
+  }
+}
+
+.bird {
+  position: relative;
+  z-index: 2;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+@media (max-width: 620px) {
+  .bird img {
+    width: 200px;
+  }
+}
+
+.bubble {
+  position: absolute;
+  z-index: 3;
+  top: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(340px, 86%);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px 18px;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  background: var(--white);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.line {
+  margin: 0;
+  max-width: none;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--ink);
+  min-height: 2.6em;
+  display: grid;
+  place-items: center;
+}
+
+.chip {
+  position: absolute;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px 9px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--body);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.4s var(--ease-out),
+    box-shadow 0.4s,
+    color 0.3s,
+    border-color 0.3s;
+}
+
+.chipIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--paper-2);
+  color: var(--subtle);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.chip.on {
+  color: var(--ink);
+  border-color: var(--teal);
+  box-shadow: 0 10px 30px rgba(6, 169, 164, 0.25);
+  transform: scale(1.08);
+}
+
+.chip.on .chipIcon {
+  background: var(--teal);
+  color: var(--white);
+}
+
+.tl {
+  left: 0;
+  top: 32%;
+}
+
+.tr {
+  right: 0;
+  top: 40%;
+}
+
+.br {
+  right: 4%;
+  bottom: 16%;
+}
+
+.bl {
+  left: 2%;
+  bottom: 22%;
+}
+
+@media (max-width: 620px) {
+  .chip {
+    font-size: 0.78rem;
+    padding: 6px 10px 6px 6px;
+    gap: 6px;
+  }
+
+  .chipIcon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .tl { top: 30%; }
+  .tr { top: 46%; }
+  .br { bottom: 14%; right: 0; }
+  .bl { bottom: 24%; left: 0; }
+}
+
+.controls {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 3;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  position: relative;
+  width: 30px;
+  height: 6px;
+  border-radius: 6px;
+  border: none;
+  padding: 0;
+  background: var(--line);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.dotOn {
+  background: #b8e6e4;
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  background: var(--teal);
+  transform-origin: left center;
+}
+
+.pp {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .glow i:nth-child(1) { animation: drift 11s ease-in-out infinite alternate; }
+  .glow i:nth-child(2) { animation: drift 13s ease-in-out infinite alternate-reverse; }
+  .glow i:nth-child(3) { animation: drift 9s ease-in-out infinite alternate; }
+
+  .ring {
+    animation: spin 40s linear infinite;
+  }
+
+  .line {
+    animation: type-in 0.6s var(--ease-out) both;
+  }
+
+  .fill {
+    animation: fill var(--dur) linear both;
+  }
+
+  /* The bird moves only when someone taps it. */
+  .waving img {
+    transform-origin: 50% 90%;
+    animation: wave 0.9s ease-in-out;
+  }
+
+  .chip.on {
+    animation: lift 0.5s var(--ease-out);
+  }
+
+  @keyframes drift {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(30px, -24px) scale(1.15); }
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes type-in {
+    from { opacity: 0; clip-path: inset(0 100% 0 0); }
+    to { opacity: 1; clip-path: inset(0 0 0 0); }
+  }
+
+  @keyframes fill {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  @keyframes wave {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-6deg) translateY(-6px); }
+    50% { transform: rotate(5deg) translateY(-8px); }
+    75% { transform: rotate(-3deg); }
+  }
+
+  @keyframes lift {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+  }
+}

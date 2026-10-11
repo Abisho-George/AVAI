@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
-import { HeroLoop } from "@/components/HeroLoop";
+import { HeroStage } from "@/components/HeroStage";
 import { AttainmentBar } from "@/components/AttainmentBar";
 import { SignalExplorer } from "@/components/SignalExplorer";
 import { CtaBand } from "@/components/CtaBand";
@@ -55,9 +55,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <div className="enter" style={{ ["--d" as string]: "0.2s" }}>
-              <HeroLoop />
-            </div>
+            <HeroStage />
           </div>
         </div>
       </section>
