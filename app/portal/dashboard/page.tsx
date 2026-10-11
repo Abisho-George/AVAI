@@ -122,26 +122,56 @@ export default function DashboardPage() {
           />
         </div>
 
+        <div className={styles.banner} data-reveal>
+          <div className={styles.bannerText}>
+            <span className={styles.bannerTag}>
+              <span className="live-dot" aria-hidden="true" /> Biggest loss this assessment
+            </span>
+            <p className={styles.bannerTitle}>Quadratic Equations · application problems</p>
+            <p className={styles.bannerSub}>
+              <b>146</b> of 240 students · <b>4.2</b> marks lost per student · recurring in 4 of
+              the last 4 Board papers
+            </p>
+            <button type="button" className={styles.bannerBtn} onClick={() => setDrawerOpen(true)}>
+              See the evidence <Icon name="arrow-right" size={15} strokeWidth={2.2} className="btn-ic" />
+            </button>
+          </div>
+          <div className={styles.bannerMeter} aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" className={styles.meterTrack} />
+              <circle cx="60" cy="60" r="50" pathLength={100} className={`${styles.meterFill} ring-fill`} style={{ strokeDasharray: 100, strokeDashoffset: 100 - 61 }} transform="rotate(-90 60 60)" />
+            </svg>
+            <span>
+              <b>146</b>
+              <small>of 240</small>
+            </span>
+          </div>
+        </div>
+
         <div className={styles.kpis} data-stagger>
           <div className={styles.kpi}>
+            <Icon name="users" size={20} className={styles.kpiIcon} />
             <span>Students</span>
             <b>
               <CountUp value={240} />
             </b>
           </div>
           <div className={styles.kpi}>
+            <Icon name="layers" size={20} className={styles.kpiIcon} />
             <span>Sections</span>
             <b>
               <CountUp value={5} />
             </b>
           </div>
           <div className={styles.kpi}>
+            <Icon name="paper" size={20} className={styles.kpiIcon} />
             <span>Subjects</span>
             <b>
               <CountUp value={5} />
             </b>
           </div>
           <div className={styles.kpi}>
+            <Icon name="gauge" size={20} className={styles.kpiIcon} />
             <span>Diagnostic strength</span>
             <b style={{ fontSize: "1.15rem" }}>Moderate</b>
           </div>

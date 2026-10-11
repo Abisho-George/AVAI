@@ -1,0 +1,345 @@
+.panels {
+  display: flex;
+  gap: 14px;
+  min-height: 560px;
+}
+
+@media (max-width: 900px) {
+  .panels {
+    flex-direction: column;
+    min-height: 0;
+  }
+}
+
+.panel {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    flex-grow 0.6s var(--ease-out),
+    box-shadow 0.4s;
+}
+
+.panel.on {
+  flex: 4;
+  box-shadow: var(--shadow-lg);
+}
+
+.blue { background: linear-gradient(160deg, #eaf2fb, #ffffff 70%); }
+.gold { background: linear-gradient(160deg, #fdf0dc, #ffffff 70%); }
+.teal { background: linear-gradient(160deg, #e2f5f4, #ffffff 70%); }
+.ink { background: linear-gradient(160deg, #e6ebf2, #ffffff 70%); }
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 22px;
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.on .head {
+  flex-direction: row;
+  align-items: center;
+}
+
+@media (min-width: 901px) {
+  .panel:not(.on) .head {
+    height: 100%;
+  }
+
+  .panel:not(.on) .label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    margin-top: auto;
+  }
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  flex: none;
+}
+
+.label {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.content {
+  padding: 0 26px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.content[hidden] {
+  display: none;
+}
+
+.content h3 {
+  font-size: 1.4rem;
+  margin: 6px 0 0;
+}
+
+.content p {
+  margin: 0;
+  max-width: 60ch;
+}
+
+.timer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  background: var(--teal);
+  transform-origin: left center;
+}
+
+/* ---------- illustrations ---------- */
+.art {
+  position: relative;
+  height: 150px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.scan {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 18px 24px;
+}
+
+.scan i {
+  flex: 1;
+  border-radius: 6px 6px 2px 2px;
+  background: #b9cfe8;
+}
+
+.lens {
+  position: absolute;
+  top: 30px;
+  left: 10%;
+  color: var(--blue);
+}
+
+.q {
+  position: absolute;
+  right: 18px;
+  top: 10px;
+  font-family: var(--display);
+  font-size: 2rem;
+  color: var(--blue);
+}
+
+.paper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 24px;
+}
+
+.paper i {
+  height: 8px;
+  border-radius: 6px;
+}
+
+.t-r { background: #bfe6e4; width: 70%; }
+.t-u { background: #b9cfe8; width: 82%; }
+.t-a { background: var(--gold); width: 60%; }
+
+.flag {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--gold-tint);
+  color: #7a4d0c;
+  border: 1px solid #f2d6a6;
+}
+
+.dots i {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: #8fd6d2;
+}
+
+.dots svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.maybe {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.trend .axis {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 60%;
+  height: 2px;
+  background: var(--line);
+}
+
+.pt1,
+.pt2 {
+  position: absolute;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 18px 0 0;
+  color: var(--ink);
+}
+
+.pt1 { left: 25%; }
+.pt2 { left: 75%; color: var(--subtle); }
+
+.pt1::before,
+.pt2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.pt2::before {
+  background: var(--white);
+  border: 2px dashed var(--subtle);
+}
+
+.dash {
+  position: absolute;
+  left: 28%;
+  width: 44%;
+  top: calc(60% - 1px);
+  border-top: 2px dashed var(--line);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .content > * {
+    animation: rise 0.55s var(--ease-out) both;
+  }
+
+  .content > :nth-child(2) { animation-delay: 0.08s; }
+  .content > :nth-child(3) { animation-delay: 0.16s; }
+  .content > :nth-child(4) { animation-delay: 0.24s; }
+
+  .timer {
+    animation: timer 6s linear both;
+  }
+
+  .lens {
+    animation: sweep 3.2s ease-in-out infinite alternate;
+  }
+
+  .scan i {
+    animation: flicker 2.4s ease-in-out infinite alternate;
+  }
+
+  .scan i:nth-child(2n) { animation-delay: -1.2s; }
+
+  .paper i {
+    animation: grow 0.7s var(--ease-out) both;
+    animation-delay: calc(var(--i) * 80ms);
+    transform-origin: left center;
+  }
+
+  .flag {
+    animation: rise 0.5s var(--ease-out) 0.8s both;
+  }
+
+  .dots i {
+    animation: twinkle 2.6s ease-in-out infinite;
+    animation-delay: calc(var(--i) * -0.3s);
+  }
+
+  .maybe {
+    stroke-dashoffset: 60;
+    animation: draw 2.4s ease-in-out infinite alternate;
+  }
+
+  .pt2::before {
+    animation: wait 1.8s ease-in-out infinite;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @keyframes timer {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  @keyframes sweep {
+    from { left: 6%; }
+    to { left: 78%; }
+  }
+
+  @keyframes flicker {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+  }
+
+  @keyframes grow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.35; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes wait {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.25); opacity: 1; }
+  }
+}

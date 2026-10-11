@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import styles from "./page.module.css";
 import { CtaBand } from "@/components/CtaBand";
-import { Icon, IconTile, type IconName } from "@/components/Icon";
+import { Icon } from "@/components/Icon";
+import { StepsScroll, type Step } from "@/components/StepsScroll";
+import { HonestyPanels } from "@/components/HonestyPanels";
 import { PipelinePlayer } from "@/components/PipelinePlayer";
 import { RingGauge } from "@/components/RingGauge";
 import { EvidenceNote } from "@/components/EvidenceNote";
-import { Tabs } from "@/components/Tabs";
 
 export const metadata: Metadata = {
   title: "How Avai reasons: from a tagged paper to a named gap",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     "Avai does not set exams, does not grade answers, and never reads what a student wrote. Five steps from a Board-mapped question paper to a named, evidenced finding.",
 };
 
-const STEPS: { icon: IconName; title: string; summary: string; body: string[] }[] = [
+const STEPS: Step[] = [
   {
     icon: "blueprint",
     title: "The paper is mapped to the Board blueprint",
@@ -87,30 +88,9 @@ export default function HowItWorksPage() {
         <div className="wrap">
           <div className="head-2" data-reveal>
             <h2>Five steps, in detail</h2>
-            <p>Open any step for the full explanation.</p>
+            <p>Scroll through the pipeline. Each step lights up as you reach it.</p>
           </div>
-          <ol className={styles.detailList} data-stagger>
-            {STEPS.map((step, i) => (
-              <li key={step.title} className={`card lift ${styles.detail}`}>
-                <IconTile name={step.icon} tone={i === 2 ? "gold" : "teal"} />
-                <div className={styles.detailText}>
-                  <span className={styles.detailNum}>Step {i + 1}</span>
-                  <h3>{step.title}</h3>
-                  <p>{step.summary}</p>
-                  <details className="more">
-                    <summary>
-                      Read more <Icon name="arrow-right" size={14} strokeWidth={2.2} />
-                    </summary>
-                    <div className="more-body">
-                      {step.body.map((para) => (
-                        <p key={para}>{para}</p>
-                      ))}
-                    </div>
-                  </details>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <StepsScroll steps={STEPS} />
         </div>
       </section>
 
@@ -171,88 +151,7 @@ export default function HowItWorksPage() {
             </p>
           </div>
           <div data-reveal>
-          <Tabs
-            label="Limited-evidence states"
-            tabs={[
-              {
-                id: "cause",
-                label: "Cause not localised",
-                content: (
-                  <div className="split">
-                    <div>
-                      <h3>A confirmed problem with no known cause</h3>
-                      <p>
-                        84 students are losing marks across Physics · Light, with high confidence
-                        that the loss is real. But no subtopic or question pattern accounts for
-                        enough of it to name a cause.
-                      </p>
-                      <p>
-                        Avai routes this to investigation and recommends a manual answer-script
-                        review. It does not prescribe a drill set that might be aimed at the wrong
-                        thing.
-                      </p>
-                    </div>
-                    <EvidenceNote state="cause-not-localised" />
-                  </div>
-                ),
-              },
-              {
-                id: "paper",
-                label: "Paper under-tests",
-                content: (
-                  <div className="split">
-                    <div>
-                      <h3>Avai criticising your own question paper</h3>
-                      <p>
-                        If a test carried too few application questions to judge application
-                        readiness, no amount of analysis fixes that. Avai flags the paper and
-                        downgrades every related finding rather than reporting a confident number
-                        built on thin evidence.
-                      </p>
-                    </div>
-                    <EvidenceNote
-                      state="paper-under-tests"
-                      detail="Too few application questions to confidently assess application readiness."
-                    />
-                  </div>
-                ),
-              },
-              {
-                id: "early",
-                label: "Early signal",
-                content: (
-                  <div className="split">
-                    <div>
-                      <h3>A pattern that might be there</h3>
-                      <p>
-                        A shape is visible in the data but the evidence is thin. Avai shows it,
-                        marks it as emerging, and lets a principal decide whether to watch it,
-                        instead of either hiding it or promoting it to a conclusion.
-                      </p>
-                    </div>
-                    <EvidenceNote state="early-signal" />
-                  </div>
-                ),
-              },
-              {
-                id: "trend",
-                label: "Trend not available",
-                content: (
-                  <div className="split">
-                    <div>
-                      <h3>One test is not a trend</h3>
-                      <p>
-                        After a single analysed assessment, Avai will not draw a trend line, will
-                        not claim consistency, and will not predict a Board outcome. The strip
-                        disappears on its own once a second assessment is analysed.
-                      </p>
-                    </div>
-                    <EvidenceNote state="trend-not-available" />
-                  </div>
-                ),
-              },
-            ]}
-          />
+            <HonestyPanels />
           </div>
         </div>
       </section>

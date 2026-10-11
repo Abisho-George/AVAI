@@ -3,7 +3,6 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { HeroStage } from "@/components/HeroStage";
 import { AttainmentBar } from "@/components/AttainmentBar";
-import { SignalExplorer } from "@/components/SignalExplorer";
 import { CtaBand } from "@/components/CtaBand";
 import { CountUp } from "@/components/CountUp";
 import { HonestyCompare } from "@/components/HonestyCompare";
@@ -104,22 +103,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
-        <div className="wrap">
-          <div className="head-2" data-reveal>
-            <h2>Three signals that never collapse into one colour</h2>
-            <p>
-              Most dashboards merge everything into a single red-amber-green. Avai keeps them
-              apart, because &ldquo;this matters a lot for the Board&rdquo; and &ldquo;we are sure
-              this is real&rdquo; are different claims, and a principal deserves to see when they
-              disagree.
-            </p>
-          </div>
-          <div data-reveal>
-            <SignalExplorer />
-          </div>
-        </div>
-      </section>
 
       <section className="band-ink">
         <div className="wrap">

@@ -220,14 +220,9 @@ export default function PilotPage() {
               <IconTile name="research" tone="gold" />
               <h3 style={{ marginTop: 14 }}>The government-school track</h3>
               <p>
-                Findings from government schools feed the scholarship identification work
-                published openly under Yaadhum. That research runs on separately consented,
-                anonymised data. It is never fed by the commercial pipeline.
-              </p>
-              <p>
-                <Link href="/about#yaadhum" style={{ color: "var(--gold)" }}>
-                  About the Yaadhum research
-                </Link>
+                Government schools take part free of charge under the scholarship programme,
+                on separately consented data that never mixes with a school&rsquo;s commercial
+                data.
               </p>
             </div>
           </div>

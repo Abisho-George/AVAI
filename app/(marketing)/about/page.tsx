@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import { PageHeader } from "@/components/PageHeader";
 import { CtaBand } from "@/components/CtaBand";
 import { Icon, IconTile } from "@/components/Icon";
-import { SeparationDiagram } from "@/components/SeparationDiagram";
+import { NeverList } from "@/components/NeverList";
 
 export const metadata: Metadata = {
   title: "About Avai",
@@ -61,6 +61,49 @@ export default function AboutPage() {
         lede="Every school already produces the data needed to see exactly where a student is stuck. Nobody extracts it, because by hand it is a week of work per class. Avai does it from one paper and one mark register."
         aside={<TwoReadings />}
       />
+
+      <section>
+        <div className="wrap">
+          <div className="head-2" data-reveal>
+            <p className="chip">
+              <Icon name="spark" size={16} /> Our story
+            </p>
+            <h2>Why we started</h2>
+          </div>
+          <ol className={styles.story}>
+            <li data-reveal>
+              <span className={styles.storyN}>01</span>
+              <div>
+                <h3>The observation</h3>
+                <p>
+                  Every school in India already produces the data needed to know exactly where a
+                  student is stuck: a question paper and a register of marks.
+                </p>
+              </div>
+            </li>
+            <li data-reveal>
+              <span className={styles.storyN}>02</span>
+              <div>
+                <h3>The problem</h3>
+                <p>
+                  Nobody extracts it, because by hand it is a week of work per class. So the
+                  report card stops at the subject total, and the cause stays hidden.
+                </p>
+              </div>
+            </li>
+            <li data-reveal>
+              <span className={styles.storyN}>03</span>
+              <div>
+                <h3>What we built</h3>
+                <p>
+                  Avai reads one mapped paper and one mark register, and names the competency
+                  costing marks, how urgent it is for the Board, and how sure it is.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
 
       <section className="band-2">
         <div className="wrap">
@@ -128,47 +171,46 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="yaadhum">
+      <section className="band-2">
         <div className="wrap">
-          <div className={styles.yaadhum}>
-            <div data-reveal>
-              <p className="chip">
-                <Icon name="research" size={16} /> Yaadhum
+          <div className={styles.vm} data-stagger>
+            <div className={`${styles.vmCard} ${styles.vision}`}>
+              <IconTile name="eye" size={48} />
+              <span className={styles.vmLabel}>Our vision</span>
+              <p className={styles.vmText}>
+                Every school knows exactly what is stopping each of its students from scoring
+                higher.
               </p>
-              <h2>Same research, a second life in the open</h2>
-              <p>
-                Under the Yaadhum name the research is anonymised, separately consented and
-                published openly. It serves two purposes.
+            </div>
+            <div className={`${styles.vmCard} ${styles.mission}`}>
+              <IconTile name="target" tone="gold" size={48} />
+              <span className={styles.vmLabel}>Our mission</span>
+              <p className={styles.vmText}>
+                Turn the exams schools already run into named, honest findings a principal can act
+                on, without a single new exam.
               </p>
-              <ul className={styles.purposes} data-stagger>
-                <li>
-                  <IconTile name="spark" tone="gold" size={38} />
-                  <span>
-                    <b>Scholarship identification</b>
-                    Finding students whose diagnosis shows real capability that circumstances are
-                    masking.
-                  </span>
-                </li>
-                <li>
-                  <IconTile name="research" tone="blue" size={38} />
-                  <span>
-                    <b>Public education research</b>
-                    How Indian students actually lose marks deserves an answer in the open.
-                  </span>
-                </li>
-              </ul>
-              <div className={`card ${styles.gov}`}>
-                <IconTile name="school" size={38} />
-                <span>
-                  <b>The government-school programme</b>
-                  District administration has expressed support for a free diagnostics and
-                  scholarship programme across government schools. Government schools pay nothing.
-                </span>
-              </div>
             </div>
-            <div data-reveal="zoom" style={{ ["--d" as string]: "0.1s" }}>
-              <SeparationDiagram />
-            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <div className="head-2" data-reveal>
+            <p className="chip">
+              <Icon name="shield" size={16} /> Our promises
+            </p>
+            <h2>What Avai never does</h2>
+            <p>Six lines we do not cross. Hover or tap any of them.</p>
+          </div>
+          <NeverList />
+          <div className={`card ${styles.gov}`} data-reveal>
+            <IconTile name="school" size={40} />
+            <span>
+              <b>The government-school programme</b>
+              District administration has expressed support for a free diagnostics and
+              scholarship programme across government schools. Government schools pay nothing.
+            </span>
           </div>
         </div>
       </section>

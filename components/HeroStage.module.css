@@ -112,12 +112,42 @@
   margin: 0;
   max-width: none;
   font-family: var(--display);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 500;
+  line-height: 1.35;
   color: var(--ink);
-  min-height: 2.6em;
-  display: grid;
-  place-items: center;
+  min-height: 2.7em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.word {
+  display: inline-block;
+  white-space: pre;
+}
+
+.hl {
+  background: linear-gradient(90deg, var(--teal), var(--blue-2), var(--gold));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+}
+
+.pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--teal);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.chipIcon {
+  position: relative;
 }
 
 .chip {
@@ -267,8 +297,55 @@
     animation: spin 40s linear infinite;
   }
 
-  .line {
-    animation: type-in 0.6s var(--ease-out) both;
+  .bubble {
+    animation: bubble-in 0.5s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+  }
+
+  .word {
+    animation: word-in 0.55s var(--ease-out) both;
+    animation-delay: calc(var(--i) * 70ms);
+  }
+
+  .hl {
+    animation:
+      word-in 0.55s var(--ease-out) both calc(var(--i) * 70ms),
+      sheen 3s linear infinite;
+  }
+
+  .pulse {
+    animation: pulse 1.6s ease-out infinite;
+  }
+
+  .chip:not(.on) {
+    animation: bob 5s ease-in-out infinite;
+  }
+
+  .tr:not(.on) { animation-delay: -1.2s; }
+  .br:not(.on) { animation-delay: -2.4s; }
+  .bl:not(.on) { animation-delay: -3.6s; }
+
+  @keyframes word-in {
+    from { opacity: 0; transform: translateY(12px); filter: blur(6px); }
+    to { opacity: 1; transform: none; filter: blur(0); }
+  }
+
+  @keyframes sheen {
+    to { background-position: -200% 0; }
+  }
+
+  @keyframes bubble-in {
+    from { transform: translateX(-50%) scale(0.92); }
+    to { transform: translateX(-50%) scale(1); }
+  }
+
+  @keyframes pulse {
+    0% { opacity: 0.9; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.9); }
+  }
+
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
   }
 
   .fill {

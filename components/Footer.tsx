@@ -12,8 +12,7 @@ export function Footer() {
           </Link>
           <p className={styles.sig}>A brighter tomorrow for every student.</p>
           <p>
-            Avai is built and owned by INAT Venture Pvt Ltd. The same research, separately
-            consented and anonymised, is published openly as Yaadhum.
+            Avai is built and owned by INAT Venture Pvt Ltd.
           </p>
         </div>
         <div className={styles.cols}>
@@ -31,7 +30,6 @@ export function Footer() {
           <div className={styles.col}>
             <h2>Company</h2>
             <Link href="/about">About</Link>
-            <Link href="/about#yaadhum">Yaadhum research</Link>
             <Link href="/contact">Contact</Link>
           </div>
         </div>

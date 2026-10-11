@@ -1,0 +1,134 @@
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.tile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 168px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  font: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.3s var(--ease-out);
+}
+
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--ink), #0e3a63);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.tile > * {
+  position: relative;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--coral-tint);
+  color: #9b2f25;
+  margin-bottom: 6px;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.never {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9b2f25;
+}
+
+.title {
+  font-family: var(--display);
+  font-size: 1.12rem;
+  font-weight: 500;
+  color: var(--ink);
+  transition: color 0.3s;
+}
+
+.detail {
+  font-size: 0.9rem;
+  color: var(--body);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.4s var(--ease-out),
+    opacity 0.3s;
+}
+
+.tile:hover,
+.open {
+  border-color: transparent;
+  box-shadow: var(--shadow-lg);
+}
+
+.tile:hover::before,
+.open::before {
+  opacity: 1;
+}
+
+.tile:hover .title,
+.open .title {
+  color: var(--white);
+}
+
+.tile:hover .never,
+.open .never {
+  color: #ffb4a8;
+}
+
+.tile:hover .detail,
+.open .detail {
+  max-height: 6em;
+  opacity: 1;
+  color: #c3d1e2;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tile:hover,
+  .open {
+    transform: translateY(-4px);
+  }
+
+  .tile:hover .icon,
+  .open .icon {
+    transform: rotate(-8deg) scale(1.08);
+  }
+}

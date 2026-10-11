@@ -150,3 +150,15 @@
     display: block;
   }
 }
+
+/* Reading progress along the bottom edge of the header. */
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--blue-2), var(--gold));
+  transform-origin: left center;
+  pointer-events: none;
+}
