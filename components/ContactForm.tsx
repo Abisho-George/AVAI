@@ -136,18 +136,30 @@ export function ContactForm() {
         </div>
 
         <div className={styles.fld}>
-          <label htmlFor="grades">Grades you want analysed</label>
-          <select id="grades" name="grades" defaultValue="Class X only">
-            <option>Class X only</option>
-            <option>Class XII only</option>
-            <option>Classes X and XII</option>
-            <option>Other</option>
+          <label htmlFor="grades">Classes</label>
+          <select id="grades" name="grades" defaultValue="Class 10">
+            <option>Class 9</option>
+            <option>Class 10</option>
+            <option>Class 11</option>
+            <option>Class 12</option>
+            <option>Classes 10 and 12</option>
+            <option>Class 9 to Class 12</option>
           </select>
         </div>
 
-        <div className={`${styles.fld} ${styles.full}`}>
-          <label htmlFor="size">Students per grade</label>
-          <input id="size" name="size" placeholder="e.g. 240 in Class X, 186 in Class XII" />
+        <div className={styles.fld}>
+          <label htmlFor="interest">Interested in</label>
+          <select id="interest" name="interest" defaultValue="All three">
+            <option>Question papers</option>
+            <option>Diagnostics</option>
+            <option>BoardX student profiles</option>
+            <option>All three</option>
+          </select>
+        </div>
+
+        <div className={styles.fld}>
+          <label htmlFor="size">Students per class</label>
+          <input id="size" name="size" placeholder="e.g. 240 in Class 10" />
         </div>
 
         <div className={`${styles.fld} ${styles.full}`}>

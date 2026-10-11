@@ -74,7 +74,7 @@
   font: inherit;
   font-size: 0.84rem;
   font-weight: 600;
-  padding: 7px 14px;
+  padding: 7px 12px;
   border-radius: 999px;
   border: none;
   background: transparent;
@@ -255,5 +255,18 @@
   @keyframes type {
     from { clip-path: inset(0 100% 0 0); }
     to { clip-path: inset(0 0 0 0); }
+  }
+}
+
+@media (max-width: 520px) {
+  .toggle {
+    width: 100%;
+  }
+
+  .toggle button {
+    flex: 1;
+    justify-content: center;
+    padding: 7px 6px;
+    font-size: 0.8rem;
   }
 }

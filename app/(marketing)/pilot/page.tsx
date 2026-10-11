@@ -147,6 +147,39 @@ export default function PilotPage() {
       <section>
         <div className="wrap">
           <div className="head-2" data-reveal>
+            <p className="kicker">Two ways to start</p>
+            <h2>With your own paper, or with ours</h2>
+            <p>Either way, the school conducts and corrects the exam exactly as it normally would.</p>
+          </div>
+          <div className={styles.ways} data-stagger>
+            <article className="card">
+              <IconTile name="scorecard" tone="blue" />
+              <h3>Start with your own paper</h3>
+              <ol>
+                <li>Send us a question paper for an exam already scheduled.</li>
+                <li>We map every question to the Board blueprint and report on the paper itself.</li>
+                <li>Your teachers mark it as they always do. We read the marks.</li>
+              </ol>
+            </article>
+            <article className="card glow-border">
+              <IconTile name="paper" tone="gold" />
+              <h3>Start with ours</h3>
+              <ol>
+                <li>Tell us the class, the subjects and the chapters to be examined, or ask for a full-syllabus paper.</li>
+                <li>We build the paper, the marking scheme and the design report, and deliver them as one set.</li>
+                <li>Your academic head reviews the design report before the paper is printed. Any question can be replaced; the audit is re-run and the report reissued.</li>
+              </ol>
+              <Link className={styles.waysLink} href="/products#papers">
+                About the Question Paper Engine <Icon name="arrow-right" size={14} strokeWidth={2.2} />
+              </Link>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="band-2">
+        <div className="wrap">
+          <div className="head-2" data-reveal>
             <h2>What the six weeks look like</h2>
             <p>Pick a week. Nothing here asks a school to change how it teaches or examines.</p>
           </div>
@@ -156,7 +189,7 @@ export default function PilotPage() {
         </div>
       </section>
 
-      <section className="band-2">
+      <section>
         <div className="wrap">
           <div className="head-2" data-reveal>
             <h2>A fair exchange</h2>

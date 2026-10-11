@@ -12,7 +12,7 @@ import { EvidenceNote } from "@/components/EvidenceNote";
 export const metadata: Metadata = {
   title: "How Avai reasons: from a tagged paper to a named gap",
   description:
-    "Avai does not set exams, does not grade answers, and never reads what a student wrote. Five steps from a Board-mapped question paper to a named, evidenced finding.",
+    "Avai adds no exams, grades no answers, and never reads what a student wrote. Five steps from a Board-mapped question paper to a named, evidenced finding.",
 };
 
 const STEPS: Step[] = [
@@ -23,6 +23,7 @@ const STEPS: Step[] = [
     body: [
       "Every question is tagged on two layers. Curriculum: subject, class, chapter, board unit, concept family, concept variant, prerequisite concept. Assessment demand: competency tier, complexity, dependency level.",
       "This turns “Question 14” into “Class 10 Maths, Quadratic Equations, applying tier, moderate complexity, depends on factorisation.” Tagging is model-assisted with a two-pass agreement check, so ambiguous or low-confidence tags are caught before they enter the pipeline.",
+      "A paper built by our Question Paper Engine arrives already tagged, so this step is done before the exam is printed.",
     ],
   },
   {
@@ -46,9 +47,9 @@ const STEPS: Step[] = [
   {
     icon: "finding",
     title: "Findings are produced, ranked, and held to evidence",
-    summary: "Ranked by marks exposure, Board recurrence and confidence together.",
+    summary: "Down to the topic inside each chapter, ranked by marks exposure, Board recurrence and confidence.",
     body: [
-      "Performance is computed per concept and per competency tier across every subject a student takes. That is what makes a cross-subject pattern visible. Findings are ranked by marks exposure, Board recurrence and confidence together, not by raw average.",
+      "Performance is computed per concept, per topic inside each chapter, and per competency tier, across every subject a student takes. That is what makes a cross-subject pattern visible, and what tells a teacher exactly which topic to reteach. Findings are ranked by marks exposure, Board recurrence and confidence together, not by raw average.",
     ],
   },
   {
@@ -77,8 +78,9 @@ export default function HowItWorksPage() {
                   From a tagged paper to a named gap
                 </h1>
                 <p className="lede enter" style={{ ["--d" as string]: "0.16s" }}>
-                  Avai never sets an exam and never reads what a student wrote. It reads a mapped
-                  question paper and the marks your teachers already gave.
+                  Avai adds no exams and never reads what a student wrote. It reads a mapped
+                  question paper, yours or one from our engine, and the marks your teachers already
+                  gave.
                 </p>
               </>
             }

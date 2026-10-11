@@ -103,60 +103,6 @@
   margin-right: auto;
 }
 
-/* The four pilot facts, joined by a line like stops on a route. */
-.journey {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.journey::before {
-  content: "";
-  position: absolute;
-  left: 4%;
-  right: 4%;
-  top: 44px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--teal), var(--blue-2), var(--gold));
-  opacity: 0.4;
-}
-
-@media (max-width: 760px) {
-  .journey {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .journey::before {
-    display: none;
-  }
-}
-
-.jStep {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 20px;
-  border-radius: 16px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-sm);
-}
-
-.jStep b {
-  font-family: var(--display);
-  font-size: 2rem;
-  font-weight: 500;
-  line-height: 1.1;
-  color: var(--ink);
-}
-
-.jStep > span:last-child {
-  font-size: 0.88rem;
-  color: var(--subtle);
-}
-
 .ctaCard {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
@@ -197,4 +143,18 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+}
+
+.teaserHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.teaserHead h2 {
+  margin: 0;
+  max-width: 22ch;
 }

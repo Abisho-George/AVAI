@@ -14,6 +14,18 @@ mapped to the Board blueprint in advance, and produces findings: named
 competency gaps with what they cost in marks, how urgent they are for the
 Board exam, and how confident the system is that the pattern is real.
 
+There are three products, and the site presents all three (see `/products`):
+
+1. **Question Paper Engine**: builds CBSE question papers (full syllabus or a unit test on
+   finished chapters) to the Board's own published design, delivered with a marking scheme
+   and a design report. The academic head reviews before printing; the school conducts and
+   corrects as normal.
+2. **Avai Diagnostics**: reads question-wise marks and returns a concept-level account, down to
+   the **topic inside each chapter**, per student, per class and section to section.
+3. **BoardX**: class programmes that build a **profile of every student** across five
+   dimensions (Academic DNA, Cognitive DNA, Learning Behaviour, Interest and Exposure,
+   Self-Awareness and Alignment), Class 9 to Class 12.
+
 Operated commercially as **Avai**, built and owned by **INAT Venture Pvt Ltd**.
 The same research runs openly as **Yaadhum** for scholarship identification and
 public education research, under separate consent.
@@ -23,10 +35,14 @@ If any copy you write implies students practising questions inside Avai,
 it is wrong. Delete it.
 
 ### What Avai never does — treat these as hard constraints on all copy
-- Never sets or grades an exam
+- Never adds a test to the school's calendar, and never grades an answer (the paper engine
+  builds papers the school was already going to set; do not write "Avai never sets an exam")
 - Never reads answer content (it reads numbers only)
 - Never evaluates or ranks a teacher
-- Never shows a student a classmate, a rank, a percentile, or a class average
+- Never shows a student a classmate, a rank, a percentile, or a class average, and never
+  ranks students against one another
+- Never sells prediction, coaching, admissions or applications, and never claims access to a
+  paper before the Board releases it
 - Never bills a parent (the school pays, against a verified headcount)
 - Never lets research data and commercial data mix
 
@@ -165,9 +181,10 @@ tutor, and no copy should suggest it does.
 | Route | Purpose |
 |---|---|
 | `/` | Hero loop, lost-marks argument, three signals, honesty, pilot proof, CTA |
+| `/products` | Question Paper Engine (builder, CBSE four, three documents), Diagnostics (topic drill), BoardX (Class 9 to 12 switcher, five dimensions) |
 | `/how-it-works` | The five-step pipeline, paper diagnostic strength, the four honesty states |
 | `/pilot` | Six weeks, week by week, what the school provides and receives |
-| `/about` | INAT Venture, Yaadhum, the government-school programme |
+| `/about` | Founders' story, vision and mission, team, what we do and do not, government-school programme |
 | `/contact` | Pilot request form |
 | `/portal` | School portal sign-in: two tabs (staff / student) plus demo role switcher |
 | `/portal/dashboard` | Sample dashboard with the finding detail drawer |
@@ -196,6 +213,13 @@ Plus `HeroLoop`, `Mascot`, `Header`, `Footer`, `PageHeader`, `CtaBand`.
 - Pilot: six weeks, attached to an exam already on the school's calendar
 - Do not mention Krishnagiri, the pilot's location, the number of pilot schools,
   the reference school's name or the District Collector anywhere on the site
+- Do not mention Yaadhum on the site, nor Cuddalore, Tamil Nadu statistics or the team's
+  phone number, even though `reference/programmes/` uses them
+- From `reference/programmes/` (the team's own documents) you may use: the team and their
+  bios, the founding story and quote, the Question Paper Engine figures (Class X Mathematics
+  unit test: 80 marks, 38 questions, 5 sections, 9 internal choices, 3 hrs; Remember 42,
+  Apply 20, Analyse 18; Science 086 sourcing NCERT 60, Board 15, Constructed 5), "six Class X
+  subjects delivered for Session 2026 to 27", and the class programme wording and sample outputs
 - Pricing: per student, against CBSE List of Candidates or DGE registration;
   whole grade only; minimum 60 students per grade; school pays
 - Data: scorecard images retained 30 days post-extraction, gated on teacher
@@ -210,6 +234,9 @@ If you need a number that is not in this list, ask. Do not fill it in.
 
 ## Reference material in this repo
 
+- `reference/programmes/` — the team's own documents: the Question Paper Engine two-pager
+  (with the team and story) and the Class 9, 10, 11 and 12 programme profiles. These describe
+  the full product line; where they and `reference/static-site/` disagree, these are newer.
 - `reference/brand-sheet.jpeg` — logo, mascot poses, colours, app icon
 - `reference/static-site/` — a working static HTML version of this site, all
   eleven pages. **This is the content source of truth.** Copy the copy from it.

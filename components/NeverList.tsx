@@ -5,15 +5,17 @@ import styles from "./NeverList.module.css";
 import { Icon, type IconName } from "./Icon";
 
 const NEVER: { icon: IconName; title: string; detail: string }[] = [
-  { icon: "pen-off", title: "Sets or grades an exam", detail: "Your teachers set the paper and award the marks. Avai only reads them." },
-  { icon: "numbers", title: "Reads answer content", detail: "Avai reads numbers only. It never sees what a student wrote." },
+  { icon: "pen-off", title: "Adds a test to your calendar", detail: "We build the papers you were already going to set, and read the exams you already run." },
+  { icon: "numbers", title: "Reads what a student wrote", detail: "Diagnostics reads question-wise marks only, never the answer itself." },
   { icon: "users", title: "Evaluates or ranks a teacher", detail: "Section gaps describe one assessment. They are never a measure of teaching quality." },
-  { icon: "no-rank", title: "Shows a student a rank", detail: "No classmate, no rank, no percentile and no class average on a student's report." },
-  { icon: "school", title: "Bills a parent", detail: "The school pays, against a verified headcount. Never a parent." },
-  { icon: "lock", title: "Mixes research and school data", detail: "Each needs its own consent, and the two never meet." },
+  { icon: "no-rank", title: "Ranks students against each other", detail: "No classmate, no rank, no percentile and no class average on a student's report." },
+  { icon: "alert", title: "Sells prediction", detail: "We do not claim access to any paper before the Board releases it, or forecast any child's future." },
+  { icon: "school", title: "Sells coaching or admissions", detail: "No coaching, no admissions, no applications. The school pays, never a parent." },
+  { icon: "lock", title: "Shares a student's data", detail: "Nothing leaves the school and that student's own family." },
+  { icon: "clock", title: "Asks teachers to write reports", detail: "No plans to write and no classroom time. We do the arithmetic and the audit." },
 ];
 
-/** Six hard constraints as flip tiles: the promise on the front, why on the back. */
+/** The lines we do not cross, as tiles that open to say why on hover or tap. */
 export function NeverList() {
   const [open, setOpen] = useState<number | null>(null);
   return (

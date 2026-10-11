@@ -9,7 +9,7 @@ type Chapter = { icon: IconName; label: string; lead: string; hl: string; tail: 
 
 const CHAPTERS: Chapter[] = [
   { icon: "scorecard", label: "Reads the marks", lead: "I read the", hl: "marks", tail: "your teachers already gave.", pos: "tl" },
-  { icon: "target", label: "Finds the gap", lead: "I find the", hl: "competency", tail: "that is costing marks.", pos: "tr" },
+  { icon: "target", label: "Finds the topic", lead: "I find the", hl: "topic", tail: "in each chapter that is costing marks.", pos: "tr" },
   { icon: "flag", label: "Weighs the Board", lead: "I check how often it comes up", hl: "in the Board exam.", tail: "", pos: "br" },
   { icon: "shield", label: "Says when unsure", lead: "And I tell you plainly", hl: "when I am not sure.", tail: "", pos: "bl" },
 ];

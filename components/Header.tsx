@@ -8,6 +8,7 @@ import { Logo } from "./Logo";
 
 const NAV = [
   { href: "/", label: "Home" },
+  { href: "/products", label: "Products" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/pilot", label: "Pilot" },
   { href: "/about", label: "About" },

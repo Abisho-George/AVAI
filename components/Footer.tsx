@@ -18,7 +18,10 @@ export function Footer() {
         </div>
         <div className={styles.cols}>
           <div className={styles.col}>
-            <h2>Product</h2>
+            <h2>Products</h2>
+            <Link href="/products#papers">Question Paper Engine</Link>
+            <Link href="/products#diagnostics">Avai Diagnostics</Link>
+            <Link href="/products#boardx">BoardX profiles</Link>
             <Link href="/how-it-works">How Avai reasons</Link>
             <Link href="/portal/dashboard">Sample dashboard</Link>
             <Link href="/portal">School portal</Link>
@@ -37,14 +40,14 @@ export function Footer() {
       </div>
       <div className={styles.eduStrip}>
         <span>
-          <Icon name="school" size={16} /> Built for Classes X and XII, in CBSE and State Board
-          schools
+          <Icon name="school" size={16} /> Built for schools, Class 9 to Class 12, to the CBSE
+          Board&rsquo;s own design
         </span>
         <span className={styles.lga}>Learn · Grow · Achieve</span>
       </div>
       <p className={styles.meta}>
-        © 2026 INAT Venture Pvt Ltd. Avai does not set exams, does not
-        grade answers, and does not evaluate teachers.
+        © 2026 INAT Venture Pvt Ltd. Avai adds no tests to your calendar, does not grade
+        answers, and does not evaluate teachers.
       </p>
     </footer>
   );

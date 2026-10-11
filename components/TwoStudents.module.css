@@ -1,0 +1,233 @@
+.toggle {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+}
+
+.toggle button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--subtle);
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.toggle .on {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.pair {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+
+@media (max-width: 760px) {
+  .pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+}
+
+.vs {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: 1.6rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--subtle);
+  box-shadow: var(--shadow-md);
+  transition:
+    background-color 0.4s,
+    color 0.4s;
+}
+
+.vsOn {
+  background: var(--ink);
+  color: var(--gold);
+}
+
+@media (max-width: 760px) {
+  .vs {
+    display: none;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  border-radius: 22px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+  transition:
+    border-color 0.5s,
+    box-shadow 0.5s,
+    transform 0.5s var(--ease-out);
+}
+
+.teal {
+  border-color: var(--teal);
+  box-shadow:
+    0 0 0 5px rgba(6, 169, 164, 0.1),
+    var(--shadow-lg);
+}
+
+.gold {
+  border-color: var(--gold);
+  box-shadow:
+    0 0 0 5px rgba(247, 161, 52, 0.12),
+    var(--shadow-lg);
+}
+
+.hd {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hd > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: var(--subtle);
+}
+
+.hd b {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: 1.2rem;
+  background: var(--tint);
+  color: var(--blue);
+}
+
+.mark {
+  margin-left: auto;
+  font-family: var(--display);
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.mark small {
+  font-size: 0.9rem;
+  color: var(--subtle);
+}
+
+.rows {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.rows div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.92rem;
+}
+
+.rows dt {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--subtle);
+}
+
+.rows dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+.card:not(.teal):not(.gold) .rows dd {
+  color: var(--subtle);
+  font-style: italic;
+}
+
+.kind {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  background: var(--paper-2);
+  color: var(--subtle);
+}
+
+.teal .kind {
+  background: var(--teal-tint);
+  color: #05605d;
+}
+
+.gold .kind {
+  background: var(--gold-tint);
+  color: #7a4d0c;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .teal,
+  .gold {
+    transform: translateY(-4px);
+  }
+
+  .rows dd {
+    animation: swap 0.45s var(--ease-out) both;
+  }
+
+  .vsOn {
+    animation: pop 0.5s cubic-bezier(0.3, 1.5, 0.5, 1);
+  }
+
+  @keyframes swap {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @keyframes pop {
+    from { transform: translate(-50%, -50%) scale(0.6); }
+    to { transform: translate(-50%, -50%) scale(1); }
+  }
+}

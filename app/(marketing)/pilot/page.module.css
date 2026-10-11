@@ -240,3 +240,70 @@
   color: var(--teal-deep);
   margin-top: 2px;
 }
+
+/* ---------- two ways to start ---------- */
+.ways {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 860px) {
+  .ways {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.ways article {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 26px;
+}
+
+.ways h3 {
+  margin: 4px 0 0;
+}
+
+.ways ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: way;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ways li {
+  counter-increment: way;
+  position: relative;
+  padding-left: 34px;
+  font-size: 0.93rem;
+  color: var(--body);
+}
+
+.ways li::before {
+  content: counter(way);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.waysLink {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}

@@ -112,7 +112,7 @@ export function HeroLoop() {
   }
 
   return (
-    <div className={styles.loop} aria-label="How one finding travels from a mark to a student report">
+    <div className={styles.loop} role="group" aria-label="How one finding travels from a mark to a student report">
       <div className={styles.bar}>
         <span className={styles.barDot} />
         <span className={styles.barDot} />

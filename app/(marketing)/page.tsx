@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { HeroStage } from "@/components/HeroStage";
-import { CountUp } from "@/components/CountUp";
 import { HonestyCompare } from "@/components/HonestyCompare";
-import { Icon, IconTile } from "@/components/Icon";
+import { Icon } from "@/components/Icon";
 import { SchoolDoodles } from "@/components/SchoolDoodles";
 import { ChapterTicker } from "@/components/ChapterTicker";
 import { ReportMorph } from "@/components/ReportMorph";
 import { ProductTour } from "@/components/ProductTour";
 import { RoleViews } from "@/components/RoleViews";
+import { ProductsStrip } from "@/components/ProductsStrip";
+import { TwoStudents } from "@/components/TwoStudents";
+import { ProfileTeaser } from "@/components/ProfileTeaser";
 import { Mascot } from "@/components/Mascot";
 
 export const metadata: Metadata = {
@@ -34,9 +36,9 @@ export default function Home() {
                 What is stopping students from <span className="grad-text">scoring higher?</span>
               </h1>
               <p className="lede enter" style={{ ["--d" as string]: "0.16s" }}>
-                Avai reads question-wise marks against a Board-mapped question paper and names
-                the competency costing your students marks: how many it affects, how urgent it
-                is for the Board, and how sure we are.
+                Avai reads the question-wise marks from the exams you already run and shows exactly
+                which topic, in which chapter, is costing each student marks: how many it affects,
+                how urgent it is for the Board, and how sure we are.
               </p>
               <div className={`${styles.ctaRow} enter`} style={{ ["--d" as string]: "0.24s" }}>
                 <Link className="btn btn-primary" href="/contact">
@@ -49,13 +51,13 @@ export default function Home() {
               </div>
               <ul className={`${styles.promises} enter`} style={{ ["--d" as string]: "0.32s" }}>
                 <li>
-                  <Icon name="school" size={16} /> Classes X and XII
+                  <Icon name="school" size={16} /> Classes 9 to 12
                 </li>
                 <li>
-                  <Icon name="book" size={16} /> CBSE and State Board
+                  <Icon name="book" size={16} /> Built to the CBSE blueprint
                 </li>
                 <li>
-                  <Icon name="pen-off" size={16} /> No new exams
+                  <Icon name="pen-off" size={16} /> No extra tests
                 </li>
                 <li>
                   <Icon name="numbers" size={16} /> Reads numbers, never answers
@@ -71,6 +73,21 @@ export default function Home() {
 
       <section className="band-2">
         <div className="wrap">
+          <div className={`head-2 ${styles.center}`} data-reveal>
+            <p className="kicker">Three products, one system</p>
+            <h2>From the question paper to a profile of every student</h2>
+            <p>
+              Build the paper to the Board&rsquo;s design, read the marks it produces down to the
+              topic, and keep a record of every student from Class 9 to Class 12. Each works on its
+              own.
+            </p>
+          </div>
+          <ProductsStrip />
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
           <div className={styles.split}>
             <div data-reveal>
               <p className="kicker">The lost-marks problem</p>
@@ -82,12 +99,38 @@ export default function Home() {
                 the same pattern shows up in Science but not in Social Science, or that the
                 competency behind it has appeared in four of the last four Board papers.
               </p>
+              <p className="lede">
+                Avai goes one step further: which topic, inside which chapter, the marks went on.
+              </p>
               <p className={styles.hint}>
-                <Icon name="cursor" size={15} /> Switch the card between the two readings.
+                <Icon name="cursor" size={15} /> Switch between the report card, the tiers and the
+                topics.
               </p>
             </div>
             <div data-reveal="zoom" style={{ ["--d" as string]: "0.1s" }}>
               <ReportMorph />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="band-2">
+        <div className="wrap">
+          <div className={styles.split}>
+            <div data-reveal>
+              <p className="kicker">Same mark, opposite problem</p>
+              <h2>Two students score 65. Your mark sheet cannot tell them apart.</h2>
+              <p className="lede">
+                One has an execution problem, the other a concept problem. They need opposite help,
+                and today they get the same revision class.
+              </p>
+              <p>
+                Avai separates them from the marks you already have, before March, while there is
+                still time to give each the right kind of help.
+              </p>
+            </div>
+            <div data-reveal style={{ ["--d" as string]: "0.1s" }}>
+              <TwoStudents />
             </div>
           </div>
         </div>
@@ -105,6 +148,24 @@ export default function Home() {
           </div>
           <div data-reveal>
             <ProductTour />
+          </div>
+        </div>
+      </section>
+
+      <section className="band-2">
+        <div className="wrap">
+          <div className={styles.teaserHead} data-reveal>
+            <div>
+              <p className="kicker">BoardX · a profile of every student</p>
+              <h2>Five dimensions, read every year from Class 9 to Class 12</h2>
+            </div>
+            <Link className="btn btn-line" href="/products#boardx">
+              See all four years
+              <Icon name="arrow-right" size={15} strokeWidth={2.2} className="btn-ic" />
+            </Link>
+          </div>
+          <div data-reveal>
+            <ProfileTeaser />
           </div>
         </div>
       </section>
@@ -133,7 +194,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band-2">
+      <section>
         <div className="wrap">
           <div className="head-2" data-reveal>
             <p className="kicker">Built for every desk in the school</p>
@@ -146,45 +207,6 @@ export default function Home() {
           <div data-reveal>
             <RoleViews />
           </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="wrap">
-          <div className="head-2" data-reveal>
-            <p className="kicker">The pilot</p>
-            <h2>What a pilot asks of a school</h2>
-          </div>
-          <div className={styles.journey} data-stagger>
-            <div className={styles.jStep}>
-              <IconTile name="paper" />
-              <b>
-                <CountUp value={1} />
-              </b>
-              <span>question paper and one mark register to start</span>
-            </div>
-            <div className={styles.jStep}>
-              <IconTile name="school" tone="blue" />
-              <b>X &amp; XII</b>
-              <span>Board-examination years</span>
-            </div>
-            <div className={styles.jStep}>
-              <IconTile name="pen-off" tone="gold" />
-              <b>
-                <CountUp value={0} />
-              </b>
-              <span>new exams a school has to write</span>
-            </div>
-            <div className={styles.jStep}>
-              <IconTile name="clock" tone="blue" />
-              <b>~1 hr</b>
-              <span>of teacher time per exam</span>
-            </div>
-          </div>
-          <Link className={`btn btn-line ${styles.pilotLink}`} href="/pilot">
-            What a pilot actually involves
-            <Icon name="arrow-right" size={15} strokeWidth={2.2} className="btn-ic" />
-          </Link>
         </div>
       </section>
 

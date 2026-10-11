@@ -20,11 +20,29 @@ const AVAI: Row[] = [
   { label: "…but not Social Sci.", value: "81%", pct: 81, tone: "teal" },
 ];
 
+const TOPICS: Row[] = [
+  { label: "Quadratic Equations", value: "9 lost", pct: 100, tone: "coral" },
+  { label: "Surface Areas & Vol.", value: "8 lost", pct: 89, tone: "coral" },
+  { label: "Arithmetic Prog.", value: "8 lost", pct: 89, tone: "gold" },
+  { label: "Statistics", value: "7 lost", pct: 78, tone: "gold" },
+  { label: "Coordinate Geometry", value: "6 lost", pct: 67, tone: "gold" },
+];
+
+const TOPIC_INSIGHTS = [
+  { icon: "book" as const, text: "Word problems: 6 of the 9" },
+  { icon: "book" as const, text: "Combined solids: 5 of the 8" },
+  { icon: "book" as const, text: "nth term in a context: 5 of the 8" },
+];
+
 const INSIGHTS = [
   { icon: "target" as const, text: "All 38 lost marks were application questions" },
   { icon: "layers" as const, text: "The same pattern shows up in Science" },
   { icon: "flag" as const, text: "In four of the last four Board papers" },
 ];
+
+type View = "report" | "avai" | "topics";
+const ORDER: View[] = ["report", "avai", "topics"];
+const HOLD: Record<View, number> = { report: 2600, avai: 4800, topics: 5600 };
 
 /**
  * One card that reads the same student two ways. The bars flow between the
@@ -32,7 +50,7 @@ const INSIGHTS = [
  * It flips on its own while on screen until someone uses the toggle.
  */
 export function ReportMorph() {
-  const [view, setView] = useState<"report" | "avai">("report");
+  const [view, setView] = useState<View>("report");
   const [auto, setAuto] = useState(true);
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -48,14 +66,15 @@ export function ReportMorph() {
   useEffect(() => {
     if (!auto || !visible) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = window.setTimeout(() => setView((v) => (v === "report" ? "avai" : "report")), view === "report" ? 2600 : 5200);
+    const t = window.setTimeout(() => setView((v) => ORDER[(ORDER.indexOf(v) + 1) % ORDER.length]), HOLD[view]);
     return () => window.clearTimeout(t);
   }, [auto, visible, view]);
 
-  const rows = view === "report" ? REPORT : AVAI;
-  const avai = view === "avai";
+  const rows = view === "report" ? REPORT : view === "avai" ? AVAI : TOPICS;
+  const avai = view !== "report";
+  const insights = view === "topics" ? TOPIC_INSIGHTS : INSIGHTS;
 
-  function choose(v: "report" | "avai") {
+  function choose(v: View) {
     setAuto(false);
     setView(v);
   }
@@ -73,12 +92,15 @@ export function ReportMorph() {
               <span>Unit Test 2</span>
             </span>
           </span>
-          <div className={styles.toggle} role="group" aria-label="Read this student as">
-            <button type="button" aria-pressed={!avai} className={!avai ? styles.on : ""} onClick={() => choose("report")}>
+          <div className={styles.toggle} role="group" aria-label="Read this student by">
+            <button type="button" aria-pressed={view === "report"} className={view === "report" ? styles.on : ""} onClick={() => choose("report")}>
               <Icon name="scorecard" size={15} /> Report card
             </button>
-            <button type="button" aria-pressed={avai} className={avai ? styles.on : ""} onClick={() => choose("avai")}>
-              <Icon name="finding" size={15} /> Avai
+            <button type="button" aria-pressed={view === "avai"} className={view === "avai" ? styles.on : ""} onClick={() => choose("avai")}>
+              <Icon name="finding" size={15} /> Tiers
+            </button>
+            <button type="button" aria-pressed={view === "topics"} className={view === "topics" ? styles.on : ""} onClick={() => choose("topics")}>
+              <Icon name="book" size={15} /> Topics
             </button>
           </div>
         </div>
@@ -107,7 +129,9 @@ export function ReportMorph() {
 
         <p key={view} className={styles.verdict}>
           <span className={styles.verdictLabel}>Conclusion available</span>
-          {avai ? (
+          {view === "topics" ? (
+            <b>Six of the nine Quadratic Equations marks went on word problems. Start there.</b>
+          ) : avai ? (
             <b>A transferable application gap, worth roughly 60 Board marks.</b>
           ) : (
             <b>Needs more practice in Maths.</b>
@@ -116,7 +140,7 @@ export function ReportMorph() {
       </div>
 
       <ul className={`${styles.insights} ${avai ? styles.insightsOn : ""}`} aria-hidden={!avai}>
-        {INSIGHTS.map((n, i) => (
+        {insights.map((n, i) => (
           <li key={n.text} style={{ ["--i" as string]: i }}>
             <Icon name={n.icon} size={16} />
             {n.text}

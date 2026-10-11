@@ -714,6 +714,15 @@ section.snug {
     transform: scaleX(0);
   }
 
+  .grow-y {
+    transform-origin: bottom center;
+    transition: transform 1.1s var(--ease-out) var(--gd, 0.2s);
+  }
+
+  .motion-ready :is([data-reveal], [data-stagger]):not(.is-in) .grow-y {
+    transform: scaleY(0);
+  }
+
   .ring-fill {
     transition: stroke-dashoffset 1.3s var(--ease-out) var(--gd, 0.25s);
   }
